@@ -11,8 +11,8 @@ public class GS_Application extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 900, 800);
+        stage.setTitle("G_String - GS_L.5.0");
         stage.setScene(scene);
         stage.show();
     }

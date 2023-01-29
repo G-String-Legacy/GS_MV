@@ -11,8 +11,12 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.util.prefs.Preferences;
 
-
+import java.io.InputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+
+import com.papaworx.gs_lv.utilities.Filer;
 
 public class GS_Application extends Application {
 
@@ -28,15 +32,9 @@ public class GS_Application extends Application {
     private Scene scene0;
 
     /**
-     * controller - Object that controls the GUI.
-     *
-     */
-    private com.papaworx.gs_lv.GS_Controller controller;
-
-    /**
      * <code>root</code> - serves a root for current Preferences.
      */
-    private Preferences root = Preferences.userRoot();
+    private final Preferences root = Preferences.userRoot();
 
     /**
      * <code>prefs</code> - Preference API.
@@ -46,17 +44,12 @@ public class GS_Application extends Application {
     /**
      * Object <code>flr</code> handles most file input/output.
      */
-    //private Filer flr;
+    private Filer flr;
 
     /**
      * String containing current location of log file output.
      */
     private Logger logger;
-
-    /**
-     * String containing current location of log file output.
-     */
-    private String sLogPath = null;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -67,7 +60,11 @@ public class GS_Application extends Application {
             sHomeDir = sUser;
             prefs.put("Home Directory", sHomeDir);
         }
-        sLogPath = sHomeDir + File.separator + "com.papaworx.gstring.Log";
+
+        /*
+          String containing current location of log file output.
+         */
+        String sLogPath = sHomeDir + File.separator + "com.papaworx.gstring.Log";
         FileHandler fh = null;							// just for initialization
         try {
             fh = new FileHandler(sLogPath, true);		// log handler, creates append logs, rather than new ones
@@ -82,7 +79,11 @@ public class GS_Application extends Application {
         primaryStage = stage;
         scene0 = new Scene(fxmlLoader.load(), 900, 800);
         stage.setTitle("G_String - GS_L.5.0");
-        controller = fxmlLoader.getController();
+        /*
+         * controller - Object that controls the GUI.
+         *
+         */
+        GS_Controller controller = fxmlLoader.getController();
         controller.setMainApp(this, logger, prefs);
         // temporary until working classes show GUI
         show(null);
@@ -106,6 +107,58 @@ public class GS_Application extends Application {
         newScene.setRoot(frame);
         primaryStage.setScene(newScene);
         primaryStage.show();
+    }
+
+    /**
+     * getter for primary stage available by a call to 'main'
+     *
+     * @return primaryStage;
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    /**
+     * <a href="https://stackoverflow.com/questions/941754/how-to-get-a-path-to-a-resource-in-a-java-jar-file">...</a>
+     * to display Brennan's original uRGENOVA manual pdf.
+     * <a href="http://java-buddy.blogspot.com">see also</a>;
+     *
+     * @param sName;
+     * @return File;
+     */
+    public File showPDF(String sName) {
+
+        File docFile = null;
+        InputStream input = getClass().getResourceAsStream(sName);
+        try {
+            docFile = File.createTempFile("urGenova", ".pdf");
+            OutputStream out = new FileOutputStream(docFile);
+            int read;
+            byte[] bytes = new byte[8192];
+
+            while (true) {
+                assert input != null;
+                if ((read = input.read(bytes)) == -1) break;
+                out.write(bytes, 0, read);
+            }
+            out.close();
+        } catch (IOException e) {
+            logger.warning(e.getMessage());
+        }
+        return docFile;
+    }
+
+    /**
+     * In response to GUI, initiates setup; to be done on first use.
+     */
+    public void doSetup() {
+
+        com.papaworx.gs_lv.steps.GSetup setup = new com.papaworx.gs_lv.steps.GSetup(primaryStage, logger, prefs);
+        try {
+            setup.ask();
+        } catch (IOException e) {
+            logger.warning(e.getMessage());
+        }
     }
 
 }

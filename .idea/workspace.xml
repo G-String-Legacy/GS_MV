@@ -5,10 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Facet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Nest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/SampleSizeTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/AnaGroups.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/GSetup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/SynthGroups.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/About.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/CombConstrct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/ConstructSimulation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/FacetModView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Factor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Lehmer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Normal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/SampleSizeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/VarianceComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/About.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/AboutB.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/E_rho2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Phi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Pointer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Prefs_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Background.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpRep_1.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_1.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_10.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_2.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_3.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_4..tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_5.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_6.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_7.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_8.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_9.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_0.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_1.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_10.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_2.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_3.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_4.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_5.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_6.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_7.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_8.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_9.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Options.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/myDialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGENOVA_manual.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_L" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_M" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_W.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/GS_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/GS_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +122,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -79,6 +142,9 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2KxPTzQAG0tAZ19SneYS96eNvK8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -87,15 +153,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/gsFirst&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/ralph/Documents/GS_L/Gradle/gsFirst",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.GS_LV [run]">
+    <configuration name="GS_LV [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="GS_LV [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -181,6 +276,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Gradle.GS_LV [buildDependents]" />
       <item itemvalue="Gradle.GS_LV [clean]" />
       <item itemvalue="Gradle.GS_LV [build]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
@@ -190,6 +286,7 @@
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [build]" />
+        <item itemvalue="Gradle.GS_LV [buildDependents]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
       </list>

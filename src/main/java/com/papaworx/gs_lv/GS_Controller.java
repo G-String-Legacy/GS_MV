@@ -23,7 +23,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
-//import utilities.About;
+import javafx.stage.Stage;
+//import com.papaworx.gs_lv.utilities..About;
 
 /**
  * LayoutController for JavaFX GUI
@@ -36,17 +37,17 @@ import javafx.stage.FileChooser;
  */
 public class GS_Controller {
     /**
-     * main application of project
+     * main com.papaworx.gs_lv.GS_Application of project
      */
     private com.papaworx.gs_lv.GS_Application myMain;
 
     /**
-     * application logger
+     * com.papaworx.gs_lv.GS_Application logger
      */
     private Logger logger;
 
     /**
-     * application preferences
+     * com.papaworx.gs_lv.GS_Application preferences
      */
     private Preferences prefs;
     /**
@@ -203,5 +204,154 @@ public class GS_Controller {
     private void respond() {
         System.exit(0);
     }
+
+    /**
+     * control stepping
+     *
+     * @param _iStep  control parameter
+     */
+    public void setStep(Integer _iStep) {
+        lblStep.setText("Step " + _iStep);
+        if (_iStep == 0)
+            buttonsEnabled(false);
+        else
+            buttonsEnabled(true);
+    }
+
+    /**
+     * disable setup changes during stepping operation
+     */
+    public void lockSetup() {
+        mnuSetup.setDisable(true);
+    }
+
+    /**
+     * displaye 'About G_String' info
+     */
+    private void about() {
+        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "/resources/About.txt", "About G_String_L");
+        myAbout.show();
+    }
+
+    /**
+     * display 'About Brennan' info
+     */
+    private void aboutB() {
+        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "/resources/AboutB.txt", "About urGenova");
+        myAbout.show();
+    }
+
+    /**
+     * disables/enables 'Save All' operation (Results)
+     *
+     * @param bDisable boolean switch true/false
+     */
+    public void disableSave(Boolean bDisable) {
+        mnuSaveAll.setDisable(bDisable);
+    }
+
+    /**
+     * load preferences from file
+     */
+    private void loadPreferences() {
+        InputStream sIn = null;
+        File selectedFile = null;
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Select Preferences File to load");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+        fc.getExtensionFilters().add(extFilter);
+        fc.setSelectedExtensionFilter(extFilter);
+        fc.setInitialDirectory(new File(homeDir));
+        try {
+            selectedFile = fc.showOpenDialog(myMain.getPrimaryStage());
+        } catch (Exception e) {
+            logger.warning(e.getMessage());
+        }
+        if (selectedFile != null) {
+            try {
+                sIn = new FileInputStream(selectedFile);
+            } catch (FileNotFoundException e) {
+                logger.warning(e.getMessage());
+            }
+            try {
+                Preferences.importPreferences(sIn);
+            } catch (IOException e) {
+                logger.warning(e.getMessage());
+            } catch (InvalidPreferencesFormatException e) {
+                logger.warning(e.getMessage());
+            }
+        }
+
+    }
+
+    /**
+     * save preferences to file
+     */
+    private void savePreferences() {
+        OutputStream sOut = null;
+        File selectedFile = null;
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Select Preferences File to save");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+        fc.getExtensionFilters().add(extFilter);
+        fc.setSelectedExtensionFilter(extFilter);
+        fc.setInitialDirectory(new File(homeDir));
+        try {
+            selectedFile = fc.showSaveDialog(myMain.getPrimaryStage());
+        } catch (Exception e) {
+            logger.warning(e.getMessage());
+        }
+        if (selectedFile != null) {
+            try {
+                sOut = new FileOutputStream(selectedFile);
+            } catch (FileNotFoundException e) {
+                logger.warning(e.getMessage());
+            }
+            try {
+                prefs.exportNode(sOut);
+            } catch (IOException e) {
+                logger.warning(e.getMessage());
+            } catch (BackingStoreException e) {
+                logger.warning(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * enables/disables stepping
+     *
+     * @param bEnable  boolean switch true/false
+     */
+    public void enableStepUp(Boolean bEnable) {
+        btnStepUp.setDisable(!bEnable);
+    }
+
+    /**
+     * enables/disables action menu
+     *
+     * @param bCall boolean switch true/false
+     */
+    public void callForAction(Boolean bCall) {
+        if (bCall) {
+            mnuAction.setStyle("-fx-border-color:chocolate;");
+            mnuAction.setDisable(false);
+        } else {
+            mnuAction.setStyle(null);
+            mnuAction.setDisable(true);
+        }
+    }
+
+    /**
+     * Displays pdf file (for urGENOVA manual)
+     *
+     * @param _sName file path
+     */
+    private void displayResource(String _sName) {
+        File docFile = myMain.showPDF(_sName);
+        HostServices hostServices = myMain.getHostServices();
+        hostServices.showDocument(docFile.toURI().toString());
+        docFile.deleteOnExit();
+    }
+
 
 }

@@ -4,19 +4,36 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Group;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.TextField;
+
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.List;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.File;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 import java.util.prefs.Preferences;
-
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
 import com.papaworx.gs_lv.utilities.Filer;
+import com.papaworx.gs_lv.model.Nest;
+import com.papaworx.gs_lv.steps.AnaGroups;
+import com.papaworx.gs_lv.steps.SynthGroups;
+import com.papaworx.gs_lv.utilities.TextStack;
 
 public class GS_Application extends Application {
 
@@ -51,6 +68,47 @@ public class GS_Application extends Application {
      */
     private Logger logger;
 
+    /**
+     * controller - Object that controls the GUI.
+     *
+     */
+    private com.papaworx.gs_lv.GS_Controller controller;
+
+    /**
+     * Object <code>myNest</code> - encapsulates all experimental model descriptors (excepts
+     * sample sizes, and methods to generate logical derivatives.
+     */
+    private static Nest myNest;
+
+    /**
+     * <code>group</code> - encapsulates the various components of a javaFX,
+     * specific for each step and condition.
+     */
+    private Group group;
+
+    /**
+     * <code>mySteps</code> - guides the user through all the input steps for performing
+     * a Generalizability Analysis.
+     */
+    private AnaGroups mySteps;
+
+    /**
+     * <code>mySynthSteps</code> - guides the user through all the input steps for generating
+     * a synthetic dataset, on which Generalizability Analysis can be practiced.
+     */
+    private SynthGroups mySynthSteps;
+
+    /**
+     * flag indicating replication mode.
+     */
+    private Boolean bReplicate = false;
+
+    /**
+     * <code>storedScene</code> location to park current scene, when a
+     * temporary scene has to be overlaid.
+     */
+    private Scene storedScene = null;
+
     @Override
     public void start(Stage stage) throws IOException {
         String sUser = System.getProperty("user.home");
@@ -83,7 +141,7 @@ public class GS_Application extends Application {
          * controller - Object that controls the GUI.
          *
          */
-        GS_Controller controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController();
         controller.setMainApp(this, logger, prefs);
         // temporary until working classes show GUI
         show(null);
@@ -160,5 +218,361 @@ public class GS_Application extends Application {
             logger.warning(e.getMessage());
         }
     }
+
+    /**
+     * Except for very localized messages, the graphical user interface (GUI) is standardized.
+     * Throughout G_String, the objects create javafx scenes called 'groups', which are handed to the 'show' subroutine.
+     * User interactions with the GUI are directly fed back to appropriate methods of Main.
+     * Responds to GUI 'Next' button.
+     */
+    public void stepUp() {
+
+        try {
+            if (!myNest.getDawdle() && !myNest.getVarianceDawdle())
+                myNest.incrementSteps();
+            int iStep = myNest.getStep();
+            controller.setStep(iStep);
+            if (!myNest.getSimulate()) // if in analysis mode
+            {
+                /**
+                 * This is the default analysis path
+                 */
+                group = mySteps.getGroup();
+                if (group == null)
+                    switch (iStep) {
+                        case 1:
+                            freshStart();
+                            break;
+                        case 9:
+                            myNest.setStep(7);
+                            break;
+                        case 10:
+                            break;
+                        default:
+                            break;
+                    }
+                else {
+                    show(group);
+                }
+            } else {
+                /**
+                 * Otherwise we got for synthesis
+                 */
+                group = mySynthSteps.getGroup();
+                show(group);
+            }
+        } catch (Throwable e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            logger.warning(e.toString());
+        }
+    }
+
+    /**
+     * In response to GUI sets switches for script driven analysis
+     */
+    public void startOver() {
+        bReplicate = false;
+        myNest.setDoOver(true);			// sets the 'doOver' Boolean in 'Nest'
+        myNest.setReplicate(false);
+        mySteps.setReplicate(false);
+        try {
+            stepUp();					// and then tries going to 'stepUp'
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * In response to GUI initiates 'help' action.
+     * This method allows context switching to help any time. The current screen
+     * content (scene) is stored (only one level), and returned at end of help
+     * screen watching. If necessary, this method could be expanded to use a stack to save screens,
+     *
+     * @param sCommand;
+     */
+    public void helpSwitch(String sCommand) {
+
+        switch (sCommand) {
+            case "help":										// context specific help
+                Boolean bSimulate = myNest.getSimulate();
+                bReplicate = myNest.getReplicate();
+                String sLocation = null;
+                Integer iStep = myNest.getStep();
+                if (storedScene == null)
+                    storedScene = primaryStage.getScene();
+                if (bSimulate) {		// get prose from simulation help files
+                    if (iStep == 1)
+                        sLocation = "HelpRep_1" + ".tf";
+                    else
+                        sLocation = "HelpSim_" + iStep.toString() + ".tf";
+                } else {
+                    if ((iStep == 1) && bReplicate)
+                        sLocation = "HelpRep_1" + ".tf";
+                    else
+                        sLocation = "Help_" + iStep.toString() + ".tf";   // get prose from default (analysis) help files
+                }
+                primaryStage.setScene(helpScene("Contextual Help", sLocation));
+                primaryStage.show();
+                break;
+            case "intro":										// serves background prose
+                if (storedScene == null)
+                    storedScene = primaryStage.getScene();
+                primaryStage.setScene(helpScene("Background", "Background.tf"));
+                primaryStage.show();
+                break;
+            case "return":										// restores pre-help scene
+                primaryStage.setScene(storedScene);
+                primaryStage.show();
+                break;
+            case "replicate":
+                if (storedScene == null)
+                    storedScene = primaryStage.getScene();
+                primaryStage.setScene(helpScene("replicate", "Replicate.tf"));
+                primaryStage.show();
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * In response to GUI set switches for manual simulation
+     */
+    public void Simulate() {
+
+        myNest.setDoOver(false); 		// only manual input
+        myNest.setSimulate(true); 		// simulate
+        myNest.setReplicate(false);
+        try {
+            stepUp();
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * In response to GUI sets switches for script driven simulation.
+     */
+    public void Resimulate() {
+
+        myNest.setDoOver(true); 		// to read script input file
+        myNest.setSimulate(true);		// to force simulation
+        myNest.setReplicate(false);
+        try {
+            stepUp();
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * primitive helper for 'ChangePreference',
+     * saves or restores previous scene.
+     *
+     * @param bPrefs;
+     */
+    public void switchChangePreferences(Boolean bPrefs) {
+
+        if (bPrefs) {
+            storedScene = primaryStage.getScene();
+            primaryStage.setScene(prefChanger());
+            primaryStage.show();
+        } else {
+            primaryStage.setScene(storedScene);
+            primaryStage.show();
+        }
+    }
+
+    /**
+     * starts G_String all over again. Resets all switches and Nest to default
+     */
+    public void freshStart() {
+
+        myNest = null;
+        mySteps = null;
+        myNest = new Nest(logger, this, prefs);
+        myNest.setStage(primaryStage);
+        group = null;
+        mySteps = new AnaGroups(this, myNest, logger, controller, primaryStage, prefs, flr);
+        controller.callForAction(true);
+        try {
+            stepUp();
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * In response GUI activates the analysis branch to save the collected results.
+     */
+    public void saveAll() {
+
+        try {
+            mySteps.saveAll();
+        } catch (IOException e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * User has selected replication analysis.
+     */
+    public void replicate() {
+        myNest.setDoOver(false);
+        bReplicate = true;
+        myNest.setReplicate(true);
+        mySteps.setReplicate(true);
+        try {
+            stepUp();					// and then tries going to 'stepUp'
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * User has selected replication synthesis
+     */
+    public void replicateAgain() {
+        myNest.setDoOver(true);
+        bReplicate = true;
+        myNest.setReplicate(true);
+        mySteps.setReplicate(true);
+        try {
+            stepUp();					// and then tries going to 'stepUp'
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * In response to GUI sets switches for manual analysis
+     */
+    public void startFresh() {
+        bReplicate = false;
+        myNest.setReplicate(false);
+        myNest.setDoOver(false);
+        mySteps.setReplicate(false);
+        try {
+            stepUp();
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+    }
+
+    /**
+     * Sets up the standard 'help' scene
+     *
+     * @param _sTitle  string	the Help screen title;
+     * @param _sSource string	the help text file location;
+     * @return Scene to be displayed;
+     */
+    private Scene helpScene(String _sTitle, String _sSource) {
+
+        BorderPane helpLayout = new BorderPane();
+        helpLayout.setPrefSize(800.0, 500.0);
+        Label lbTitle = new Label(_sTitle);
+        lbTitle.setStyle(prefs.get("StandardFormat", null));
+        HBox topBox = new HBox();
+        topBox.setAlignment(Pos.CENTER);
+        topBox.setStyle(prefs.get("StandardFormat", null));
+        topBox.setPrefHeight(30.0);
+        topBox.setStyle("-fx-border-color:chocolate;-fx-border-width:1px;");
+        topBox.getChildren().add(lbTitle);
+        helpLayout.setTop(topBox);
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction((event) -> {
+            helpSwitch("return");
+        });
+        HBox bottomBox = new HBox();
+        bottomBox.setStyle(prefs.get("StandardFormat", null));
+        bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
+        bottomBox.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
+        bottomBox.setStyle("-fx-border-color:chocolate;-fx-border-width:1px;");
+        bottomBox.getChildren().add(closeButton);
+        helpLayout.setBottom(bottomBox);
+        //
+        String sLocation = _sSource;
+        TextStack t = new TextStack(sLocation, prefs, logger);
+        VBox vb = t.vStack();
+        vb.setStyle("-fx-background-color:beige;");
+        helpLayout.setCenter(vb);
+        Scene helpScene = new Scene(helpLayout);
+        return helpScene;
+    }
+
+    /**
+     * In response to GUI, allows user to set program preferences that will be stored.
+     *
+     * @return, Scene for preferences control;
+     */
+    public Scene prefChanger() {
+
+        BorderPane pcLayout = new BorderPane();
+        pcLayout.setPrefSize(800.0, 500.0);
+        Label lbTitle = new Label("Change Preferences");
+        lbTitle.setStyle(prefs.get("StandardFormat", null));
+        HBox topBox = new HBox();
+        topBox.setAlignment(Pos.CENTER);
+        topBox.setStyle(prefs.get("StandardFormat", null));
+        topBox.getChildren().add(lbTitle);
+        pcLayout.setTop(topBox);
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction((event) -> {
+            switchChangePreferences(false);
+        });
+        HBox bottomBox = new HBox();
+        bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
+        bottomBox.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
+        bottomBox.getChildren().add(closeButton);
+        pcLayout.setBottom(bottomBox);
+        VBox vbPrefs = new VBox();
+        // now compile preferences
+        List<String> sarKeys = null;
+        String sValue = null;
+        try {
+            sarKeys = Arrays.asList(prefs.keys());
+        } catch (Exception e) {
+            logger.warning(e.getMessage());
+        }
+        Collections.sort(sarKeys);
+
+        for (String sKey : sarKeys) {
+            sValue = prefs.get(sKey, null);
+            vbPrefs.getChildren().add(hbKeyValue(sKey, sValue));
+        }
+        vbPrefs.setPadding(new Insets(40, 50, 20, 50));
+        pcLayout.setCenter(vbPrefs);
+        Scene pcScene = new Scene(pcLayout);
+        return pcScene;
+    }
+    /**
+     * helper in Preferences, displays individual preference.
+     *
+     * @param _sKey		string	the key for a particular preference item
+     * @param _sValue	string	the new value for that preference item
+     * @return HBox, to be displayed in <code>prefChanger</code>;
+     */
+    private HBox hbKeyValue(String _sKey, String _sValue) {
+
+        HBox hbReturn = new HBox();
+        Label lbKey = new Label(_sKey);
+        lbKey.setPrefWidth(150.0);
+        TextField tfValue = new TextField(_sValue);
+        tfValue.setPrefWidth(500.0);
+        tfValue.textProperty().addListener((obs, oldText, newText) -> {
+            if (_sKey.equals("Default Log") && !newText.equals(oldText)) {
+                if (Level.parse(newText.toUpperCase()) != null)
+                    prefs.put(_sKey, newText.toUpperCase());
+            }
+            else
+            if ((newText != null) && (!newText.trim().equals("")) && (newText != oldText))
+                prefs.put(_sKey, newText);
+        });
+        hbReturn.getChildren().addAll(lbKey, tfValue);
+        return hbReturn;
+    }
+
 
 }

@@ -6,6 +6,7 @@ module com.papaworx.gs_lv {
     requires com.almasb.fxgl.all;
     requires java.logging;
     requires java.prefs;
+    requires java.desktop;
 
     uses com.papaworx.gs_lv.GS_Application;
     uses com.papaworx.gs_lv.GS_Controller;

@@ -50,6 +50,13 @@ test {
     useJUnitPlatform()
 }
 
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.papaworx.gs_lv.GS_Application'
+        )
+    }
+}
 jlink {
     jpackage {
         installerType = "deb"

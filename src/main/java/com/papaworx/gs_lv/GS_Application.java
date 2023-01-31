@@ -122,7 +122,7 @@ public class GS_Application extends Application {
         /*
           String containing current location of log file output.
          */
-        String sLogPath = sHomeDir + File.separator + "com.papaworx.gstring.Log";
+        String sLogPath = sHomeDir + File.separator + "com.papaworx.gs_vl.Log";
         FileHandler fh = null;							// just for initialization
         try {
             fh = new FileHandler(sLogPath, true);		// log handler, creates append logs, rather than new ones
@@ -573,6 +573,5 @@ public class GS_Application extends Application {
         hbReturn.getChildren().addAll(lbKey, tfValue);
         return hbReturn;
     }
-
-
 }
+

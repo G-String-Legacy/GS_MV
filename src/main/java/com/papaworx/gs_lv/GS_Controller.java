@@ -302,7 +302,7 @@ public class GS_Controller {
      * displaye 'About G_String' info
      */
     private void about() {
-        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "/resources/About.txt", "About G_String_L");
+        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_L");
         myAbout.show();
     }
 
@@ -310,7 +310,7 @@ public class GS_Controller {
      * display 'About Brennan' info
      */
     private void aboutB() {
-        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "/resources/AboutB.txt", "About urGenova");
+        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "AboutB.txt", "About urGenova");
         myAbout.show();
     }
 

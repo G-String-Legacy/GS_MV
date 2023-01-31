@@ -1,9 +1,7 @@
 package com.papaworx.gs_lv.steps;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URL;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.InvalidPreferencesFormatException;
@@ -67,8 +65,8 @@ public class GSetup
 	 */
 	public void ask() throws IOException
 	{
-		String sResource = "/resources/Prefs_Default.xml";
-		InputStream stIn = GS_Application.class.getResourceAsStream(sResource);
+		String sResource = "Prefs_Default.xml";
+		InputStream stIn = this.getClass().getResourceAsStream(sResource);
 		try {
 			Preferences.importPreferences(stIn);
 		} catch (InvalidPreferencesFormatException e) {
@@ -123,13 +121,13 @@ public class GSetup
 			System.exit(1);
 		}
 		File fTarget = new File(sTarget);
-		sResource = "/resources/" + sName;
 		byte[] b = new byte[1024];
 		int len;
 
 		FileOutputStream out = new FileOutputStream(sTarget);
 		try {
-				InputStream is = GS_Application.class.getResourceAsStream(sResource);
+				URL url = this.getClass().getResource(sName);
+			final InputStream is = url.openStream();
 				if (is == null) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setContentText("urGenova Input stream null.");
@@ -146,9 +144,9 @@ public class GSetup
 	    fTarget.setExecutable(true, false);
 
 	    // load default preferences
-	    String sPreferences = "../resources/" + "Prefs_Default.xml";
+	    String sPreferences = "Prefs_Default.xml";
 		try {
-			InputStream is = GS_Application.class.getResourceAsStream(sPreferences);
+			InputStream is = this.getClass().getResourceAsStream(sPreferences);
 			if (is == null) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setContentText("Default Preferences Input stream null.");

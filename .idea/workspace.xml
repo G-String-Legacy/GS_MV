@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Nest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Pointer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/Pointer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Background.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Background.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpRep_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpRep_1.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_1.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_10.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_10.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_2.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_2.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_3.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_4..tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_4..tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_5.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_5.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_6.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_6.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_7.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_7.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_8.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_8.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_9.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_9.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_0.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_0.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_1.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_10.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_10.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_2.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_2.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_3.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_4.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_4.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_5.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_5.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_6.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_6.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_7.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_7.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_8.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_8.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_9.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_9.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Options.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Options.tf" afterDir="false" />
-    </list>
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -343,6 +311,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
           <line>513</line>
           <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

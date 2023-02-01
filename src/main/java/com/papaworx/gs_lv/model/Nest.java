@@ -1388,7 +1388,7 @@ public class Nest {
 	/**
 	 * converts String array list to String array.
 	 *
-	 * @param _salNestedNames[i++]
+	 * @param _salNestedNames
 	 */
 	public void setSarNestedNames(ArrayList<String> _salNestedNames) {
 		int i = 0;

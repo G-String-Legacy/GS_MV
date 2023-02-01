@@ -6,17 +6,36 @@
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/GSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/GSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/About.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/About.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/AboutB.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/AboutB.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Prefs_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps/Prefs_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_L" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps/urGenova_L" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_M" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps/urGenova_M" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/urGenova_W.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps/urGenova_W.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model/Nest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/Pointer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/Pointer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Background.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Background.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpRep_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpRep_1.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_1.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_10.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_10.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_2.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_2.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_3.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_4..tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_4..tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_5.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_5.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_6.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_6.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_7.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_7.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_8.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_8.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/HelpSim_9.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/HelpSim_9.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_0.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_0.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_1.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_1.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_10.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_10.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_2.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_2.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_3.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_4.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_4.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_5.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_5.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_6.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_6.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_7.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_7.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_8.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_8.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Help_9.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Help_9.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help/Options.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help/Options.tf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +114,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2KxPTzQAG0tAZ19SneYS96eNvK8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -126,8 +145,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.GS_LV [run]">
@@ -173,7 +195,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GS_LV [jlink]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -184,7 +206,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value="jlink" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -237,8 +259,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Gradle.GS_LV [jlink]" />
       <item itemvalue="Gradle.GS_LV [assemble]" />
-      <item itemvalue="Gradle.GS_LV [clean]" />
       <item itemvalue="Gradle.GS_LV [build]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
       <item itemvalue="Gradle.GS_LV [run]" />
@@ -247,9 +269,9 @@
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [build]" />
-        <item itemvalue="Gradle.GS_LV [assemble]" />
+        <item itemvalue="Gradle.GS_LV [jlink]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
-        <item itemvalue="Gradle.GS_LV [clean]" />
+        <item itemvalue="Gradle.GS_LV [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -283,114 +305,44 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
-          <line>215</line>
-          <option name="timeStamp" value="11" />
+          <line>413</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/About.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>304</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>191</line>
-          <option name="timeStamp" value="22" />
+          <line>203</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>196</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>199</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <line>336</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>202</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <line>330</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>205</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>208</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>211</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>214</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>217</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>220</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>223</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>229</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>232</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>235</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>238</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>241</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
-          <line>246</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps/GSetup.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="41" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <line>513</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -76,8 +76,8 @@ public class TextStack
 	 */
 	private void readFile(String filename) throws IOException {
 
-		String sResource = "/resources/help/" + filename;
-		InputStream stIn = GS_Application.class.getResourceAsStream(sResource);
+		String sResource = "help/" + filename;
+		InputStream stIn = this.getClass().getResourceAsStream(sResource);
         BufferedReader reader = new BufferedReader(new InputStreamReader(stIn));
         String line;
         while ((line = reader.readLine()) != null) {
@@ -93,12 +93,12 @@ public class TextStack
 	 */
 	public VBox vStack ()
 	{
-		String sTemp = null;
-		String sOutput = null;
+		String sTemp;
+		String sOutput;
 		String[] sOpts = {"title", "para", "bullet", "sub"};
-		Text t = null;
-		Image hand = null;
-		InputStream stIn = GS_Application.class.getResourceAsStream("/resources/Pointer.png");
+		Text t;
+		Image hand;
+		InputStream stIn = this.getClass().getResourceAsStream("Pointer.png");
 		hand = new Image(stIn, 30.0, 30.0, true, true);
 		ImageView ivHand = new ImageView(hand);
 		ivHand.autosize();

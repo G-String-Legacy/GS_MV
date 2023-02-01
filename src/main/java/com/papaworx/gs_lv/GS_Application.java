@@ -43,6 +43,11 @@ public class GS_Application extends Application {
     private Stage primaryStage;
 
     /**
+     * the rootLayout of the mainStage is formated as a <code>BorderPane</code>
+     */
+    private BorderPane rootLayout;
+
+    /**
      * <code> scene0</code> acts a container to send the javaFX code <code>group</code>
      * to <code>primaryStage</code> for display.
      */
@@ -131,20 +136,30 @@ public class GS_Application extends Application {
         }
         logger = Logger.getLogger(com.papaworx.gs_lv.GS_Application.class.getName());
         logger.addHandler(fh);
-
+        myNest = new Nest(logger, this, prefs);
 
         FXMLLoader fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
+        rootLayout = (BorderPane) fxmlLoader.load();
         primaryStage = stage;
-        scene0 = new Scene(fxmlLoader.load(), 900, 800);
+        scene0 = new Scene(rootLayout, 900, 800);
         stage.setTitle("G_String - GS_L.5.0");
+        myNest.setScene(scene0);
+        flr = new Filer(myNest, prefs, logger, primaryStage);
         /*
          * controller - Object that controls the GUI.
          *
          */
         controller = fxmlLoader.getController();
         controller.setMainApp(this, logger, prefs);
-        // temporary until working classes show GUI
-        show(null);
+        mySteps = new AnaGroups(this, myNest, logger, controller, primaryStage, prefs, flr); 	// object for analysis
+        mySynthSteps = new SynthGroups(this, myNest, logger, controller, prefs, flr);	// object for synthesis
+
+        try {
+            stepUp();	// now ready for work
+        } catch (Throwable e) {
+            logger.warning(e.getMessage());
+        }
+        //show(null);
     }
 
     public static void main(String[] args) {
@@ -306,12 +321,12 @@ public class GS_Application extends Application {
                     if (iStep == 1)
                         sLocation = "HelpRep_1" + ".tf";
                     else
-                        sLocation = "HelpSim_" + iStep.toString() + ".tf";
+                        sLocation = "HelpSim_" + iStep + ".tf";
                 } else {
                     if ((iStep == 1) && bReplicate)
                         sLocation = "HelpRep_1" + ".tf";
                     else
-                        sLocation = "Help_" + iStep.toString() + ".tf";   // get prose from default (analysis) help files
+                        sLocation = "Help_" + iStep + ".tf";   // get prose from default (analysis) help files
                 }
                 primaryStage.setScene(helpScene("Contextual Help", sLocation));
                 primaryStage.show();
@@ -393,6 +408,7 @@ public class GS_Application extends Application {
         myNest = null;
         mySteps = null;
         myNest = new Nest(logger, this, prefs);
+        flr = new Filer(myNest, prefs, logger, primaryStage);
         myNest.setStage(primaryStage);
         group = null;
         mySteps = new AnaGroups(this, myNest, logger, controller, primaryStage, prefs, flr);
@@ -494,12 +510,12 @@ public class GS_Application extends Application {
         helpLayout.setBottom(bottomBox);
         //
         String sLocation = _sSource;
-        TextStack t = new TextStack(sLocation, prefs, logger);
-        VBox vb = t.vStack();
+        TextStack ts = new TextStack(sLocation, prefs, logger);
+        VBox vb = ts.vStack();
         vb.setStyle("-fx-background-color:beige;");
         helpLayout.setCenter(vb);
-        Scene helpScene = new Scene(helpLayout);
-        return helpScene;
+        Scene _helpScene = new Scene(helpLayout);
+        return _helpScene;
     }
 
     /**

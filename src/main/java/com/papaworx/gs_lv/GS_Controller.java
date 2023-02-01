@@ -188,6 +188,7 @@ public class GS_Controller {
      * initialize rootLayoutController at program start.
      */
     public void initialize() {
+
         mnuExit.setOnAction((event) -> {
             respond();
         });
@@ -203,7 +204,7 @@ public class GS_Controller {
             myMain.helpSwitch("intro");
         });
         mnuUHelp.setOnAction((event) -> {
-            displayResource("/resources/urGENOVA_manual.pdf");
+            displayResource("urGENOVA_manual.pdf");
         });
         mnuSimulate.setOnAction((event) -> {
             myMain.Simulate();
@@ -246,6 +247,8 @@ public class GS_Controller {
         mnuActionFresh.setOnAction((event) -> {
             myMain.startFresh();
         });
+
+        callForAction(true);
     }
 
     /**

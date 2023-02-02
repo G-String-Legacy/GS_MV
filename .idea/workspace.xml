@@ -120,7 +120,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [run]">
+  <component name="RunManager" selected="Gradle.GS_LV [build]">
     <configuration name="GS_LV [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -235,8 +235,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [build]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [jlink]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [assemble]" />

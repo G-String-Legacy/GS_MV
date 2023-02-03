@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
-import com.papaworx.gs_lv.GS_Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;

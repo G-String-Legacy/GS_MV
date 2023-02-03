@@ -1,10 +1,10 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 
-import com.papaworx.gs_lv.model.Facet;
-import com.papaworx.gs_lv.model.Nest;
+import com.papaworx.gs_mv.model.Facet;
+import com.papaworx.gs_mv.model.Nest;
 
 /**
  * 'VarianceComponent' (vc) is a class of objects for the calculation of

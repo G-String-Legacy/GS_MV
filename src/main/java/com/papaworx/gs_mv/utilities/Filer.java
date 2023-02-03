@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,11 +24,13 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import com.papaworx.gs_lv.model.Facet;
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.model.SampleSizeTree;
+import com.papaworx.gs_mv.model.Facet;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.model.SampleSizeTree;
 
 /**
  * Process reading and writing of control and data files the 'read' command
@@ -47,32 +49,22 @@ public class Filer {
 	/**
 	 * pointer to <code>Nest</code>
 	 */
-	private Nest myNest = null;
-
-	/**
-	 * file path
-	 */
-	private String sFileName = null;
+	private final Nest myNest;
 
 	/**
 	 * file path of data file
 	 */
-	private String sDataFileName = null;
+	private final String sDataFileName;
 
 	/**
 	 * fixed field width in umber of characters
 	 */
-	private Integer iFieldWidth = 0;
+	private Integer iFieldWidth;
 
 	/**
 	 * upper limit of first data columns to be highlighted, to be ignored by urGENOVA
 	 */
 	private Integer iHilight = 0;
-
-	/**
-	 * repository for HTML data section
-	 */
-	private String sHTML = null;
 
 	/**
 	 * maximal number of collums in score data display
@@ -82,42 +74,17 @@ public class Filer {
 	/**
 	 * pointer to Preferences API
 	 */
-	private Preferences prefs = null;
+	private final Preferences prefs;
 
 	/**
 	 * array of String column headers
 	 */
-	private String[] sHeaders = null;
-
-	/**
-	 * tentative limit for number of data-in columns
-	 */
-	private Integer iMaxColCount = null;
-
-	/**
-	 * Double variable for calculating grand means
-	 */
-	private Double[] dSums = null;
-
-	/**
-	 * integer denominator for calculating grand means
-	 */
-	private Integer[] iCounts = null;
+	private final String[] sHeaders = null;
 
 	/**
 	 * integer counter to count three horizontal bars, when parsing urGENOVA output
 	 */
 	private Integer iOutputPointer = 0;
-
-	/**
-	 * Grand mean of score data
-	 */
-	private Double dGrandMeans = 0.0;
-
-	/**
-	 * number of missing items
-	 */
-	private Integer iMissedItems = 0;
 
 	/**
 	 * 2 dim array of raw score data fields, organized by rows and columns
@@ -137,34 +104,31 @@ public class Filer {
 	/**
 	 * pointer to <code>logger</code>
 	 */
-	private Logger logger;
+	private final Logger logger;
 
 	/**
 	 * pointer to GUI window
 	 */
-	private Stage myStage = null;
+	private final Stage myStage;
 
 	/**
 	 * constructor
 	 *
 	 * @param _nest  <code>Nest</code>
 	 * @param _prefs  <code>Preferences</code>
-	 * @param _logger  pointer to com.papaworx.gs_lv.GS_Application logger
+	 * @param _logger  pointer to application logger
 	 * @param _stage  <code>Stage</code>
 	 */
 	public Filer(Nest _nest, Preferences _prefs, Logger _logger, Stage _stage) {
-		iMaxColCount = 100;
+		/*
+		 * tentative limit for number of data-in columns
+		 */
 		myNest = _nest;
 		prefs = _prefs;
 		myStage = _stage;
 		iFieldWidth = 8;
 		sDataFileName = myNest.getDataFileName();
-		dSums = new Double[iMaxColCount];
-		iCounts = new Integer[iMaxColCount];
-		for (Integer i = 0; i < iMaxColCount; i++) {
-			iCounts[i] = 0;
-			dSums[i] = 0.0;
-		}
+		//dSums = new Double[iMaxColCount];
 		logger = _logger;
 	}
 
@@ -175,9 +139,12 @@ public class Filer {
 	 */
 	public void readFile(File file) {
 		// reads already existing control file
-		String sLine = null;
+		String sLine;
 		try {
-			sFileName = file.getCanonicalPath().toString();
+			/*
+			 * file path
+			 */
+			String sFileName = file.getCanonicalPath();
 			myNest.setFileName(sFileName);
 		} catch (IOException e) {
 			logger.warning(e.getMessage());
@@ -201,58 +168,40 @@ public class Filer {
 		try {
 			String[] words = line.split("\\s+", 100);
 			String key = words[0];
-			char cFacet = '-';
+			char cFacet;
 			Integer length = words.length;
 			String value = join(words, length);
-			String sMark = prefs.get("Facet mark", "%");
-			sMark = sMark.trim().substring(0, 1);
 			switch (key) {
-			case "GSTUDY":
-				myNest.setTitle(value);
-				break;
-			case "COMMENT&":
-			case "COMMENT*":
-			case "COMMENT%":
-				Facet nullFacet = new Facet(myNest);
-				words = value.split("\\s+");
-				nullFacet.setName(words[0]);
-				cFacet = words[1].toCharArray()[1];
-				nullFacet.setDesignation(cFacet);
-				nullFacet.setNested(false);
-				myNest.addFacet(nullFacet);
-				break;
-			case "COMMENT":
-				myNest.addComment(value);
-				break;
-			case "OPTIONS":
-				prefs.put("OPTIONS", value);
-				break;
-			case "EFFECT":
-				myNest.addEffect(value);
-				break;
-			case "FORMAT":
-				myNest.addFormat(value);
-				break;
-			case "PROCESS":
-				myNest.addProcess(value);
-				break;
-			case "REPLICATE":
-				myNest.set_cRep(value.toCharArray()[0]);
-				break;
-			case "ANCHORS":
-				if (myNest.getSimulate())		// if in 'Simulate', value gets to variances
-					myNest.addAnchors(value);
-				else
-					myNest.addComment(value);   // else to comments (in 'Analysis'
-				break;
-			case "VARIANCES":
-				if (myNest.getSimulate())		// if in 'Simulate', value gets to variances
-					myNest.addVariances(value);
-				else
-					myNest.addComment(value);   // else to comments (in 'Analysis'
-				break;
-			default:
-				break;
+				case "GSTUDY" -> myNest.setTitle(value);
+				case "COMMENT&", "COMMENT*", "COMMENT%" -> {
+					Facet nullFacet = new Facet(myNest);
+					words = value.split("\\s+");
+					nullFacet.setName(words[0]);
+					cFacet = words[1].toCharArray()[1];
+					nullFacet.setDesignation(cFacet);
+					nullFacet.setNested(false);
+					myNest.addFacet(nullFacet);
+				}
+				case "COMMENT" -> myNest.addComment(value);
+				case "OPTIONS" -> prefs.put("OPTIONS", value);
+				case "EFFECT" -> myNest.addEffect(value);
+				case "FORMAT" -> myNest.addFormat(value);
+				case "PROCESS" -> myNest.addProcess(value);
+				case "REPLICATE" -> myNest.set_cRep(value.toCharArray()[0]);
+				case "ANCHORS" -> {
+					if (myNest.getSimulate())        // if in 'Simulate', value gets to variances
+						myNest.addAnchors(value);
+					else
+						myNest.addComment(value);   // else to comments (in 'Analysis'
+				}
+				case "VARIANCES" -> {
+					if (myNest.getSimulate())        // if in 'Simulate', value gets to variances
+						myNest.addVariances(value);
+					else
+						myNest.addComment(value);   // else to comments (in 'Analysis'
+				}
+				default -> {
+				}
 			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -268,9 +217,9 @@ public class Filer {
 	 */
 	private String join(String[] words, Integer length) {
 		StringBuilder sb = new StringBuilder();
-		for (Integer i = 1; i < length; i++)
-			sb.append(" " + words[i]);
-		String result = (sb.toString()).toString();
+		for (int i = 1; i < length; i++)
+			sb.append(" ").append(words[i]);
+		String result = (sb.toString());
 		return result.trim();
 	}
 
@@ -285,9 +234,9 @@ public class Filer {
 		int iCount = 0;
 		for (String sTemp : _sColumns) {
 			if (iCount++ >= iHilight)
-				sbLine.append("<td align=\"right\"><strong>" + sTemp + "</strong></td>");
+				sbLine.append("<td align=\"right\"><strong>").append(sTemp).append("</strong></td>");
 			else
-				sbLine.append("<td align=\"right\"><font color = \"#CCCCCC\">" + sTemp + "</td>");
+				sbLine.append("<td align=\"right\"><font color = \"#CCCCCC\">").append(sTemp).append("</td>");
 		}
 		sbLine.append("</tr>\n");
 		return sbLine.toString();
@@ -302,11 +251,89 @@ public class Filer {
 	 *
 	 * @return HTML formatted text of score data via <code>WebView</code>
 	 */
-
-	//TODO create alternative
 	public Group showTableNew() {
-//------------------> missing web table
-		return null;
+		StringBuilder sb = new StringBuilder("<html><body contentEditable=\"true\"><table border = \"1\">\n");
+		int iCounter = 0;
+		sb.append("<col width=\"50\">\n".repeat(Math.max(0, iMaxColumns)));
+		if (sHeaders != null) {
+			sb.append("<tr>");
+			for (String s : sHeaders)
+				if ((s != null) && !s.equals(""))
+					sb.append("<th>" + s + "</th>");
+			sb.append("</tr>");
+		}
+		for (String[] sRow : sRawData) {
+			if (iCounter++ > 50)
+				break;
+			try {
+				sb.append(HTML_join(sRow));
+			} catch (Exception e) {
+				logger.warning(e.getMessage());
+			}
+		}
+		sb.append("</table></body></html>");
+		/**
+		 * repository for HTML data section
+		 */
+		String sHTML = sb.toString(); // content of browser
+		Group tableGroup = new Group(); // overall container
+		VBox mainLayout = new VBox(0.0); // overall layout
+		mainLayout.setAlignment(Pos.TOP_CENTER);
+		HBox titleBox = new HBox(); // container for title
+		titleBox.setPrefWidth(800);
+		titleBox.setStyle(prefs.get("Format_20", null));
+		titleBox.setAlignment(Pos.CENTER);
+		HBox parameterBox = new HBox(); // container for spinner etc
+		parameterBox.setPrefHeight(70.0);
+		parameterBox.setAlignment(Pos.CENTER);
+		HBox browserBox = new HBox(); // container for browser
+		browserBox.setStyle(
+				"-fx-padding: 10; -fx-border-style: solid inside; -fx-border-width: 2; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-color: brown;");
+		browserBox.setAlignment(Pos.TOP_CENTER);
+		Label lbTitle = new Label("Select skip and field format");
+		lbTitle.setStyle(
+				"-fx-font-size: 20px; -fx-font-family: \"ARIAL\"; -fx-padding: 10; -fx-background-color: #801515; -fx-text-fill: #FFFFFF;");
+		lbTitle.setPrefWidth(800.0);
+		lbTitle.setAlignment(Pos.CENTER);
+		titleBox.getChildren().add(lbTitle);
+		mainLayout.getChildren().add(titleBox);
+		Label lbSkip = new Label("Skip: ");
+		lbSkip.setPadding(new Insets(0, 0, 0, 10));
+		Label lbWidth = new Label("     Width: ");
+		Spinner<Integer> intSpinner = new Spinner<>(0, iMaxColumns - 1, 0, 1);
+		intSpinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
+		intSpinner.setPrefWidth(80.0);
+		intSpinner.getValueFactory().setValue(iHilight);
+		intSpinner.getEditor().textProperty().addListener((obs1, oldValue1, newValue1) -> {
+			if (!oldValue1.equals(newValue1)) {
+				iHilight = Integer.parseInt(newValue1);
+				myNest.show(this.showTableNew());
+				myNest.setHighlight(iHilight);
+			}
+		});
+		TextField format = new TextField();
+		format.setPrefWidth(55);
+		format.setText(iFieldWidth.toString());
+		format.textProperty().addListener((obs2, oldValue2, newValue2) -> {
+			if (newValue2 != oldValue2)
+				iFieldWidth = Integer.parseInt(newValue2);
+		});
+		parameterBox.getChildren().addAll(lbSkip, intSpinner, lbWidth, format);
+		mainLayout.getChildren().add(parameterBox);
+		// setup of browser
+
+		WebView browser = new WebView();
+		browser.setMaxWidth(iMaxColumns * 70);
+		browser.setMaxHeight(400.0);
+		/*
+		 * JavaFX  <code>WebEngine</code>
+		 */
+		WebEngine webEngine = browser.getEngine();
+		webEngine.loadContent(sHTML);
+		browserBox.getChildren().add(browser);
+		mainLayout.getChildren().add(browserBox);
+		tableGroup.getChildren().add(mainLayout);
+		return tableGroup;
 	}
 
 	/**
@@ -402,7 +429,10 @@ public class Filer {
 				}
 			}
 		}
-		dGrandMeans = sum / DataCount;
+		/**
+		 * Grand mean of score data
+		 */
+		Double dGrandMeans = sum / DataCount;
 		myNest.setGrandMeans(dGrandMeans);
 
 		String sDataPath = prefs.get("Working Directory", null) + File.separator + sDataFileName;
@@ -528,6 +558,10 @@ public class Filer {
 	}
 
 	public Integer missingItems() {
+		/**
+		 * number of missing items
+		 */
+		Integer iMissedItems = 0;
 		return iMissedItems;
 	}
 

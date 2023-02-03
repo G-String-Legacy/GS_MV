@@ -1,9 +1,9 @@
-package com.papaworx.gs_lv.steps;
+package com.papaworx.gs_mv.steps;
 
-import com.papaworx.gs_lv.model.Facet;
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.model.SampleSizeTree;
-import com.papaworx.gs_lv.utilities.*;
+import com.papaworx.gs_mv.model.Facet;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.model.SampleSizeTree;
+import com.papaworx.gs_mv.utilities.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,7 +48,7 @@ public class SynthGroups {
 	/**
 	 * <code>myController</code> pointer to <code>view.rootLayoutController</code>
 	 */
-	private com.papaworx.gs_lv.GS_Controller myController;
+	private com.papaworx.gs_mv.GS_Controller myController;
 
 	/**
 	 * stores graphical data
@@ -200,7 +200,7 @@ public class SynthGroups {
 	 */
 	private Logger logger = null;
 
-	private com.papaworx.gs_lv.GS_Application myMain;
+	private com.papaworx.gs_mv.GS_Application myMain;
 	/**
 	 * Constructor
 	 *
@@ -211,7 +211,7 @@ public class SynthGroups {
 	 * @param _prefs pointer to Preferences
 	 * @param _flr pointer to Filer
 	 */
-	public SynthGroups(com.papaworx.gs_lv.GS_Application _main, Nest _nest, Logger _logger, com.papaworx.gs_lv.GS_Controller _controller, Preferences _prefs, Filer _flr) {
+	public SynthGroups(com.papaworx.gs_mv.GS_Application _main, Nest _nest, Logger _logger, com.papaworx.gs_mv.GS_Controller _controller, Preferences _prefs, Filer _flr) {
 		myMain = _main;
 		myNest = _nest;
 		myController = _controller;

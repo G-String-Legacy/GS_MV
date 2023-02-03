@@ -1,7 +1,7 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
-import com.papaworx.gs_lv.model.Facet;
-import com.papaworx.gs_lv.model.SampleSizeTree;
+import com.papaworx.gs_mv.model.Facet;
+import com.papaworx.gs_mv.model.SampleSizeTree;
 
 public class Factor {
 	

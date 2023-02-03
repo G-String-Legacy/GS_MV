@@ -1,17 +1,17 @@
-package com.papaworx.gs_lv.model;
+package com.papaworx.gs_mv.model;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
-import com.papaworx.gs_lv.GS_Application;
+import com.papaworx.gs_mv.GS_Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import com.papaworx.gs_lv.utilities.VarianceComponent;
+import com.papaworx.gs_mv.utilities.VarianceComponent;
 
 /**
  * <h1>class Nest</h1>
@@ -181,7 +181,7 @@ public class Nest {
 	/**
 	 * <code>myMain</code> pointer to class <code>Main</code>.
 	 */
-	private com.papaworx.gs_lv.GS_Application myMain;
+	private com.papaworx.gs_mv.GS_Application myMain;
 
 	/**
 	 * <code>dGrandMeans</code> grand means of all scores in data file, as Double.

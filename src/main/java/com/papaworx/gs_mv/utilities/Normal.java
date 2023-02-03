@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 /**
  * Utility attempts to generate set of iDim Double values with a variance of dVariance and a mean of 0.0.

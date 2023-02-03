@@ -1,4 +1,4 @@
-module com.papaworx.gs_lv {
+module com.papaworx.gs_mv {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
@@ -7,27 +7,28 @@ module com.papaworx.gs_lv {
     requires java.logging;
     requires java.prefs;
     requires java.desktop;
+    requires javafx.web;
 
-    uses com.papaworx.gs_lv.GS_Application;
-    uses com.papaworx.gs_lv.GS_Controller;
-    uses com.papaworx.gs_lv.model.Nest;
-    uses com.papaworx.gs_lv.model.SampleSizeTree;
-    uses com.papaworx.gs_lv.model.Facet;
-    uses com.papaworx.gs_lv.steps.SynthGroups;
-    uses com.papaworx.gs_lv.steps.AnaGroups;
-    uses com.papaworx.gs_lv.steps.GSetup;
-    uses com.papaworx.gs_lv.utilities.SampleSizeView;
-    uses com.papaworx.gs_lv.utilities.Filer;
-    uses com.papaworx.gs_lv.utilities.Factor;
-    uses com.papaworx.gs_lv.utilities.VarianceComponent;
-    uses com.papaworx.gs_lv.utilities.TextStack;
-    uses com.papaworx.gs_lv.utilities.ConstructSimulation;
-    uses com.papaworx.gs_lv.utilities.Normal;
-    uses com.papaworx.gs_lv.utilities.Lehmer;
-    uses com.papaworx.gs_lv.utilities.FacetModView;
-    uses com.papaworx.gs_lv.utilities.About;
-    uses com.papaworx.gs_lv.utilities.CombConstrct;
+    uses com.papaworx.gs_mv.GS_Application;
+    uses com.papaworx.gs_mv.GS_Controller;
+    uses com.papaworx.gs_mv.model.Nest;
+    uses com.papaworx.gs_mv.model.SampleSizeTree;
+    uses com.papaworx.gs_mv.model.Facet;
+    uses com.papaworx.gs_mv.steps.SynthGroups;
+    uses com.papaworx.gs_mv.steps.AnaGroups;
+    uses com.papaworx.gs_mv.steps.GSetup;
+    uses com.papaworx.gs_mv.utilities.SampleSizeView;
+    uses com.papaworx.gs_mv.utilities.Filer;
+    uses com.papaworx.gs_mv.utilities.Factor;
+    uses com.papaworx.gs_mv.utilities.VarianceComponent;
+    uses com.papaworx.gs_mv.utilities.TextStack;
+    uses com.papaworx.gs_mv.utilities.ConstructSimulation;
+    uses com.papaworx.gs_mv.utilities.Normal;
+    uses com.papaworx.gs_mv.utilities.Lehmer;
+    uses com.papaworx.gs_mv.utilities.FacetModView;
+    uses com.papaworx.gs_mv.utilities.About;
+    uses com.papaworx.gs_mv.utilities.CombConstrct;
 
-    opens com.papaworx.gs_lv to javafx.fxml;
-    exports com.papaworx.gs_lv;
+    opens com.papaworx.gs_mv to javafx.fxml;
+    exports com.papaworx.gs_mv;
 }

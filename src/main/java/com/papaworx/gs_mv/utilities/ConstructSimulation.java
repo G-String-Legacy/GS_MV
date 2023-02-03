@@ -1,9 +1,9 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import java.util.ArrayList;
 
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.model.SampleSizeTree;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.model.SampleSizeTree;
 
 /**
  * 'constructSimulation' (cS) builds the synthetic data according to

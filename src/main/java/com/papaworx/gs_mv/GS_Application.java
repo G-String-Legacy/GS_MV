@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv;
+package com.papaworx.gs_mv;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,11 +29,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
-import com.papaworx.gs_lv.utilities.Filer;
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.steps.AnaGroups;
-import com.papaworx.gs_lv.steps.SynthGroups;
-import com.papaworx.gs_lv.utilities.TextStack;
+import com.papaworx.gs_mv.utilities.Filer;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.steps.AnaGroups;
+import com.papaworx.gs_mv.steps.SynthGroups;
+import com.papaworx.gs_mv.utilities.TextStack;
 
 public class GS_Application extends Application {
 
@@ -77,7 +77,7 @@ public class GS_Application extends Application {
      * controller - Object that controls the GUI.
      *
      */
-    private com.papaworx.gs_lv.GS_Controller controller;
+    private com.papaworx.gs_mv.GS_Controller controller;
 
     /**
      * Object <code>myNest</code> - encapsulates all experimental model descriptors (excepts
@@ -134,7 +134,7 @@ public class GS_Application extends Application {
         } catch (IOException e1) {
             e1.printStackTrace(); 						// emergency exit
         }
-        logger = Logger.getLogger(com.papaworx.gs_lv.GS_Application.class.getName());
+        logger = Logger.getLogger(com.papaworx.gs_mv.GS_Application.class.getName());
         logger.addHandler(fh);
         myNest = new Nest(logger, this, prefs);
 
@@ -226,7 +226,7 @@ public class GS_Application extends Application {
      */
     public void doSetup() {
 
-        com.papaworx.gs_lv.steps.GSetup setup = new com.papaworx.gs_lv.steps.GSetup(primaryStage, logger, prefs);
+        com.papaworx.gs_mv.steps.GSetup setup = new com.papaworx.gs_mv.steps.GSetup(primaryStage, logger, prefs);
         try {
             setup.ask();
         } catch (IOException e) {

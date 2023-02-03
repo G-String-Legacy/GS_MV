@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.steps;
+package com.papaworx.gs_mv.steps;
 
 import java.io.*;
 import java.net.URL;
@@ -10,8 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-
-import com.papaworx.gs_lv.GS_Application;
 
 /**
  * Provides the screen for program setup

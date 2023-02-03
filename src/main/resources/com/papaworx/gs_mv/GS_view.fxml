@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="bpScreen" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #FBFBED; -fx-border-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.papaworx.gs_lv.GS_Controller">
+<BorderPane fx:id="bpScreen" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #FBFBED; -fx-border-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.papaworx.gs_mv.GS_Controller">
   <top>
     <MenuBar minHeight="35.0" style="-fx-background-color: BLANCHEDALMOND; -fx-border-color: BLACK;"
              BorderPane.alignment="CENTER">

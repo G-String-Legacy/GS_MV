@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.model;
+package com.papaworx.gs_mv.model;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -13,8 +13,8 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import com.papaworx.gs_lv.utilities.Factor;
-import com.papaworx.gs_lv.utilities.SampleSizeView;
+import com.papaworx.gs_mv.utilities.Factor;
+import com.papaworx.gs_mv.utilities.SampleSizeView;
 
 /**
  * <h1>Class SampleSizeTree</h1>

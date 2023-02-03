@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -8,7 +8,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import com.papaworx.gs_lv.model.Facet;
+import com.papaworx.gs_mv.model.Facet;
 
 /**
  * 'FacetModView' is used as a display/control class in

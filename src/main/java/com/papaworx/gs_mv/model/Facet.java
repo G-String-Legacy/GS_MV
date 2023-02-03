@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.model;
+package com.papaworx.gs_mv.model;
 
 /**
  *  the class 'Facet' encapsulates the various parameters for each facet;

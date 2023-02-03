@@ -24,13 +24,13 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-    mainModule = 'com.papaworx.gs_lv'
-    mainClass = 'com.papaworx.gs_lv.GS_Application'
+    mainModule = 'com.papaworx.gs_mv'
+    mainClass = 'com.papaworx.gs_mv.GS_Application'
 }
 
 javafx {
     version = '17.0.2'
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.media']
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
 
 dependencies {
@@ -40,7 +40,8 @@ dependencies {
         exclude(group: 'org.openjfx')
     }
 // https://mvnrepository.com/artifact/org.openjfx/javafx-web
-    implementation (group: 'org.openjfx', name: 'javafx-web', version: '19')
+    implementation group: 'org.openjfx', name: 'javafx-web', version: '20-ea+11'
+
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -65,7 +66,7 @@ jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip") as RegularFile
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     launcher {
-        name = 'app'
+        name = 'GS_MV'
     }
 }
 

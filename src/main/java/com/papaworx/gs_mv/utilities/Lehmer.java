@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 /**
  *  Method to generate deterministic, "non"-repetitive sequence of digits using the Lehmer Random Number generator,

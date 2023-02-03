@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,19 +101,19 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/gsFirst&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/GS_LV/src/main/java/com/papaworx/gs_lv/utilities&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities" />
       <recent name="$PROJECT_DIR$/.gradle" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities" />
       <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps" />
       <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model" />
     </key>
@@ -120,7 +125,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [build]">
+  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
     <configuration name="GS_LV [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -235,10 +240,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_LV [build]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_LV [jlink]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
+        <item itemvalue="Gradle.GS_LV [build]" />
+        <item itemvalue="Gradle.GS_LV [jlink]" />
         <item itemvalue="Gradle.GS_LV [assemble]" />
       </list>
     </recent_temporary>

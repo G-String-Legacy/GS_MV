@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv.steps;
+package com.papaworx.gs_mv.steps;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,13 +47,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import com.papaworx.gs_lv.model.Facet;
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.model.SampleSizeTree;
-import com.papaworx.gs_lv.utilities.FacetModView;
-import com.papaworx.gs_lv.utilities.Filer;
-import com.papaworx.gs_lv.GS_Controller;
-import com.papaworx.gs_lv.GS_Application;
+import com.papaworx.gs_mv.model.Facet;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.model.SampleSizeTree;
+import com.papaworx.gs_mv.utilities.FacetModView;
+import com.papaworx.gs_mv.utilities.Filer;
 
 /**
  * Manages G-Analysis by taking the user step-by-step
@@ -211,9 +209,9 @@ public class AnaGroups {
 	 */
 	private Logger logger;
 
-	private com.papaworx.gs_lv.GS_Application myMain;
+	private com.papaworx.gs_mv.GS_Application myMain;
 
-	private com.papaworx.gs_lv.GS_Controller myController;
+	private com.papaworx.gs_mv.GS_Controller myController;
 
 	/**
 	 * constructor of <code>AnaGroups</code>
@@ -226,7 +224,7 @@ public class AnaGroups {
 	 * @param _prefs  <code>Preferences</code>
 	 * @param _flr  <code>Filer</code>
 	 */
-	public AnaGroups(com.papaworx.gs_lv.GS_Application _main, Nest _nest, Logger _logger, com.papaworx.gs_lv.GS_Controller _controller, Stage _stage, Preferences _prefs, Filer _flr) {
+	public AnaGroups(com.papaworx.gs_mv.GS_Application _main, Nest _nest, Logger _logger, com.papaworx.gs_mv.GS_Controller _controller, Stage _stage, Preferences _prefs, Filer _flr) {
 
 		myMain = _main;
 		myNest = _nest;

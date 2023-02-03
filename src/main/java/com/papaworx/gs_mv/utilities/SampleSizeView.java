@@ -1,8 +1,8 @@
-package com.papaworx.gs_lv.utilities;
+package com.papaworx.gs_mv.utilities;
 
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
-import com.papaworx.gs_lv.model.SampleSizeTree;
+import com.papaworx.gs_mv.model.SampleSizeTree;
 
 /**
  * 'SampleSizeView' (ssv) is a specialized text field for the display and modification

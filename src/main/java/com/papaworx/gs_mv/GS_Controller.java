@@ -1,4 +1,4 @@
-package com.papaworx.gs_lv;
+package com.papaworx.gs_mv;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.InvalidPreferencesFormatException;
@@ -26,10 +24,10 @@ import javafx.stage.FileChooser;
 import javafx.scene.layout.BorderPane;
 import javafx.application.HostServices;
 
-import com.papaworx.gs_lv.model.Nest;
-import com.papaworx.gs_lv.steps.AnaGroups;
-import com.papaworx.gs_lv.steps.SynthGroups;
-import com.papaworx.gs_lv.utilities.Filer;
+import com.papaworx.gs_mv.model.Nest;
+import com.papaworx.gs_mv.steps.AnaGroups;
+import com.papaworx.gs_mv.steps.SynthGroups;
+import com.papaworx.gs_mv.utilities.Filer;
 /**
  * LayoutController for JavaFX GUI
  * manage the communication between <code>Main</code> and the GUI.
@@ -43,7 +41,7 @@ public class GS_Controller {
     /**
      * main com.papaworx.gs_lv.GS_Application of project
      */
-    private com.papaworx.gs_lv.GS_Application myMain;
+    private com.papaworx.gs_mv.GS_Application myMain;
 
     /**
      * com.papaworx.gs_lv.GS_Application logger
@@ -87,7 +85,7 @@ public class GS_Controller {
      * controller - Object that controls the GUI.
      *
      */
-    private com.papaworx.gs_lv.GS_Controller controller;
+    private com.papaworx.gs_mv.GS_Controller controller;
 
     /**
      * <code>group</code> - encapsulates the various components of a javaFX,
@@ -257,7 +255,7 @@ public class GS_Controller {
      * @param _logger pointer to system logger
      * @param _prefs pointer to system preferences
      */
-    void setMainApp(com.papaworx.gs_lv.GS_Application _main, Logger _logger, Preferences _prefs){
+    void setMainApp(com.papaworx.gs_mv.GS_Application _main, Logger _logger, Preferences _prefs){
         myMain = _main;
         logger = _logger;
         prefs = _prefs;
@@ -305,7 +303,7 @@ public class GS_Controller {
      * displaye 'About G_String' info
      */
     private void about() {
-        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_L");
+        com.papaworx.gs_mv.utilities.About myAbout = new com.papaworx.gs_mv.utilities.About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_L");
         myAbout.show();
     }
 
@@ -313,7 +311,7 @@ public class GS_Controller {
      * display 'About Brennan' info
      */
     private void aboutB() {
-        com.papaworx.gs_lv.utilities.About myAbout = new com.papaworx.gs_lv.utilities.About(myMain.getPrimaryStage(), logger, "AboutB.txt", "About urGenova");
+        com.papaworx.gs_mv.utilities.About myAbout = new com.papaworx.gs_mv.utilities.About(myMain.getPrimaryStage(), logger, "AboutB.txt", "About urGenova");
         myAbout.show();
     }
 

@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/Filer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-    </list>
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,28 +120,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
-    <configuration name="GS_LV [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="assemble" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.GS_LV [build]">
     <configuration name="GS_LV [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -159,6 +133,27 @@
         <option name="taskNames">
           <list>
             <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -232,19 +227,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Gradle.GS_LV [clean]" />
       <item itemvalue="Gradle.GS_LV [jlink]" />
-      <item itemvalue="Gradle.GS_LV [assemble]" />
       <item itemvalue="Gradle.GS_LV [build]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
       <item itemvalue="Gradle.GS_LV [run]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_LV [build]" />
+        <item itemvalue="Gradle.GS_LV [clean]" />
         <item itemvalue="Gradle.GS_LV [jlink]" />
-        <item itemvalue="Gradle.GS_LV [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -278,47 +273,47 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Controller.java</url>
           <line>197</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
           <line>413</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
           <line>153</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Controller.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Controller.java</url>
           <line>203</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/utilities/TextStack.java</url>
           <line>78</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
           <line>336</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
           <line>330</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
           <line>513</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities/TextStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/utilities/TextStack.java</url>
           <line>101</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>

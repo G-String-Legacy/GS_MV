@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.25.0'
+    id "de.inetsoftware.setupbuilder" version "7.2.16"
 }
 
 group 'com.papaworx'
@@ -54,10 +55,11 @@ test {
 jar {
     manifest {
         attributes(
-            'Main-Class': 'com.papaworx.gs_lv.GS_Application'
+                'Main-Class': 'com.papaworx.gs_lv.GS_Application'
         )
     }
 }
+
 jlink {
     jpackage {
         installerType = "deb"
@@ -69,6 +71,7 @@ jlink {
         name = 'GS_MV'
     }
 }
+
 
 jlinkZip {
     group = 'distribution'

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,18 +44,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="GS_LV" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="GS_LV" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="GS_LV" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -120,7 +113,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [build]">
+  <component name="RunManager" selected="Gradle.GS_LV [run]">
     <configuration name="GS_LV [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -235,11 +228,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_LV [run]" />
+        <item itemvalue="Gradle.GS_LV [jlink]" />
         <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
-        <item itemvalue="Gradle.GS_LV [jlink]" />
       </list>
     </recent_temporary>
   </component>

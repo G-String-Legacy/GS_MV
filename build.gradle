@@ -1,3 +1,22 @@
+/*
+This is the core control file of GS_M, the latest incarnation of G_String.
+G_String is a java program enabling non-specialist users to perform Generalization Analysis of performance assessments.
+GS_M is Open Source.
+GS_M is the property of the G_String User Group (gs_users.org).
+GS_M is a formal gradle (7.6) project. It runs well on Intellij IDEA.
+It is based on modular design, and java versions can be specified in this document.
+GS_M builds install packages for the three major OS platforms: Linux, Windows, and IOS.
+Consequently GS_M has three versions, one for each of the three platforms.
+They only differ in a few lines, dealing with installer packaging. These sections will be commented.
+However, it is important to keep the software version synchronized between the platform builds.
+The versioning convention is as follows:
+    version: a.b.c (a, b, and c are integers from 0 incrementing)
+    a - major version, incorporating significant functional changes.
+    b - changes in java, and javafx jdks.
+    c - minor bug fixes and cosmetics.
+    Initial alpha version: 0.0.0
+ */
+
 plugins {
     id 'java'
     id 'application'
@@ -6,7 +25,7 @@ plugins {
     id "de.inetsoftware.setupbuilder" version "7.2.16"
 }
 
-group 'com.papaworx'
+group 'org.gs_users'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -25,8 +44,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-    mainModule = 'com.papaworx.gs_mv'
-    mainClass = 'com.papaworx.gs_mv.GS_Application'
+    mainModule = 'org.gs_users.gs_mv'
+    mainClass = 'org.gs_users.gs_mv.GS_Application'
 }
 
 javafx {
@@ -55,7 +74,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.papaworx.gs_lv.GS_Application'
+                'Main-Class': 'org.gs_users.gs_lv.GS_Application'
         )
     }
 }

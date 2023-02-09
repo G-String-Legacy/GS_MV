@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gs_users'
-version '1.0-SNAPSHOT'
+version '2.0.0'
 
 repositories {
     mavenCentral()
@@ -91,7 +91,25 @@ jlink {
     }
 }
 
-
 jlinkZip {
     group = 'distribution'
+}
+
+setupBuilder {
+    vendor          = "Open Source"
+    copyright       = "Copyright © 2023 McMaster University"
+    description     = "Generalization Analysis Program"
+
+   // version         = "0.0.3"
+    appIdentifier   = "org.gs_users.gs_mv"
+    icons           = "Gaussian.png"
+
+    mainClass       = "org.gs_users.gs_mv/GS_Application"
+
+    destinationDir  = "/home/ralph/Desktop/testGS"
+}
+
+deb {
+    maintainerEmail = "ralph@papaworx.com"
+    installationRoot = "~/g_String"
 }

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change afterPath="$PROJECT_DIR$/Gaussian.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/E_rho2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +96,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/GS_LV/src/main/java/com/papaworx/gs_lv/utilities&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/GS_MV/src/main/resources/org/gs_users/gs_mv/steps&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -101,18 +106,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/steps" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/model" />
       <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities" />
-      <recent name="$PROJECT_DIR$/.gradle" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/steps" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/steps" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.GS_LV [run]">
@@ -149,27 +154,6 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="GS_LV [jlink]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jlink" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -221,9 +205,30 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="GS_MV [deb]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="deb" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Gradle.GS_MV [deb]" />
       <item itemvalue="Gradle.GS_LV [clean]" />
-      <item itemvalue="Gradle.GS_LV [jlink]" />
       <item itemvalue="Gradle.GS_LV [build]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
       <item itemvalue="Gradle.GS_LV [run]" />
@@ -231,10 +236,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_LV [jlink]" />
-        <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
+        <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
+        <item itemvalue="Gradle.GS_MV [deb]" />
       </list>
     </recent_temporary>
   </component>
@@ -268,49 +273,89 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Controller.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Controller.java</url>
           <line>197</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
           <line>413</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
           <line>153</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Controller.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Controller.java</url>
           <line>203</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/utilities/TextStack.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities/TextStack.java</url>
           <line>78</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
           <line>336</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
           <line>330</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/GS_Application.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
           <line>513</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/papaworx/gs_mv/utilities/TextStack.java</url>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities/TextStack.java</url>
           <line>101</line>
           <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities/Filer.java</url>
+          <line>519</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>371</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>431</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>474</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>433</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>439</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>1545</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
+          <line>1472</line>
+          <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

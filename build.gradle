@@ -94,7 +94,7 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
-
+/*
 setupBuilder {
     vendor          = "Open Source"
     copyright       = "Copyright © 2023 McMaster University"
@@ -113,3 +113,4 @@ deb {
     maintainerEmail = "ralph@papaworx.com"
     installationRoot = "~/g_String"
 }
+*/

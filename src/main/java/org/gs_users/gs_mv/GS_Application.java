@@ -2,40 +2,33 @@ package org.gs_users.gs_mv;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import java.net.URL;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.Group;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import java.util.List;
-import java.util.Collections;
-import java.util.Arrays;
-import java.io.File;
-import java.io.StringWriter;
-import java.io.PrintWriter;
-import java.util.prefs.Preferences;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-
-import org.gs_users.gs_mv.utilities.Filer;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.gs_users.gs_mv.model.Nest;
 import org.gs_users.gs_mv.steps.AnaGroups;
 import org.gs_users.gs_mv.steps.SynthGroups;
+import org.gs_users.gs_mv.utilities.Filer;
 import org.gs_users.gs_mv.utilities.TextStack;
+
+import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 public class GS_Application extends Application {
 
@@ -43,11 +36,6 @@ public class GS_Application extends Application {
      * The primary stage of javaFX used as main window for the G_String GUI.
      */
     private Stage primaryStage;
-
-    /**
-     * the rootLayout of the mainStage is formated as a <code>BorderPane</code>
-     */
-    private BorderPane rootLayout;
 
     /**
      * <code> scene0</code> acts a container to send the javaFX code <code>group</code>
@@ -141,10 +129,13 @@ public class GS_Application extends Application {
         myNest = new Nest(logger, this, prefs);
 
         FXMLLoader fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
-        rootLayout = (BorderPane) fxmlLoader.load();
+        /*
+          the rootLayout of the mainStage is formatted as a <code>BorderPane</code>
+         */
+        BorderPane rootLayout = fxmlLoader.load();
         primaryStage = stage;
         primaryStage.setTitle("G_String");
-        Image image = new Image(this.getClass().getResourceAsStream("Phi.png"));
+        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("GS_MV.ico")));
         primaryStage.getIcons().add(image);
         scene0 = new Scene(rootLayout, 900, 800);
         stage.setTitle("G_String - GS_L.5.0");
@@ -254,29 +245,23 @@ public class GS_Application extends Application {
             controller.setStep(iStep);
             if (!myNest.getSimulate()) // if in analysis mode
             {
-                /**
-                 * This is the default analysis path
+                /*
+                  This is the default analysis path
                  */
                 group = mySteps.getGroup();
                 if (group == null)
                     switch (iStep) {
-                        case 1:
-                            freshStart();
-                            break;
-                        case 9:
-                            myNest.setStep(7);
-                            break;
-                        case 10:
-                            break;
-                        default:
-                            break;
+                        case 1 -> freshStart();
+                        case 9 -> myNest.setStep(7);
+                        default -> {
+                        }
                     }
                 else {
                     show(group);
                 }
             } else {
-                /**
-                 * Otherwise we got for synthesis
+                /*
+                  Otherwise we got for synthesis
                  */
                 group = mySynthSteps.getGroup();
                 show(group);
@@ -315,14 +300,14 @@ public class GS_Application extends Application {
     public void helpSwitch(String sCommand) {
 
         switch (sCommand) {
-            case "help":										// context specific help
+            case "help" -> {                                        // context specific help
                 Boolean bSimulate = myNest.getSimulate();
                 bReplicate = myNest.getReplicate();
-                String sLocation = null;
+                String sLocation;
                 Integer iStep = myNest.getStep();
                 if (storedScene == null)
                     storedScene = primaryStage.getScene();
-                if (bSimulate) {		// get prose from simulation help files
+                if (bSimulate) {        // get prose from simulation help files
                     if (iStep == 1)
                         sLocation = "HelpRep_1" + ".tf";
                     else
@@ -335,25 +320,25 @@ public class GS_Application extends Application {
                 }
                 primaryStage.setScene(helpScene("Contextual Help", sLocation));
                 primaryStage.show();
-                break;
-            case "intro":										// serves background prose
+            }
+            case "intro" -> {                                        // serves background prose
                 if (storedScene == null)
                     storedScene = primaryStage.getScene();
                 primaryStage.setScene(helpScene("Background", "Background.tf"));
                 primaryStage.show();
-                break;
-            case "return":										// restores pre-help scene
+            }
+            case "return" -> {                                        // restores pre-help scene
                 primaryStage.setScene(storedScene);
                 primaryStage.show();
-                break;
-            case "replicate":
+            }
+            case "replicate" -> {
                 if (storedScene == null)
                     storedScene = primaryStage.getScene();
                 primaryStage.setScene(helpScene("replicate", "Replicate.tf"));
                 primaryStage.show();
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 
@@ -503,9 +488,7 @@ public class GS_Application extends Application {
         topBox.getChildren().add(lbTitle);
         helpLayout.setTop(topBox);
         Button closeButton = new Button("Close");
-        closeButton.setOnAction((event) -> {
-            helpSwitch("return");
-        });
+        closeButton.setOnAction((event) -> helpSwitch("return"));
         HBox bottomBox = new HBox();
         bottomBox.setStyle(prefs.get("StandardFormat", null));
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
@@ -514,19 +497,17 @@ public class GS_Application extends Application {
         bottomBox.getChildren().add(closeButton);
         helpLayout.setBottom(bottomBox);
         //
-        String sLocation = _sSource;
-        TextStack ts = new TextStack(sLocation, prefs, logger);
+        TextStack ts = new TextStack(_sSource, prefs, logger);
         VBox vb = ts.vStack();
         vb.setStyle("-fx-background-color:beige;");
         helpLayout.setCenter(vb);
-        Scene _helpScene = new Scene(helpLayout);
-        return _helpScene;
+        return new Scene(helpLayout);
     }
 
     /**
      * In response to GUI, allows user to set program preferences that will be stored.
-     *
-     * @return, Scene for preferences control;
+     * <p>
+     * {@code @return,} Scene for preferences control;
      */
     public Scene prefChanger() {
 
@@ -540,9 +521,7 @@ public class GS_Application extends Application {
         topBox.getChildren().add(lbTitle);
         pcLayout.setTop(topBox);
         Button closeButton = new Button("Close");
-        closeButton.setOnAction((event) -> {
-            switchChangePreferences(false);
-        });
+        closeButton.setOnAction((event) -> switchChangePreferences(false));
         HBox bottomBox = new HBox();
         bottomBox.setAlignment(Pos.BOTTOM_RIGHT);
         bottomBox.setPadding(new Insets(5.0, 5.0, 5.0, 5.0));
@@ -551,12 +530,13 @@ public class GS_Application extends Application {
         VBox vbPrefs = new VBox();
         // now compile preferences
         List<String> sarKeys = null;
-        String sValue = null;
+        String sValue;
         try {
             sarKeys = Arrays.asList(prefs.keys());
         } catch (Exception e) {
             logger.warning(e.getMessage());
         }
+        assert sarKeys != null;
         Collections.sort(sarKeys);
 
         for (String sKey : sarKeys) {
@@ -565,8 +545,7 @@ public class GS_Application extends Application {
         }
         vbPrefs.setPadding(new Insets(40, 50, 20, 50));
         pcLayout.setCenter(vbPrefs);
-        Scene pcScene = new Scene(pcLayout);
-        return pcScene;
+        return new Scene(pcLayout);
     }
     /**
      * helper in Preferences, displays individual preference.
@@ -588,7 +567,7 @@ public class GS_Application extends Application {
                     prefs.put(_sKey, newText.toUpperCase());
             }
             else
-            if ((newText != null) && (!newText.trim().equals("")) && (newText != oldText))
+            if ((newText != null) && (!newText.trim().equals("")) && (!newText.equals(oldText)))
                 prefs.put(_sKey, newText);
         });
         hbReturn.getChildren().addAll(lbKey, tfValue);

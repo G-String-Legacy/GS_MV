@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/GS_LV.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/Gaussian 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/GS_MV.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,21 +98,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/ralph/Documents/GS_L/Gradle/GS_MV/src/main/java/org/gs_users/gs_mv",
+    "last_opened_file_path": "/home/ralph/Documents/GS_L/Gradle/GS_MV/src/main/resources/org/gs_users/gs_mv",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.customizations"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
       <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/steps" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities" />
-      <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
@@ -281,12 +281,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>418</line>
+          <line>403</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>158</line>
+          <line>149</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -301,17 +301,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>341</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>335</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>518</line>
+          <line>500</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -361,8 +351,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="100" />
+          <line>137</line>
+          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

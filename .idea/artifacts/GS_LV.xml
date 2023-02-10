@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" build-on-make="true" name="GS_LV">
+    <output-path>$PROJECT_DIR$/out/artifacts/GS_LV</output-path>
+    <properties id="jpackage-properties">
+      <options>
+        <option name="version" value="0.0.1" />
+        <option name="copyright" value="McMaster University, Hamilton, Ontario, Canada" />
+        <option name="description" value="Modular Package of G_String software for Generalization Analysis" />
+        <option name="vendor" value="Open Source" />
+        <option name="verbose" value="true" />
+        <option name="mainClass" value="org.gs_users.gs_mv.GS_Application" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="GS_LV.jar">
+        <element id="module-output" name="GS_LV" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/../Gaussian.ico" />
+    </root>
+  </artifact>
+</component>

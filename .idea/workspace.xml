@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change afterPath="$PROJECT_DIR$/Gaussian.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/E_rho2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/GS_LV.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/Gaussian 2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,25 +93,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ralph/Documents/GS_L/Gradle/GS_MV/src/main/resources/org/gs_users/gs_mv/steps&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/ralph/Documents/GS_L/Gradle/GS_MV/src/main/java/org/gs_users/gs_mv",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/steps" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/utilities" />
       <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/model" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/papaworx/gs_lv/utilities" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
@@ -236,8 +238,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [build]" />
+        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
         <item itemvalue="Gradle.GS_MV [deb]" />
       </list>
@@ -279,12 +281,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>413</line>
+          <line>418</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>153</line>
+          <line>158</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -299,17 +301,17 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>336</line>
+          <line>341</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>330</line>
+          <line>335</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>513</line>
+          <line>518</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -356,6 +358,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
           <line>1472</line>
           <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
+          <line>146</line>
+          <option name="timeStamp" value="100" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

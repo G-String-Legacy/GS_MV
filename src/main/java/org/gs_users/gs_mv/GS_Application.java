@@ -6,10 +6,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,7 +24,6 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,11 +133,10 @@ public class GS_Application extends Application {
          */
         BorderPane rootLayout = fxmlLoader.load();
         primaryStage = stage;
-        primaryStage.setTitle("G_String");
-        Image image = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("GS_MV.ico")));
-        primaryStage.getIcons().add(image);
         scene0 = new Scene(rootLayout, 900, 800);
+        Image _img = new Image(this.getClass().getResourceAsStream("GS_MV"));
         stage.setTitle("G_String - GS_M.2.0.1");
+        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("Gaussian.png")));
         myNest.setScene(scene0);
         flr = new Filer(myNest, prefs, logger, primaryStage);
         /*

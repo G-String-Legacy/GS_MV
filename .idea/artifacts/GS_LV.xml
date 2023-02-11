@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/GS_LV</output-path>
     <properties id="jpackage-properties">
       <options>
-        <option name="version" value="0.0.1" />
+        <option name="version" value="2.0.1" />
         <option name="copyright" value="McMaster University, Hamilton, Ontario, Canada" />
         <option name="description" value="Modular Package of G_String software for Generalization Analysis" />
         <option name="vendor" value="Open Source" />
@@ -12,10 +12,8 @@
       </options>
     </properties>
     <root id="root">
-      <element id="archive" name="GS_LV.jar">
-        <element id="module-output" name="GS_LV" />
-      </element>
-      <element id="file-copy" path="$PROJECT_DIR$/../Gaussian.ico" />
+      <element id="file-copy" path="$PROJECT_DIR$/build/libs/GS_LV-2.0.1.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/../Gaussian.png" />
     </root>
   </artifact>
 </component>

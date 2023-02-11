@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/utilities/About.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -232,8 +237,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
+        <item itemvalue="Gradle.GS_LV [build]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
         <item itemvalue="Gradle.GS_MV [deb]" />
       </list>

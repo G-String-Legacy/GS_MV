@@ -82,7 +82,22 @@ jar {
 
 jlink {
     jpackage {
+        /*
+            Before performing 'jpackage', the installer format for and on
+            the desired platform must be specified by un-commenting
+            the corresponding 'installerType'
+         */
+        // Linux Ubuntu/Debian:
         installerType = "deb"
+
+        // Linux RedHat:
+        //installerType = "rpm"
+
+        //Windows:
+        //installerType = "msi"
+
+        //MacOS:
+        //installerType = "dmg"
     }
 
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip") as RegularFile
@@ -95,23 +110,3 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
-/*
-setupBuilder {
-    vendor          = "Open Source"
-    copyright       = "Copyright © 2023 McMaster University"
-    description     = "Generalization Analysis Program"
-
-   // version         = "2.0.1"
-    appIdentifier   = "org.gs_users.gs_mv"
-    icons           = "Gaussian.png"
-
-    mainClass       = "org.gs_users.gs_mv/GS_Application"
-
-    destinationDir  = "/home/ralph/Desktop/testGS"
-}
-
-deb {
-    maintainerEmail = "ralph@papaworx.com"
-    installationRoot = "~/g_String"
-}
-*/

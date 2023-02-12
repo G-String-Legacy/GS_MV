@@ -134,9 +134,9 @@ public class GS_Application extends Application {
         BorderPane rootLayout = fxmlLoader.load();
         primaryStage = stage;
         scene0 = new Scene(rootLayout, 900, 800);
-        Image _img = new Image(this.getClass().getResourceAsStream("GS_MV"));
+        Image _img = new Image(this.getClass().getResourceAsStream("GS_MV.png"));
         stage.setTitle("G_String - GS_M.2.0.1");
-        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("Gaussian.png")));
+        stage.getIcons().add(_img);
         myNest.setScene(scene0);
         flr = new Filer(myNest, prefs, logger, primaryStage);
         /*
@@ -153,7 +153,6 @@ public class GS_Application extends Application {
         } catch (Throwable e) {
             logger.warning(e.getMessage());
         }
-        //show(null);
     }
 
     public static void main(String[] args) {

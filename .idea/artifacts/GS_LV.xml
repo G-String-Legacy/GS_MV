@@ -1,9 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jpackage" build-on-make="true" name="GS_LV">
     <output-path>$PROJECT_DIR$/out/artifacts/GS_LV</output-path>
-    <root id="root">
-      <element id="file-copy" path="$PROJECT_DIR$/build/libs/GS_LV-2.0.1.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/GS_MV.png" />
-    </root>
+    <root id="root" />
   </artifact>
 </component>

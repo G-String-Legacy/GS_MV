@@ -13,3 +13,5 @@ So what does the **M** in **GS_M** stand for?
 In other words **GS_M** will make G_String more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital eco-system.
 
 Early releases for Linux, Windows and macOS can now be [downloaded](https://github.com/Papa-26/GS_LV/releases).
+
+*** The GS_M software is protected by a GPLv3 license. ***

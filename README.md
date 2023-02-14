@@ -12,8 +12,4 @@ So what does the **M** in **GS_M** stand for?
 
 In other words **GS_M** will make G_String more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital eco-system.
 
-As of February 2 2023 the first alpha versions of **GS_M** seem to be working.  
-As of February 4 2023 the Linux version is working.  
-As of February 4 2023 the Windows version is working.
-
-We hope to release the program for general use by late spring.
+Early releases for Linux, Windows and macOS can now be [downloaded](https://github.com/Papa-26/GS_LV/releases).

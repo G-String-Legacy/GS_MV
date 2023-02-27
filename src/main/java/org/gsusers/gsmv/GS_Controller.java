@@ -142,11 +142,8 @@ public class GS_Controller {
     private MenuItem mnuSimulate;
     @FXML
     private MenuItem mnuResimulate;
-    @FXML
-    private MenuItem mnuSetup;
-    @FXML
-    private MenuItem mnuPreferences;
-    @FXML
+    @FXML MenuItem mnuChangePreferences;
+   @FXML
     private MenuItem mnuCHelp;
     @FXML
     private MenuItem mnuIntro;
@@ -160,13 +157,7 @@ public class GS_Controller {
     private MenuItem mnuStart;
     @FXML
     private MenuItem mnuSaveAll;
-    @FXML
-    private MenuItem mnuChangePrefs;
-    @FXML
-    private MenuItem mnuLoadPrefs;
-    @FXML
-    private MenuItem mnuSavePrefs;
-    @FXML
+   @FXML
     private MenuItem mnuReplicate;
     @FXML
     private MenuItem mnuReReplicate;
@@ -212,17 +203,8 @@ public class GS_Controller {
         mnuResimulate.setOnAction((event) -> {
             myMain.Resimulate();
         });
-        mnuSetup.setOnAction((event) -> {
-            myMain.doSetup();
-        });
-        mnuChangePrefs.setOnAction((event) -> {
+        mnuChangePreferences.setOnAction((event) -> {
             myMain.switchChangePreferences(true);
-        });
-        mnuLoadPrefs.setOnAction((event) -> {
-            loadPreferences();
-        });
-        mnuSavePrefs.setOnAction((event) -> {
-            savePreferences();
         });
         mnuAbout.setOnAction((event) -> {
             about();
@@ -295,13 +277,6 @@ public class GS_Controller {
     }
 
     /**
-     * disable setup changes during stepping operation
-     */
-    public void lockSetup() {
-        mnuSetup.setDisable(true);
-    }
-
-    /**
      * displaye 'About G_String' info
      */
     private void about() {
@@ -326,74 +301,7 @@ public class GS_Controller {
         mnuSaveAll.setDisable(bDisable);
     }
 
-    /**
-     * load preferences from file
-     */
-    private void loadPreferences() {
-        InputStream sIn = null;
-        File selectedFile = null;
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Select Preferences File to load");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-        fc.getExtensionFilters().add(extFilter);
-        fc.setSelectedExtensionFilter(extFilter);
-        fc.setInitialDirectory(new File(homeDir));
-        try {
-            selectedFile = fc.showOpenDialog(myMain.getPrimaryStage());
-        } catch (Exception e) {
-            logger.warning(e.getMessage());
-        }
-        if (selectedFile != null) {
-            try {
-                sIn = new FileInputStream(selectedFile);
-            } catch (FileNotFoundException e) {
-                logger.warning(e.getMessage());
-            }
-            try {
-                Preferences.importPreferences(sIn);
-            } catch (IOException e) {
-                logger.warning(e.getMessage());
-            } catch (InvalidPreferencesFormatException e) {
-                logger.warning(e.getMessage());
-            }
-        }
-
-    }
-
-    /**
-     * save preferences to file
-     */
-    private void savePreferences() {
-        OutputStream sOut = null;
-        File selectedFile = null;
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Select Preferences File to save");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-        fc.getExtensionFilters().add(extFilter);
-        fc.setSelectedExtensionFilter(extFilter);
-        fc.setInitialDirectory(new File(homeDir));
-        try {
-            selectedFile = fc.showSaveDialog(myMain.getPrimaryStage());
-        } catch (Exception e) {
-            logger.warning(e.getMessage());
-        }
-        if (selectedFile != null) {
-            try {
-                sOut = new FileOutputStream(selectedFile);
-            } catch (FileNotFoundException e) {
-                logger.warning(e.getMessage());
-            }
-            try {
-                prefs.exportNode(sOut);
-            } catch (IOException e) {
-                logger.warning(e.getMessage());
-            } catch (BackingStoreException e) {
-                logger.warning(e.getMessage());
-            }
-        }
-    }
-
-    /**
+     /**
      * enables/disables stepping
      *
      * @param bEnable  boolean switch true/false

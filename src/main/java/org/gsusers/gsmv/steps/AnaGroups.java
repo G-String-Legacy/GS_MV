@@ -10,13 +10,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -43,7 +46,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.gsusers.gsmv.GS_Application;
 import org.gsusers.gsmv.GS_Controller;
@@ -77,7 +79,7 @@ public class AnaGroups {
 	/**
 	 * stores graphical data
 	 */
-	private String customBorder;
+	private final String customBorder;
 
 	/**
 	 * graphical element for displaying crossed facet designations
@@ -97,12 +99,12 @@ public class AnaGroups {
 	/**
 	 * A list that allows listeners to track changes of nested Data when they occur.
 	 */
-	private ObservableList<String> nestedData;
+	private final ObservableList<String> nestedData;
 
 	/**
 	 * A list that allows listeners to track changes of crossed Data when they occur.
 	 */
-	private ObservableList<String> crossedData;
+	private final ObservableList<String> crossedData;
 
 	/**
 	 * lower limit for list (drag and drop)
@@ -132,7 +134,7 @@ public class AnaGroups {
 	/**
 	 * <code>Nest</code> parameter repository defining whole assessment
 	 */
-	private Nest myNest;
+	private final Nest myNest;
 
 	/**
 	 * <code>SampleSizeTree</code> sample size repository for facets and nesting
@@ -157,37 +159,27 @@ public class AnaGroups {
 	/**
 	 * pointer to <code>Filer</code>
 	 */
-	private Filer flr = null;
+	private final Filer flr;
 
 	/**
 	 * descriptor of text display style
 	 */
-	private String sStyle_20 = null;
+	private final String sStyle_20;
 
 	/**
 	 * descriptor of text display style
 	 */
-	private String sStyle_18 = null;
+	private final String sStyle_18;
 
 	/**
 	 * pointer to <code>Preferences</code>
 	 */
-	private Preferences prefs = null;
-
-	/**
-	 * pointer to input file
-	 */
-	private File selectedFile = null;
+	private final Preferences prefs;
 
 	/**
 	 * name of control file ('script')
 	 */
-	private String sControlFileName = null;
-
-	/**
-	 * javafx element for text display
-	 */
-	private TextArea taOutput = null;
+	private final String sControlFileName;
 
 	/**
 	 * Flag indicating Replication mode
@@ -207,11 +199,11 @@ public class AnaGroups {
 	/**
 	 * pointer to Logger
 	 */
-	private Logger logger;
+	private final Logger logger;
 
-	private GS_Application myMain;
+	private final GS_Application myMain;
 
-	private GS_Controller myController;
+	private final GS_Controller myController;
 
 	/**
 	 * constructor of <code>AnaGroups</code>
@@ -220,11 +212,10 @@ public class AnaGroups {
 	 * @param _nest  <code>Nest</code>
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _controller  <code>rootLayoutController</code>
-	 * @param _stage  <code>primaryStage</code> of GUI
 	 * @param _prefs  <code>Preferences</code>
 	 * @param _flr  <code>Filer</code>
 	 */
-	public AnaGroups(GS_Application _main, Nest _nest, Logger _logger, GS_Controller _controller, Stage _stage, Preferences _prefs, Filer _flr) {
+	public AnaGroups(GS_Application _main, Nest _nest, Logger _logger, GS_Controller _controller, Preferences _prefs, Filer _flr) {
 
 		myMain = _main;
 		myNest = _nest;
@@ -258,21 +249,17 @@ public class AnaGroups {
 	 * information, that can be optionally fed to a log file
 	 * for diagnostic use.
 	 * At each step 'getGroup' returns a JavaFX Group object, constructed
-	 * as result of the the cumulative information entered. The 'Group'
+	 * as result of the cumulative information entered. The 'Group'
 	 * goes to 'Main', where it is packaged into a JavaFX 'Scene',
 	 * which is then handed to the 'rootLayoutController'.
 	 * Some steps can generate their 'Group' directly, others
 	 * need the assistance of further methods contained in this package
 	 *
 	 * @return <code>Group</code> essentially the 'Scene' to be sent to the GUI
-	 * @throws Throwable IOException
 	 */
-	public Group getGroup() throws Throwable {
+	public Group getGroup() {
 		Integer iStep = myNest.getStep();
-		if (iStep == 0)
-			myController.callForAction(true);
-		else
-			myController.callForAction(false);
+		myController.callForAction(iStep == 0);
 		myController.setStep(iStep);
 	 	switch (iStep) {
 		// step 0  initialize AnaGroups
@@ -416,7 +403,7 @@ public class AnaGroups {
 		Group group = new Group();
 		VBox vb = new VBox(100);
 		vb.setAlignment(Pos.TOP_CENTER);
-		String projectTitle = myNest.getTitle();;
+		String projectTitle = myNest.getTitle();
 
 		/*
 		 * In both Analysis and Synthesis users have the choice to
@@ -429,17 +416,6 @@ public class AnaGroups {
 		 * new control file.
 		 */
 
-		/*if (myNest.getDoOver()) {
-			selectedFile = flr.getFile(true, "Select Analysis Control File");
-			if (selectedFile != null) {
-				String sFileName = selectedFile.getName();
-				prefs.put("Control", sFileName);
-				flr.readFile(selectedFile);
-				projectTitle = myNest.getTitle();
-			} else {
-				return null;
-			}
-		}*/
 		// proceeds normally with manual edit
 		TextField tf = new TextField(projectTitle);
 		tf.setPrefWidth(800.0);
@@ -448,7 +424,7 @@ public class AnaGroups {
 		tf.setPromptText("Project Title");
 		tf.setFont(Font.font("ARIAL", 20));
 
-		/**
+		/*
 		 * The following construct appears over and over in the code,
 		 * but we will only explain it here once:
 		 * A text field 'tf' has been created. It gets a so called 'Listener' added,
@@ -457,7 +433,7 @@ public class AnaGroups {
 		 */
 
 		tf.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (newValue != oldValue) {
+			if (!Objects.equals(newValue, oldValue)) {
 				myNest.setTitle(newValue);
 			}
 		});
@@ -478,7 +454,7 @@ public class AnaGroups {
 	/**
 	 * Prompts for comments to describe the project. These comments
 	 * form the leading lines of the 'COMMENT' section in the control file.
-	 * Thes lines appear in the control file with the header 'COMMENT '.
+	 * These lines appear in the control file with the header 'COMMENT '.
 	 * G_String then adds the facet names and their 1 char designations
 	 * in the original facet order. These lines appear in the control file
 	 * with the header 'COMMENT*'.
@@ -505,7 +481,7 @@ public class AnaGroups {
 				ta.appendText(s + "\n");
 		}
 		ta.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (newValue != oldValue)
+			if (!Objects.equals(newValue, oldValue))
 				myNest.setComments(newValue);
 		});
 		vb.getChildren().add(lb);
@@ -558,13 +534,13 @@ public class AnaGroups {
 		lb.setPrefWidth(800);
 		vb.getChildren().add(lb);
 		vb.getChildren().add(headerSubForm("Facets"));
-		for (Integer i = 1; i < iFCount; i++)
+		for (int i = 1; i < iFCount; i++)
 			vb.getChildren().add(facetGroup("Facet Name", i));
 		content.getChildren().add(vb);
 		return content;
 	}
 
-	/**
+	/*
 	 * generates bound GUI sub form to specify each specific facet.
 	 * iFacetID provides an index for the specific facet.
 	 * It is used in both 'mainSubjectGroup' (x 1), and 'subjectsGroup' (x1 to many).
@@ -587,14 +563,14 @@ public class AnaGroups {
 	 * @return <code>Group</code> essentially the sub -'Scene' for Facet details entry to be sent to the GUI
 	 */
 	private Group facetGroup(String sCue, Integer iFacetID) {
-		Facet tempFacet = null;
+		Facet tempFacet;
 		Boolean isNested = false;
 		Group facetGroup = new Group();
 		HBox layout = new HBox(20);
 		layout.setStyle("-fx-padding: 10;-fx-border-color: silver;-fx-border-width: 1;");
 		String sFacet = "";
 		char[] cFacet = new char[1];
-		Boolean bRep = false;
+		boolean bRep = false;
 		if (myNest.getDoOver()) {
 			tempFacet = myNest.getFacet(iFacetID);
 			sFacet = tempFacet.getName();
@@ -619,7 +595,7 @@ public class AnaGroups {
 		facetName.setPrefWidth(260);
 		facetName.setStyle(customBorder);
 		facetName.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (newValue != oldValue) {
+			if (!Objects.equals(newValue, oldValue)) {
 				myNest.setFacetName(iFacetID, newValue.trim());
 			}
 		});
@@ -633,8 +609,8 @@ public class AnaGroups {
 				facetChar.setText(oldValue);
 				return;
 			}
-			if (sTemp != oldValue) {
-				cFacet[0] = (char)newValue.trim().toCharArray()[0];
+			if (!sTemp.equals(oldValue)) {
+				cFacet[0] = newValue.trim().toCharArray()[0];
 				myNest.setFacetDesignation(iFacetID, cFacet[0]);
 			}
 		});
@@ -658,11 +634,7 @@ public class AnaGroups {
 			if (newToggle != oldToggle) {
 				myNest.setFacetNested(iFacetID, newToggle);
 				butReplication.setSelected(false);
-				if (newToggle.equals(true) && bReplicate) {
-					butReplication.setVisible(true);
-				} else {
-					butReplication.setVisible(false);
-				}
+				butReplication.setVisible(newToggle.equals(true) && bReplicate);
 			}
 		});
 		if (isNested && bReplicate) {
@@ -724,7 +696,7 @@ public class AnaGroups {
 		facetCount.setStyle(customBorder);
 		facetCount.setPrefWidth(75);
 		facetCount.valueProperty().addListener((observable, oldValue, newValue) -> {
-			if (newValue != oldValue) {
+			if (!Objects.equals(newValue, oldValue)) {
 				myNest.setFacetCount(newValue + 1);
 			}
 		});
@@ -758,7 +730,7 @@ public class AnaGroups {
 		Label lbCrossed = new Label("crossed");
 		Label lbNested = new Label("nested");
 		Label lbReplicate = new Label("replicate");
-		lbReplicate.setVisible(bReplicate==true);
+		lbReplicate.setVisible(bReplicate);
 		hb.getChildren().add(lbSubject);
 		hb.getChildren().add(lbLabel);
 		vb.getChildren().add(lbNesting);
@@ -784,7 +756,7 @@ public class AnaGroups {
 	 * which lists the facet characters in hierarchical order, in contrast to 'sDictionary',
 	 * which lists the facets in the original order, as they have been entered.
 	 * The distinction is important for GS. The original order helps calling up facet
-	 * properties, while the hierachical order is used for the algorithmic sequences!
+	 * properties, while the hierarchical order is used for the algorithmic sequences!
 	 *
 	 * @return <code>Group</code> essentially the 'Scene' for Facets order entry to be sent to the GUI
 	 */
@@ -873,85 +845,67 @@ public class AnaGroups {
 					}
 				});
 
-				cell.setOnDragOver(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						/* data is dragged over the target */
+				cell.setOnDragOver(event -> {
+					/* data is dragged over the target */
+					/*
+					 * accept it only if it is not dragged from the same
+					 * node and if it has a string data
+					 */
+					if (event.getGestureSource() != cell && event.getDragboard().hasString()) {
 						/*
-						 * accept it only if it is not dragged from the same
-						 * node and if it has a string data
+						 * allow for both copying and moving, whatever user
+						 * chooses
 						 */
-						if (event.getGestureSource() != cell && event.getDragboard().hasString()) {
-							/*
-							 * allow for both copying and moving, whatever user
-							 * chooses
-							 */
-							event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-						}
-						event.consume();
+						event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 					}
+					event.consume();
 				});
 
-				cell.setOnDragDone(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						/* the drag and drop gesture ended */
-						/* if the data was successfully moved, clear it */
-						if (event.getTransferMode() == TransferMode.MOVE) {
-							if (iTo < 0)
-								iTo = lvFacets.getItems().size();
-							Dragboard db = event.getDragboard();
-							if (db.hasString()) {
-								String s = orderedData.get(iFrom);
-								orderedData.remove(s);
-								if (iTo >= orderedData.size())
-									orderedData.add(s);
-								else
-									orderedData.add(iTo, s);
-								cell.updateListView(lvFacets);
-								lvFacets.setItems(null);
-								lvFacets.setItems(orderedData);
-								Integer L = orderedData.size();
-								StringBuilder sb = new StringBuilder();
-								for (Integer i = 0; i < L; i++)
-									sb.append(orderedData.get(i).charAt(0));
-								sHDictionary = sb.toString();
-								myNest.setHDictionary(sHDictionary);
-								lv.refresh();
-							}
-						}
-						event.consume();
-					}
-				});
-
-				cell.setOnDragEntered(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						cell.setStyle("-fx-background-color: BLANCHEDALMOND;");
-						event.consume();
-					}
-				});
-
-				cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						String sText = cell.getText();
-						if (sText == cAsterisk + "*") {
-							cell.setText(sText);
-							cell.setVisible(true);
-							event.consume();
-							return;
-						} else {
-							cAsterisk = cell.getText().toCharArray()[0];
-							myNest.setAsterisk(cAsterisk);
-							cell.setText(cAsterisk + "*");
-							myNest.setAsterisk(cAsterisk);
+				cell.setOnDragDone(event -> {
+					/* the drag and drop gesture ended */
+					/* if the data was successfully moved, clear it */
+					if (event.getTransferMode() == TransferMode.MOVE) {
+						if (iTo < 0)
+							iTo = lvFacets.getItems().size();
+						Dragboard db = event.getDragboard();
+						if (db.hasString()) {
+							String s = orderedData.get(iFrom);
+							orderedData.remove(s);
+							if (iTo >= orderedData.size())
+								orderedData.add(s);
+							else
+								orderedData.add(iTo, s);
+							cell.updateListView(lvFacets);
+							lvFacets.setItems(null);
+							lvFacets.setItems(orderedData);
+							StringBuilder sb = new StringBuilder();
+							for (String orderedDatum : orderedData) sb.append(orderedDatum.charAt(0));
+							sHDictionary = sb.toString();
+							myNest.setHDictionary(sHDictionary);
 							lv.refresh();
-							cell.setVisible(true);
-							event.consume();
 						}
 					}
+					event.consume();
+				});
 
+				cell.setOnDragEntered(event -> {
+					cell.setStyle("-fx-background-color: BLANCHEDALMOND;");
+					event.consume();
+				});
+
+				cell.setOnMouseClicked(event -> {
+					String sText = cell.getText();
+					if (Objects.equals(sText, cAsterisk + "*")) {
+						cell.setText(sText);
+					} else {
+						cAsterisk = cell.getText().toCharArray()[0];
+						myNest.setAsterisk(cAsterisk);
+						cell.setText(cAsterisk + "*");
+						myNest.setAsterisk(cAsterisk);
+						lv.refresh();
+					}
+					cell.setVisible(true);
+					event.consume();
 				});
 
 				return cell;
@@ -981,7 +935,6 @@ public class AnaGroups {
 		crossedData.clear();
 		crossedData.addAll(filteredFacetList(false));
 		saveNested(crossedData);
-		ArrayList<String> tempNested = new ArrayList<String>();
 		Group group = new Group();
 		VBox vb = new VBox(20);
 		Label title = new Label("Arrange Nesting");
@@ -994,114 +947,89 @@ public class AnaGroups {
 		hb.setAlignment(Pos.CENTER);
 		lvCrossed = new ListView<>();
 		lvCrossed.setStyle(dataFormat);
-		lvCrossed.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		lvCrossed.setCellFactory(new Callback<>() {
 			@Override
 			public ListCell<String> call(ListView<String> lv) {
-				final ListCell<String> cell = new ListCell<String>() {
+				final ListCell<String> cell = new ListCell<>() {
 
 					@Override
 					protected void updateItem(String t, boolean bln) {
 						super.updateItem(t, bln);
-						if (t == null)
-							setText(null);
-						else
-							setText(t);
+						setText(t);
 					}
 				};
 
-				cell.setOnDragEntered(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						if (event.getGestureSource() != cell && event.getDragboard().hasString())
-							cell.setStyle("-fx-background-color: BLANCHEDALMOND;");
-						event.consume();
-					}
+				cell.setOnDragEntered(event -> {
+					if (event.getGestureSource() != cell && event.getDragboard().hasString())
+						cell.setStyle("-fx-background-color: BLANCHEDALMOND;");
+					event.consume();
 				});
 
-				cell.setOnDragExited(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						/* mouse moved away, remove the graphical cues */
-						cell.setStyle(null);
-						event.consume();
-					}
+				cell.setOnDragExited(event -> {
+					/* mouse moved away, remove the graphical cues */
+					cell.setStyle(null);
+					event.consume();
 				});
 
-				cell.setOnDragOver(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						if (event.getGestureSource() != lvCrossed && event.getDragboard().hasString()) {
-							/*
-							 * allow for both copying and moving, whatever user
-							 * chooses
-							 */
-							event.acceptTransferModes(TransferMode.MOVE);
-						}
-						event.consume();
-					}
-				});
-
-				cell.setOnDragDropped(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						/* data dropped */
+				cell.setOnDragOver(event -> {
+					if (event.getGestureSource() != lvCrossed && event.getDragboard().hasString()) {
 						/*
-						 * if there is a string data on dragboard, read it and
-						 * use it
+						 * allow for both copying and moving, whatever user
+						 * chooses
 						 */
-						Dragboard db = event.getDragboard();
-						boolean success = false;
-						if (db.hasString()) {
-							String sCarried = db.getString();
-							iTo = cell.getIndex();
-							if (bReplicate) {
-								char cN = sDictionary.toCharArray()[iTo];
-								if (cN == cReplicate) {
-									myNest.setProblem(1);
-									return;
-								}
-							}
-							if (iTo >= iPointer)
-								iPointer = iTo + 1;
-							success = true;
-							String sNest = sCarried + ":" + lvCrossed.getItems().get(iTo).toString();
-							crossedData.add(iPointer++, sNest);
-							lvNested.getItems().remove(sCarried);
-							lvNested.refresh();
-							String[] ss = crossedData.toArray(new String[crossedData.size()]);
-							StringBuilder sb = new StringBuilder();
-							for (String s : ss) {
-								sb.append(s + "; ");
+						event.acceptTransferModes(TransferMode.MOVE);
+					}
+					event.consume();
+				});
+
+				cell.setOnDragDropped(event -> {
+					/* data dropped */
+					/*
+					 * if there is a string data on dragboard, read it and
+					 * use it
+					 */
+					Dragboard db = event.getDragboard();
+					boolean success = false;
+					if (db.hasString()) {
+						String sCarried = db.getString();
+						iTo = cell.getIndex();
+						if (bReplicate) {
+							char cN = sDictionary.toCharArray()[iTo];
+							if (cN == cReplicate) {
+								myNest.setProblem(1);
+								return;
 							}
 						}
-						/*
-						 * let the source know whether the string was
-						 * successfully transferred and used
-						 */
-						event.setDropCompleted(success);
-						for (int i = 0; i < crossedData.size(); i++)
-							tempNested.add(crossedData.get(i));
-						saveNested(crossedData);
-						event.consume();
+						if (iTo >= iPointer)
+							iPointer = iTo + 1;
+						success = true;
+						String sNest = sCarried + ":" + lvCrossed.getItems().get(iTo);
+						crossedData.add(iPointer++, sNest);
+						lvNested.getItems().remove(sCarried);
+						lvNested.refresh();
 					}
+					/*
+					 * let the source know whether the string was
+					 * successfully transferred and used
+					 */
+					event.setDropCompleted(success);
+					saveNested(crossedData);
+					event.consume();
 				});
 
-				cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						String sNest = cell.getItem();
-						Integer iColon = sNest.indexOf(':');
-						if (iColon > 0) // nested item (colon detected
-						{
-							String sNested = sNest.substring(0, iColon);
-							nestedData.add(sNested);
-							lvNested.refresh();
-							crossedData.remove(sNest);
-							lvCrossed.refresh();
-							iPointer--;
-						}
-						event.consume();
+				cell.setOnMouseClicked(event -> {
+					String sNest = cell.getItem();
+					int iColon = sNest.indexOf(':');
+					if (iColon > 0) // nested item (colon detected
+					{
+						String sNested = sNest.substring(0, iColon);
+						nestedData.add(sNested);
+						lvNested.refresh();
+						crossedData.remove(sNest);
+						lvCrossed.refresh();
+						iPointer--;
 					}
+					event.consume();
 				});
 
 				return cell;
@@ -1111,48 +1039,35 @@ public class AnaGroups {
 		lvCrossed.setItems(crossedData);
 		lvNested = new ListView<>();
 		lvNested.setStyle(dataFormat);
-		lvNested.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		lvNested.setCellFactory(new Callback<>() {
 			@Override
 			public ListCell<String> call(ListView<String> lv) {
-				final ListCell<String> cell = new ListCell<String>() {
+				final ListCell<String> cell = new ListCell<>() {
 					@Override
 					protected void updateItem(String t, boolean bln) {
 						super.updateItem(t, bln);
-						if (t == null)
-							setText(null);
-						else
-							setText(t);
+						setText(t);
 					}
 
 				};
 				// drag from left to right
-				cell.setOnDragDetected(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						/* drag was detected, start a drag-and-drop gesture */
-						/* allow any transfer mode */
-						Dragboard db = lvNested.startDragAndDrop(TransferMode.MOVE);
-						/* Put a string on a dragboard */
-						ClipboardContent content = new ClipboardContent();
-						content.putString(cell.getText());
-						iFrom = lvNested.getSelectionModel().getSelectedIndex();
-						db.setContent(content);
-						event.consume();
-					}
+				cell.setOnDragDetected(event -> {
+					/* drag was detected, start a drag-and-drop gesture */
+					/* allow any transfer mode */
+					Dragboard db = lvNested.startDragAndDrop(TransferMode.MOVE);
+					/* Put a string on a dragboard */
+					ClipboardContent content = new ClipboardContent();
+					content.putString(cell.getText());
+					iFrom = lvNested.getSelectionModel().getSelectedIndex();
+					db.setContent(content);
+					event.consume();
 				});
 
-				cell.setOnDragEntered(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						/* the drag-and-drop gesture entered the target */
-						/*
-						 * show to the user that it is an actual gesture target
-						 */
-						if (event.getGestureSource() != lvCrossed && event.getDragboard().hasString()) {
-						}
-						event.consume();
-					}
-				});
+				/* the drag-and-drop gesture entered the target */
+				/*
+				 * show to the user that it is an actual gesture target
+				 */
+				cell.setOnDragEntered(Event::consume);
 
 				return cell;
 			}
@@ -1163,7 +1078,7 @@ public class AnaGroups {
 		lb.setStyle(sStyle_18);
 		lb.setPrefWidth(800.0);
 		lb.setAlignment(Pos.CENTER);
-		Label arrow = new Label(" \u21D4 ");
+		Label arrow = new Label(" ⇔ ");
 		arrow.setFont(new Font("Arial", 30));
 		vb.getChildren().add(lb);
 		VBox vbN = new VBox(5);
@@ -1195,15 +1110,13 @@ public class AnaGroups {
 	 * @param _crossed observable list of crossed Effect descriptions
 	 */
 	private void saveNested(ObservableList<String> _crossed) {
-		String[] sNests = null;
+		String[] sNests;
 		ArrayList<String> sarNests = new ArrayList<>();
-		Integer iLength = _crossed.size();
-		for (Integer i = 0; i < iLength; i++) {
-			String sNest = _crossed.get(i);
+		for (String sNest : _crossed) {
 			if ((sNest.length() == 1) || (sNest.indexOf(':') >= 0))
 				sarNests.add(sNest);
 		}
-		sNests = sarNests.toArray(new String[sarNests.size()]);
+		sNests = sarNests.toArray(new String[0]);
 		myNest.setNests(sNests);
 	}
 
@@ -1220,14 +1133,14 @@ public class AnaGroups {
 	 * @return filteredFacetList  ObservableList
 	 */
 	private ObservableList<String> filteredFacetList(Boolean isNested) {
-		ArrayList<String> result = new ArrayList<String>();
-		Integer iMax = 0;
-		String sTemp = null;
+		ArrayList<String> result = new ArrayList<>();
+		int iMax;
+		String sTemp;
 		if (myNest.getNests() != null)
 			if (!isNested)
 				return myNest.getNests();
 			else
-				return FXCollections.observableArrayList(new ArrayList<String>());
+				return FXCollections.observableArrayList(new ArrayList<>());
 		else {
 			sHDictionary = myNest.getHDictionary();
 			char[] cOrder = sHDictionary.toCharArray();
@@ -1236,7 +1149,7 @@ public class AnaGroups {
 					result.add(Character.toString(c));
 					iMax = result.size();
 					if (!isNested) {
-						for (Integer i = 0; i < iMax; i++)
+						for (int i = 0; i < iMax; i++)
 							if ((sTemp = result.get(i)).indexOf(c) < 0)
 								result.add(sTemp + c);
 					}
@@ -1253,7 +1166,10 @@ public class AnaGroups {
 	 * @return <code>Group</code> essentially the 'Scene' for data file selection entry to be sent to the GUI
 	 */
 	private Group selectDataFile() {
-		selectedFile = flr.getFile(true, "Select Analysis Data File");
+		/*
+		 * pointer to input file
+		 */
+		File selectedFile = flr.getFile(true, "Select Analysis Data File");
 		prefs.put("Home Directory", selectedFile.getParent());
 		prefs.put("Data Raw", "Data.txt");
 		flr.readDataFileNew(selectedFile);
@@ -1289,36 +1205,26 @@ public class AnaGroups {
 	 * @return <code>Group</code> essentially the 'Scene' for returning urGENOVA results to be sent to the GUI
 	 */
 	public Group runBrennan() {
-		String tLine = null;
+		String tLine;
 
 		String slash = File.separator;
 		String sControl = prefs.get("Working Directory", null) + slash + sControlFileName;
 		File brennanControl = new File(sControl);
-		if (brennanControl != null) {
 			flr.writeAnalysisControlFile(brennanControl,true);
 			flr.saveParametersDialog("Analysis", "Save Analysis Control File?");
-		}
 		myNest.setLevels();
-		brennanControl.setReadable(true, false);
-		brennanControl.setWritable(true, false);
 
 		// now run urGenova
 		Group group = new Group();
 		String homeDirectory = prefs.get("Working Directory", null);
 		ProcessBuilder builder = new ProcessBuilder();
 		switch (prefs.get("OS", null)) {
-		case "Linux":
-			builder.command("sh", "-c", "./urGenova ~control.txt");
-			break;
-		case "Mac":
-			builder.command("sh", "-c", "./urGenova ~control.txt");
-			break;
-		case "Windows":
-			// here DoUrGenova has to be built in
-			builder.command("cmd.exe", "/c", "urGenova.exe", "~control.txt");
-			break;
-		default:
-			break;
+			case "Linux", "Mac" -> builder.command("sh", "-c", "./urGenova ~control.txt");
+			case "Windows" ->
+				// here DoUrGenova has to be built in
+					builder.command("cmd.exe", "/c", "urGenova.exe", "~control.txt");
+			default -> {
+			}
 		}
 		builder.directory(new File(homeDirectory));
 		Process process = null;
@@ -1329,6 +1235,7 @@ public class AnaGroups {
 		}
 		String line;
 		sbResult = new StringBuilder();
+		assert process != null;
 		BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		try {
 			while ((line = input.readLine()) != null) {
@@ -1339,7 +1246,7 @@ public class AnaGroups {
 		}
 		line = sbResult.toString();
 		Label lbGenova = new Label("urGenova said: " + line);
-		if (line.indexOf("Successful") < 0)
+		if (!line.contains("Successful"))
 			lbGenova.setTextFill(Color.RED);
 		try {
 			process.waitFor();
@@ -1361,25 +1268,26 @@ public class AnaGroups {
 		 * 'sbResult'.
 		 */
 
+		assert is != null;
 		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
 
 
 		try {
 			while ((tLine = buf.readLine()) != null) {
-				sbResult.append(tLine + "\n");
+				sbResult.append(tLine).append("\n");
 			}
 			tLine = "\n";
-			sbResult.append(tLine + "\n");
+			sbResult.append(tLine).append("\n");
 			Integer iMissed = flr.missingItems();
-			String sMissed = null;
+			String sMissed;
 			if (iMissed == 0)
 				sMissed = "There were no missing items.\n";
 			else if (iMissed == 1)
 				sMissed = "One item was missing.\n";
 			else
-				sMissed = "There were " + iMissed.toString() + " missing items.\n";
+				sMissed = "There were " + iMissed + " missing items.\n";
 			sbResult.append(sMissed);
-			sbResult.append(tLine + "\n");
+			sbResult.append(tLine).append("\n");
 			tLine = "The calculated grand mean = " + String.format("%.5f", myNest.getGreatMeans()) + "\n";
 			sbResult.append(tLine);
 			tLine = "This value has been subtracted from the actual scores for the calculations.\n";
@@ -1417,12 +1325,14 @@ public class AnaGroups {
 		int iProblem = myNest.getProblem();
 		String[] sExplanations = new String[10];
 		sExplanations[1] = "You can not nest a facet within a replicating facet!";
-		sExplanations[2] = "Only one facet can be replicating," +
-				"\n - it has to be nested under the facet of differentiation," +
-				"\n - it has to also be the 'starred' facet, or immediately follow it.";
-		sExplanations[3] = "The facet, you set the asterisk on, " +
-				"\nthe index column number for that facet," +
-				"\nand the organisation of the data file have to correspond!";
+		sExplanations[2] = """
+				Only one facet can be replicating,
+				 - it has to be nested under the facet of differentiation,
+				 - it has to also be the 'starred' facet, or immediately follow it.""";
+		sExplanations[3] = """
+				The facet, you set the asterisk on,\s
+				the index column number for that facet,
+				and the organisation of the data file have to correspond!""";
 		int[] iResumeSteps = new int[10];
 		iResumeSteps[1] = 3;
 		iResumeSteps[2] = 5;
@@ -1448,7 +1358,8 @@ public class AnaGroups {
 	 * reads existing script
 	 */
 	private void readOld() {
-		String sInitial = prefs.get("Home Directory", File.separator);
+		prefs.get("Home Directory", File.separator);
+		String sInitial;
 
 		if (myNest.getDoOver()) {
 			File selectedFile = flr.getFile(true, "Select Synthesis Control File");
@@ -1471,10 +1382,10 @@ public class AnaGroups {
 	 */
 	public Group Analysis() {
 		final ImageView imvErho = new ImageView();
-		final Image imErho = new Image(myMain.getClass().getResourceAsStream("E_rho2.png"), 60, 60, true, true);
+		final Image imErho = new Image(Objects.requireNonNull(myMain.getClass().getResourceAsStream("E_rho2.png")), 60, 60, true, true);
 		imvErho.setImage(imErho);
 		final ImageView imvPhi = new ImageView();
-		final Image imPhi = new Image(myMain.getClass().getResourceAsStream("Phi.png"), 50, 50, true, true);
+		final Image imPhi = new Image(Objects.requireNonNull(myMain.getClass().getResourceAsStream("Phi.png")), 50, 50, true, true);
 		imvPhi.setImage(imPhi);
 		// First calculate the results for this cycle and add it to the result
 		// file
@@ -1484,7 +1395,10 @@ public class AnaGroups {
 			myLogger(11, logger, ioe);
 		}
 		Group group = new Group();
-		taOutput = new TextArea();
+		/*
+		 * javafx element for text display
+		 */
+		TextArea taOutput = new TextArea();
 		VBox vbOuter = new VBox();
 		vbOuter.setPrefWidth(800);
 		vbOuter.setMinHeight(300);
@@ -1593,8 +1507,8 @@ public class AnaGroups {
 		//String sWorkingDirectory = prefs.get("Working Directory", null);
 		String sWorkingDirectory = "~/Brennan";
 		String sOS_Full = System.getProperty("os.name");
-		String sUrGenova = null;
-		if (sOS_Full.indexOf("Windows") >=0)
+		String sUrGenova;
+		if (sOS_Full.contains("Windows"))
 			sUrGenova = "urgenova.exe";
 		else
 			sUrGenova = "urGenova";
@@ -1611,12 +1525,12 @@ public class AnaGroups {
 	 * @throws IOException  problem in file i/o
 	 */
 	public void saveAll() throws IOException {
-		OutputStream outputStream = null;
-		OutputStreamWriter outputStreamWriter = null;
+		OutputStream outputStream;
+		OutputStreamWriter outputStreamWriter;
 		File outFile = flr.getFile(false, "Save Analysis Results");
 		if (outFile != null) {
 			outputStream = new FileOutputStream(outFile);
-			outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+			outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
 			outputStreamWriter.write(sbResult.toString());
 			outputStreamWriter.write(flr.testSignature());
 			outputStreamWriter.flush();
@@ -1642,7 +1556,7 @@ public class AnaGroups {
 	 */
 	private Boolean doReplications() {
 		String[][] sRawData = flr.getRawData();
-		Boolean bCondition = (cAsterisk == cReplicate);
+		boolean bCondition = (cAsterisk == cReplicate);
 		char cNestor = myNest.getFacet(cReplicate).getNestor();
 		if (bCondition && (myNest.getFacet(cNestor).getFacetType() != 'd'))
 			myNest.setProblem(4);
@@ -1684,7 +1598,7 @@ public class AnaGroups {
 			 e.printStackTrace();
 		}
 		
-		Integer iR = sDictionary.indexOf(cReplicate);
+		int iR = sDictionary.indexOf(cReplicate);
 		myTree.addSampleSize(iR, iarReps);
 		myNest.setDawdle(iSample++ < myNest.getNestCount() - 1);
 		return true;
@@ -1702,7 +1616,7 @@ public class AnaGroups {
 			_e.printStackTrace();
 		else {
 			String sMessage = "\n Step: " + _iStep + "\n " + _e.getLocalizedMessage();
-			logger.warning(sMessage);
+			_logger.warning(sMessage);
 		}
 	}
 }

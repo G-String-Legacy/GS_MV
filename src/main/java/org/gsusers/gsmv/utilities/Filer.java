@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
@@ -38,7 +39,7 @@ import org.gsusers.gsmv.model.SampleSizeTree;
  * sModus: a control argument with the following values: 'Control': reads
  * and processes existing control file for 'doOver'. 'Data': reads, strips
  * and stores stripped data file (with previously established format
- * parameters. 'Scan': reads, scans and displays data to establish format
+ * parameters). 'Scan': reads, scans and displays data to establish format
  * parameters and sample sizes (auto-index)
  *
  * @see <a href="https://github.com/G-String-Legacy/G_String/blob/main/workbench/GS_L/src/utilities/Popup.java">utilities.Filer</a>
@@ -67,7 +68,7 @@ public class Filer {
 	private Integer iHilight = 0;
 
 	/**
-	 * maximal number of collums in score data display
+	 * maximal number of columns in score data display
 	 */
 	private Integer iMaxColumns = 0;
 
@@ -259,7 +260,7 @@ public class Filer {
 			sb.append("<tr>");
 			for (String s : sHeaders)
 				if ((s != null) && !s.equals(""))
-					sb.append("<th>" + s + "</th>");
+					sb.append("<th>").append(s).append("</th>");
 			sb.append("</tr>");
 		}
 		for (String[] sRow : sRawData) {
@@ -272,7 +273,7 @@ public class Filer {
 			}
 		}
 		sb.append("</table></body></html>");
-		/**
+		/*
 		 * repository for HTML data section
 		 */
 		String sHTML = sb.toString(); // content of browser
@@ -315,7 +316,7 @@ public class Filer {
 		format.setPrefWidth(55);
 		format.setText(iFieldWidth.toString());
 		format.textProperty().addListener((obs2, oldValue2, newValue2) -> {
-			if (newValue2 != oldValue2)
+			if (!Objects.equals(newValue2, oldValue2))
 				iFieldWidth = Integer.parseInt(newValue2);
 		});
 		parameterBox.getChildren().addAll(lbSkip, intSpinner, lbWidth, format);
@@ -348,12 +349,12 @@ public class Filer {
 	 * @param _inFile score data file
 	 */
 	public void readDataFileNew(File _inFile) {
-		Integer iLineCount = 0;
+		int iLineCount = 0;
 		//int iFalseLineCount = 0;
-		Integer iNumberFields;
+		int iNumberFields;
 		int iLineIndex = 0;
-		String[] sChoppedLine = null;
-		String sLine = null;
+		String[] sChoppedLine;
+		String sLine;
 		// check if file exists
 		if (_inFile == null) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -365,7 +366,7 @@ public class Filer {
 		try (Scanner scanner = new Scanner(_inFile)) {
 			while (scanner.hasNextLine()) {
 				sLine = scanner.nextLine();
-				if (sLine != null && sLine.replaceAll("\\s+", "") != "" && !sLine.matches("^[a-zA-Z]*$"))
+				if (sLine != null && !sLine.replaceAll("\\s+", "").equals("") && !sLine.matches("^[a-zA-Z]*$"))
 					iLineCount++;
 			}
 		} catch (IOException e) {
@@ -377,11 +378,11 @@ public class Filer {
 		try (Scanner scanner = new Scanner(_inFile)) {
 			while (scanner.hasNextLine()) {
 				sLine = scanner.nextLine();
-				if (sLine != null && sLine.replaceAll("\\s+", "") != "" && !sLine.matches("^[a-zA-Z]*$")) {
+				if (sLine != null && !sLine.replaceAll("\\s+", "").equals("") && !sLine.matches("^[a-zA-Z]*$")) {
 					if (sLine.indexOf(',') >= 0) {
 						// split on comma
 						sChoppedLine = sLine.split(",");
-					} else if (sLine.indexOf("\t") >= 0) {
+					} else if (sLine.contains("\t")) {
 						// split on tab
 						sChoppedLine = sLine.split("\t");
 					} else {
@@ -406,12 +407,12 @@ public class Filer {
 	 * Brennan directory (home of urGenova) for running urGenova on.
 	 */
 	public void writeDataFileNew() {
-		StringBuilder sb = null;
+		StringBuilder sb;
 		double sum = 0.0;
-		Double dItem = 0.0;
-		Double dValue = 0.0;
+		double dItem;
+		Double dValue;
 		int DataCount = 0;
-		int iHeadCount = 0;
+		int iHeadCount;
 		
 		myNest.setHighlight(iHilight);
 		for (String[] sRow1 : sRawData) {
@@ -429,15 +430,14 @@ public class Filer {
 				}
 			}
 		}
-		/**
+		/*
 		 * Grand mean of score data
 		 */
-		Double dGrandMeans = sum / DataCount;
+		double dGrandMeans = sum / DataCount;
 		myNest.setGrandMeans(dGrandMeans);
 
 		String sDataPath = prefs.get("Working Directory", null) + File.separator + sDataFileName;
 		File fData = new File(sDataPath);
-		fData.setReadable(true, false);
 		PrintStream ps = null;
 		try {
 			ps = new PrintStream(fData);
@@ -447,19 +447,21 @@ public class Filer {
 	    new DecimalFormat("####.##");
 	    DecimalFormat df = (DecimalFormat) NumberFormat.getInstance(Locale.US);
 		for (String[] dRow : sRawData) {
-			sb = new StringBuilder("");
+			sb = new StringBuilder();
 			iHeadCount = iHilight;
 			for (String s : dRow) {
 				if (iHeadCount-- > 0)
-					sb.append(padLeft(s.toString(), iFieldWidth));
+					sb.append(padLeft(s, iFieldWidth));
 				else if (!s.equals("x")) {
 					dValue = Double.parseDouble(s) - dGrandMeans;
 					sb.append(padLeft(df.format(dValue), iFieldWidth));
 				} else
 					sb.append(padLeft(df.format(0.0), iFieldWidth));
 			}
-			ps.println(sb.toString());
+			assert ps != null;
+			ps.println(sb);
 		}
+		assert ps != null;
 		ps.close();
 		testSignature();
 	}
@@ -472,7 +474,7 @@ public class Filer {
 	 * @return String  Signature ~
 	 */
 	public String testSignature() {
-		Double dItem = 0.0;
+		double dItem;
 
 		Lehmer Signer = new Lehmer(dMin, dMax);
 		for (String[] sRow1 : sRawData) {
@@ -505,7 +507,7 @@ public class Filer {
 		 * Reads in the results of urGenova and stores them in n
 		 * 'VarianceComponent array (in Nest)
 		 */
-		String sLine = null;
+		String sLine;
 		String sUrOutput = prefs.get("Working Directory", null) + "/~control.txt.lis";
 		File file = new File(sUrOutput);
 		iOutputPointer = 0;
@@ -527,24 +529,24 @@ public class Filer {
 	 */
 	private void processResultlLine(String _line) {
 		switch (iOutputPointer) {
-		case 0:
-			if (_line.indexOf("--------------------------------") >= 0)
-				iOutputPointer = 1;
-			break;
-		case 1:
-			if (_line.indexOf("--------------------------------") >= 0)
-				iOutputPointer = 2;
-			break;
-		case 2:
-			if (_line.indexOf("--------------------------------") >= 0) {
-				iOutputPointer = 3;
-				break;
+			case 0 -> {
+				if (_line.contains("--------------------------------"))
+					iOutputPointer = 1;
 			}
-			// Now we can read the variance components
-			myNest.setVariance(_line);
-			break;
-		default:
-			break;
+			case 1 -> {
+				if (_line.contains("--------------------------------"))
+					iOutputPointer = 2;
+			}
+			case 2 -> {
+				if (_line.contains("--------------------------------")) {
+					iOutputPointer = 3;
+					break;
+				}
+				// Now we can read the variance components
+				myNest.setVariance(_line);
+			}
+			default -> {
+			}
 		}
 	}
 
@@ -558,11 +560,10 @@ public class Filer {
 	}
 
 	public Integer missingItems() {
-		/**
+		/*
 		 * number of missing items
 		 */
-		Integer iMissedItems = 0;
-		return iMissedItems;
+		return 0;
 	}
 
 	/**
@@ -575,8 +576,8 @@ public class Filer {
 	public File getFile(Boolean bRead, String sTitle) {
 		String sInitial = prefs.get("Home Directory", System.getProperty("user.home"));
 		File fInitial = new File(sInitial);
-		File f = null;
-		String sHome = null;
+		File f;
+		String sHome;
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(fInitial);
 		fc.setTitle(sTitle);
@@ -601,9 +602,9 @@ public class Filer {
 	public void saveParametersDialog(String sType, String sQuestion) {
 		// sType either 'Analysis' or 'Synthesis'
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		Double dX = myStage.getX() + 200.0;
-		Double dY = myStage.getY() + 75.0;
-		File fOutputFile = null;
+		double dX = myStage.getX() + 200.0;
+		double dY = myStage.getY() + 75.0;
+		File fOutputFile;
 		alert.setX(dX);
 		alert.setY(dY);
 		alert.initOwner(myStage);
@@ -611,23 +612,20 @@ public class Filer {
 		alert.setHeaderText(null);
 		alert.setContentText(sQuestion);
 		DialogPane dialogPane = alert.getDialogPane();
-		/*dialogPane.getStylesheets().add(
-				   getClass().getResource("myDialogs.css").toExternalForm());
-		dialogPane.getStyleClass().add("myDialog");*/
 		ButtonBar buttonBar = (ButtonBar) dialogPane.lookup(".button-bar");
 		buttonBar.getButtons().forEach(b -> b.setStyle(
 				"-fx-font-size: 16;-fx-background-color: #551200;-fx-text-fill: #ffffff;-fx-font-weight: bold;"));
 		if (alert.showAndWait().get() != ButtonType.OK)
 			return;
 		switch (sType) {
-		case "Analysis":
-			fOutputFile = getFile(false, "Save Analysis Control File to:");
-			writeAnalysisControlFile(fOutputFile, false);
-			break;
-		case "Synthesis":
-			fOutputFile = getFile(false, "Save Synthesis Control File to:");
-			writeSynthesisControlFile(fOutputFile);
-			break;
+			case "Analysis" -> {
+				fOutputFile = getFile(false, "Save Analysis Control File to:");
+				writeAnalysisControlFile(fOutputFile, false);
+			}
+			case "Synthesis" -> {
+				fOutputFile = getFile(false, "Save Synthesis Control File to:");
+				writeSynthesisControlFile(fOutputFile);
+			}
 		}
 	}
 
@@ -638,10 +636,7 @@ public class Filer {
 	 * @param bBrennan  flag to limit output to urGENOVA conformity
 	 */
 	public void writeAnalysisControlFile(File file, Boolean bBrennan) {
-		// writes new control file
-		// StringBuilder sbComments = new StringBuilder(); // informal comments
-		// StringBuilder sbFComments = new StringBuilder(); // facet comments
-		String sTemp = null;
+		String sTemp;
 		SampleSizeTree myTree = myNest.getTree();
 		PrintStream writer = null;
 		try {
@@ -650,6 +645,7 @@ public class Filer {
 			logger.warning(e.getMessage());
 		}
 		// Title
+		assert writer != null;
 		writer.println("GSTUDY    " + myNest.getTitle());
 		// Comments
 		for (String s : myNest.getComments()) {
@@ -661,7 +657,7 @@ public class Filer {
 		}
 
 		char[] cFacet = myNest.getDictionary().toCharArray();
-		Integer iLevels = cFacet.length;
+		int iLevels = cFacet.length;
 		// Options
 		writer.println("OPTIONS   " + prefs.get("OPTIONS", "NREC 5 \"*.lis\" TIME NOBANNER"));
 		
@@ -670,7 +666,7 @@ public class Filer {
 			writer.println("REPLICATE   " + myNest.get_cRep());
 		
 		// Effects
-		for (Integer i = 0; i < iLevels; i++) {
+		for (int i = 0; i < iLevels; i++) {
 			sTemp = myTree.getEffect(i);
 			writer.println(sTemp);
 		}
@@ -687,8 +683,8 @@ public class Filer {
 	 */
 	public void writeSynthesisControlFile(File fOutput) {
 		// writes new control file
-		String sTemp = null;
-		Integer iNumberVarianceCoeffients = 0;
+		String sTemp;
+		Integer iNumberVarianceCoeffients;
 		SampleSizeTree myTree = myNest.getTree();
 		PrintStream writer = null;
 		try {
@@ -698,6 +694,7 @@ public class Filer {
 		}
 
 		// Title
+		assert writer != null;
 		writer.println("GSTUDY    " + myNest.getTitle());
 
 		// Comments
@@ -716,27 +713,27 @@ public class Filer {
 		if (cReplicate != '-')
 			writer.println("REPLICATE" + sp + cReplicate);
 		// Effects
-		Integer iLevels = cFacet.length;
-		for (Integer i = 0; i < iLevels; i++) {
+		int iLevels = cFacet.length;
+		for (int i = 0; i < iLevels; i++) {
 			sTemp = myTree.getEffect(i);
 			writer.println(sTemp);
 		}
 		// Anchors
 		StringBuilder sb = new StringBuilder("ANCHORS");
-		sb.append(sp + myNest.getFloor());
-		sb.append(sp + myNest.getMean());
-		sb.append(sp + myNest.getCeiling());
+		sb.append(sp).append(myNest.getFloor());
+		sb.append(sp).append(myNest.getMean());
+		sb.append(sp).append(myNest.getCeiling());
 		if ( cReplicate != '-')
-			sb.append(sp + myNest.get_iMinRep() + sp + myNest.getRepRange());
+			sb.append(sp).append(myNest.get_iMinRep()).append(sp).append(myNest.getRepRange());
 		
-		writer.println(sb.toString());
+		writer.println(sb);
 
 		// Variances
 		iNumberVarianceCoeffients = myNest.getVcDim();
 		sb = new StringBuilder("VARIANCES");
 		for (int i = 0; i < iNumberVarianceCoeffients; i++)
-			sb.append("    " + myNest.getVarianceCoefficient(i));
-		writer.println(sb.toString());
+			sb.append("    ").append(myNest.getVarianceCoefficient(i));
+		writer.println(sb);
 		writer.close();
 	}
 	

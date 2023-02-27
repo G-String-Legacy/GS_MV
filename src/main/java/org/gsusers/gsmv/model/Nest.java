@@ -2,6 +2,7 @@ package org.gsusers.gsmv.model;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
@@ -25,18 +26,11 @@ import org.gsusers.gsmv.utilities.VarianceComponent;
 public class Nest {
 
 	/**
-	 * This is a VERY IMPORTANT SWITCH! It can only be changed by directly
-	 * entering the value here. It controls, whether exceptions get logged, or
-	 * cause a stack trace printout in debugging mode.
-	 */
-	private Boolean bStackTrace = true;
-	
-	/**
 	 * <code>cAsterisk</code> the designating char designation of the facet 
 	 * carrying the asterisk, i.e. the facet associated with a carriage
 	 * return in the data input file.
 	 */
-	private char cAsterisk = '-';
+	private char cAsterisk;
 	
 	/**
 	 * Designation char for replicating facet. '-' for none
@@ -84,7 +78,7 @@ public class Nest {
 	private ArrayList<String> salComments = new ArrayList<>();
 
 	/**
-	 * <code>sOptions</code> official optionm specifications for urGenova (see urGenova manual).
+	 * <code>sOptions</code> official option specifications for urGenova (see urGenova manual).
 	 */
 	private String sOptions;
 
@@ -102,10 +96,10 @@ public class Nest {
 	 * <code>sbHFO</code> stringbuilder to build hierarchic facet directory <code>sHDictionary</code>,
 	 * the order they were arranged subsequently.
 	 */
-	private StringBuilder sbHFO;
+	private final StringBuilder sbHFO;
 
 	/**
-	 * arra list of facets; temporary if facets come in before number established
+	 * array list of facets; temporary if facets come in before number established
 	 */
 	private ArrayList<Facet> falFacets = null;
 	
@@ -117,7 +111,7 @@ public class Nest {
 	/**
 	 * <code>myTree</code> pointer to <code>SampleSizeTree</code>.
 	 */
-	private SampleSizeTree myTree = null;
+	private final SampleSizeTree myTree;
 	
 	/**
 	 * <code>sarNestedNames</code> array of final, nested arrays in hierarchical order.
@@ -169,19 +163,9 @@ public class Nest {
 	private Boolean bVarianceDawdle = false;
 
 	/**
-	 * <code>sControlFileName</code> default name for urGENOVA control file.
-	 */
-	private String sControlFileName = "~control.txt";
-
-	/**
-	 * <code>sDataFileName</code> default name for urGENOVA data file.
-	 */
-	private String sDataFileName = "~data.txt";
-
-	/**
 	 * <code>myMain</code> pointer to class <code>Main</code>.
 	 */
-	private GS_Application myMain;
+	private final GS_Application myMain;
 
 	/**
 	 * <code>dGrandMeans</code> grand means of all scores in data file, as Double.
@@ -191,7 +175,7 @@ public class Nest {
 	/**
 	 * <code>salVarianceComponents</code> array list of variance components.
 	 */
-	private ArrayList<VarianceComponent> salVarianceComponents = null;
+	private final ArrayList<VarianceComponent> salVarianceComponents;
 
 	/**
 	 * <code>sTitle</code> default header in analysis output.
@@ -207,11 +191,6 @@ public class Nest {
 	 * <code>dAbs</code> Index of Dependability.
 	 */
 	private Double dAbs = 0.0;
-
-	/**
-	 * <code>prefs</code> pointer to <code>Preferences</code> API.
-	 */
-	private Preferences prefs = null;
 
 	/**
 	 * <code>iFloor</code> lowest permitted score value in synthesis.
@@ -257,17 +236,17 @@ public class Nest {
 	/**
 	 * <code>sPlatform</code> name of current OS platform ('Linux', 'Mac', or 'Windows').
 	 */
-	private String sPlatform = null;
+	private final String sPlatform;
 
 	/**
 	 * <code>logger</code> pointer to org.gs_users.gs_lv.GS_Application logger.
 	 */
-	private Logger logger = null;
+	private final Logger logger;
 
 	/**
 	 * <code>salNestedNames</code> array list of nested configurations from AnaGroups step 6.
 	 */
-	private ArrayList<String> salNestedNames = new ArrayList<>();
+	private final ArrayList<String> salNestedNames = new ArrayList<>();
 	
 	/**
 	 * Flag forcing non-regular program exit.	
@@ -280,13 +259,13 @@ public class Nest {
 	private int iHighLight = 0;
 
 	/**
-	 * step, at which stepup is to resume after an 'Explain'.
+	 * step, at which step-up is to resume after an 'Explain'.
 	 * i.e. a setback.
 	 */
 	private int iResume = -1;
 	
 	/**
-	 * Place holder for subjet facet.
+	 * Placeholder for subject facet.
 	 */
 	private Facet fSubject = null;
 
@@ -303,10 +282,12 @@ public class Nest {
 		sbHFO = new StringBuilder();
 		logger = _logger;
 		myMain = _myMain;
-		prefs = _prefs;
+		/*
+		 * <code>prefs</code> pointer to <code>Preferences</code> API.
+		 */
 		salVarianceComponents = new ArrayList<>();
-		sPlatform = prefs.get("OS", null);
-		myTree = new SampleSizeTree(this, logger, prefs);
+		sPlatform = _prefs.get("OS", null);
+		myTree = new SampleSizeTree(this, logger, _prefs);
 	}	
 
 	/**
@@ -337,7 +318,7 @@ public class Nest {
 	 * @return facets.get(index);
 	 */
 	public Facet getFacet(char _cDesignation) {
-		Integer index = sDictionary.indexOf(_cDesignation);
+		int index = sDictionary.indexOf(_cDesignation);
 		return farFacets[index];
 	}
 
@@ -379,7 +360,7 @@ public class Nest {
 		sHDictionary = _sHDictionary;
 		int L = sDictionary.length();
 		iarCeilings = new int[L];
-		char[] cHDictionary = new char[L];
+		char[] cHDictionary;
 		cHDictionary = sHDictionary.toCharArray();
 		for (int i = 0; i < L; i++)
 			iarCeilings[i] = sDictionary.indexOf(cHDictionary[i]);
@@ -425,15 +406,6 @@ public class Nest {
 	}
 
 	/**
-	 * getter for hierarchical <code>iAsterisk</code> position.
-	 *
-	 * @return   hierarchical facet index of asterisk
-	 */
-	/*public char get_cAsterisk() {
-		return cAsterisk;
-	}*/
-	
-	/**
 	 * getter for minimal number of replications.
 	 * 
 	 * @return  iRepMinimum
@@ -461,18 +433,16 @@ public class Nest {
 	public void incrementSteps() {
 		if (iStep < -1)
 			System.exit(iProblem);
-		switch( iProblem) {
-			case -1:
-				System.exit(iProblem);
-				break;
-			case 0:
+		switch (iProblem) {
+			case -1 -> System.exit(iProblem);
+			case 0 -> {
 				if (!bDawdle)
 					iStep++;
-				break;
-			default:
+			}
+			default -> {
 				iStep = iResume;
 				iProblem = 0;
-				break;
+			}
 		}
 	}
 
@@ -592,7 +562,7 @@ public class Nest {
 	 * @return string array of comments
 	 */
 	public String[] getComments() {
-		return salComments.toArray(new String[salComments.size()]);
+		return salComments.toArray(new String[0]);
 	}
 
 	/**
@@ -603,8 +573,7 @@ public class Nest {
 	public void setComments(String _comments) {
 		salComments = new ArrayList<>();
 		String[] lines = _comments.split("\n");
-		for (String line : lines)
-			salComments.add(line);
+		Collections.addAll(salComments, lines);
 	}
 
 	/**
@@ -632,7 +601,7 @@ public class Nest {
 	 */
 	public void addFacet(Facet _f) {
 		if (falFacets == null)
-			falFacets = new ArrayList<Facet>();
+			falFacets = new ArrayList<>();
 		_f.setAsterisk(false);
 		falFacets.add(_f);
 	}
@@ -640,7 +609,7 @@ public class Nest {
 	/**
 	 * parser for 'Effect' line in analyze script
 	 *
-	 * @param _sEffect EFFECT describes nested or unnested configuration of Facets
+	 * @param _sEffect EFFECT describes nested or un-nested configuration of Facets
 	 */
 	public void addEffect(String _sEffect) {
 		/*
@@ -660,12 +629,12 @@ public class Nest {
 			sDictionary = sb.toString();
 			falFacets = null;
 		}
-		Boolean bAsterisk = false;
+		boolean bAsterisk = false;
 		char cTarget;
 		char cNestor = '$';
 		String[] words = _sEffect.trim().split("\\s+");
 		String sNest = words[0];
-		String[] sss = null;
+		String[] sss;
 		int iFirst = 1;
 		Integer iLength = words[0].length();
 		boolean bPrimary = true;
@@ -695,8 +664,7 @@ public class Nest {
 		sbHFO.append(cTarget);
 		sHDictionary = sbHFO.toString();
 		sss = new String[words.length - iFirst];
-		for (Integer i = 0; i < words.length - iFirst; i++)
-			sss[i] = words[i + iFirst];
+		System.arraycopy(words, 0 + iFirst, sss, 0, words.length - iFirst);
 		if (cTarget != cReplicate)
 			myTree.addSampleSize(cTarget, sss);
 		myTree.setDictionary(sDictionary);
@@ -738,7 +706,7 @@ public class Nest {
 			for (int i = 0; i < iNestCount; i++)
 				sarNestedNames[i] = salNestedNames.get(i);
 		}
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<String> result = new ArrayList<>();
 		for (char c : sHDictionary.toCharArray())
 			result.add(sarNestedNames[sHDictionary.indexOf(c)]);
 		return FXCollections.observableArrayList(result);
@@ -759,9 +727,9 @@ public class Nest {
 		// convert observable list back to string array
 		iNestCount = _nests.length;
 			myTree.setHDictionary(sHDictionary);
-		String sNest = null;
+		String sNest;
 		sarNestedNames = new String[iNestCount];
-		for (Integer i = 0; i < iNestCount; i++) {
+		for (int i = 0; i < iNestCount; i++) {
 			sNest = _nests[i];
 			sarNestedNames[i] = sNest;
 			char cFacet = sNest.toCharArray()[0];
@@ -870,7 +838,7 @@ public class Nest {
 	 */
 	public String getHNest(Integer i) {
 		char c = sDictionary.toCharArray()[i];
-		Integer iReg = sHDictionary.indexOf(c);  //translation from hierarchical to basic order
+		int iReg = sHDictionary.indexOf(c);  //translation from hierarchical to basic order
 		return sarNestedNames[iReg];
 	}
 
@@ -916,7 +884,7 @@ public class Nest {
 	 * @return sControlFileName
 	 */
 	public String getControlFileName() {
-		return sControlFileName;
+		return "~control.txt";
 	}
 
 	/**
@@ -925,7 +893,7 @@ public class Nest {
 	 * @return sDataFileName
 	 */
 	public String getDataFileName() {
-		return sDataFileName;
+		return "~data.txt";
 	}
 
 	/**
@@ -972,8 +940,8 @@ public class Nest {
 	 * called from AnaGroups and SynthGroups after Nesting step
 	 */
 	public void setOrder() {
-		Integer iFacetCount = sHDictionary.length();
-		for (Integer i = 0; i < iFacetCount; i++) {
+		int iFacetCount = sHDictionary.length();
+		for (int i = 0; i < iFacetCount; i++) {
 			Facet f = farFacets[i];
 			char c = f.getDesignation();
 			Integer j = sDictionary.indexOf(c);
@@ -1021,13 +989,13 @@ public class Nest {
 			int L = salNestedNames.size();
 			sarNestedNames = new String[L];
 			for (int i = 0; i < L; i++)
-			sarNestedNames[i] = salNestedNames.get(i);
+				sarNestedNames[i] = salNestedNames.get(i);
 		}
 		iNestCount = sarNestedNames.length;
 		
 		char cDiff = 'x';
 
-		/**
+		/*
 		 * First, identify facet of differentiation
 		 */
 		for (Facet f : farFacets) {
@@ -1039,15 +1007,15 @@ public class Nest {
 				f.setFacetType('g');
 		}
 
-		/**
+		/*
 		 * Then identify facets of stratification
 		 */
 
-		String sNest = null;
+		String sNest;
 		for (int i = 0; i < iNestCount; i++) {
 			sNest = sarNestedNames[i];
 			if (sNest.indexOf(cDiff) == 0) {
-				/**
+				/*
 				 * That's a nest with the stratified facet of differentiation
 				 */
 				char[] cFacets = sNest.replace(":",  "").toCharArray();
@@ -1094,18 +1062,13 @@ public class Nest {
 	 * @param _sValue  value as text
 	 */
 	private void saveInteger(String _sTarget, String _sValue) {
-		Integer iValue = 0;
+		int iValue = 0;
 		if (_sValue != null)
 			iValue = Integer.parseInt(_sValue);
 		switch (_sTarget) {
-		case "cFloor":
-			iFloor = iValue;
-			break;
-		case "cCeiling":
-			iCeiling = iValue;
-			break;
-		case "cRepMin":
-			iRepMinimum = iValue;
+			case "cFloor" -> iFloor = iValue;
+			case "cCeiling" -> iCeiling = iValue;
+			case "cRepMin" -> iRepMinimum = iValue;
 		}
 	}
 
@@ -1115,7 +1078,7 @@ public class Nest {
 	 * @param _sValue  value of intended mean score in text form
 	 */
 	private void saveDouble(String _sTarget, String _sValue) {
-		Double dValue = 0.0;
+		double dValue = 0.0;
 		if (_sValue != null)
 			dValue = Double.parseDouble(_sValue);
 		switch (_sTarget) {
@@ -1138,12 +1101,8 @@ public class Nest {
 	 */
 	public void saveVariable(String _sType, String _sTarget, String _sValue) {
 		switch (_sType) {
-		case "Integer":
-			saveInteger(_sTarget, _sValue);
-			break;
-		case "Double":
-			saveDouble(_sTarget, _sValue);
-			break;
+			case "Integer" -> saveInteger(_sTarget, _sValue);
+			case "Double" -> saveDouble(_sTarget, _sValue);
 		}
 	}
 
@@ -1161,10 +1120,10 @@ public class Nest {
 		//double dAbsolute = 0.0; // total sum of absolute values of weighted
 								// components
 		//double dFactual = 0.0; // total sum of weighted components > 0.0
-		Double dTemp = 0.0; // temporary variable;
-		Double dS2_t = 0.0; // sigma2(tau)
-		Double dS2_d = 0.0; // sigma2(delta)
-		Double dS2_D = 0.0; // sigma2(Delta)
+		double dTemp; // temporary variable;
+		double dS2_t = 0.0; // sigma2(tau)
+		double dS2_d = 0.0; // sigma2(delta)
+		double dS2_D = 0.0; // sigma2(Delta)
 
 
 		for (Facet f : farFacets) {
@@ -1176,8 +1135,8 @@ public class Nest {
 
 		try {
 			sbResult.append("\n\n-----------------------------------\n");
-			sbResult.append("Results " + sTitle + "\n\n");
-			sbResult.append(sb.toString());
+			sbResult.append("Results ").append(sTitle).append("\n\n");
+			sbResult.append(sb);
 		} catch (Exception e1) {
 			logger.warning(e1.getMessage());
 		}
@@ -1198,14 +1157,14 @@ public class Nest {
 		}
 		sbResult.append("\n");
 
-		sbResult.append(reCode("\u03C3\u00B2(\u03C4) = " + String.format("%.4f", dS2_t) + "\n"));
-		sbResult.append(reCode("\u03C3\u00B2(\u03B4) = " + String.format("%.4f", dS2_d) + "\n"));
-		sbResult.append(reCode("\u03C3\u00B2(\u0394) = " + String.format("%.4f", dS2_D) + "\n"));
+		sbResult.append(reCode("σ²(τ) = " + String.format("%.4f", dS2_t) + "\n"));
+		sbResult.append(reCode("σ²(δ) = " + String.format("%.4f", dS2_d) + "\n"));
+		sbResult.append(reCode("σ²(Δ) = " + String.format("%.4f", dS2_D) + "\n"));
 		dRel = dS2_t / (dS2_t + dS2_d);
 		dAbs = dS2_t / (dS2_t + dS2_D);
 		try {
 			sbResult.append(reCode("\nGENERALIZABILITY COEFFICIENTS:\n\n"));
-			sbResult.append(reCode("Eρ\u00B2      	= " + String.format("%.2f", dRel) + "\n"));
+			sbResult.append(reCode("Eρ²      	= " + String.format("%.2f", dRel) + "\n"));
 			sbResult.append(reCode("Φ           = " + String.format("%.2f", dAbs) + "\n"));
 		} catch (Exception e) {
 			logger.warning(e.getMessage());
@@ -1253,7 +1212,7 @@ public class Nest {
 	/**
 	 * Getter of nested names array
 	 * 
-	 * @return nested names arry
+	 * @return nested names array
 	 */
 	public String[] getNestedNames() {
 		return sarNestedNames;
@@ -1302,7 +1261,7 @@ public class Nest {
 	}
 
 	/**
-	 * setter to complete the two dimensional array <code>dVectors</code> by
+	 * setter to complete the two-dimensional array <code>dVectors</code> by
 	 * placing <code>dVector</code> into position <code>iPos</code> of <code>dVectors</code>.
 	 *
 	 * @param iPos  position in <code>dVectors</code> of <code>dVector</code>
@@ -1349,7 +1308,7 @@ public class Nest {
 	 * getter of variance coefficient from array.
 	 *
 	 * @param i position in array
-	 * @return Double value of variance coeffient
+	 * @return Double value of variance coefficient
 	 */
 	public Double getVarianceCoefficient(int i) {
 		if ((darVarianceCoefficients != null) && (i < darVarianceCoefficients.length))
@@ -1394,7 +1353,7 @@ public class Nest {
 		int i = 0;
 		sarNestedNames = new String[_salNestedNames.size()];
 		for (String s : _salNestedNames) {
-			if ((s == null) | (s.trim() == ""))
+			if ((s == null) | (s.trim().equals("")))
 				break;
 			sarNestedNames[i++] = s;
 		}
@@ -1454,12 +1413,11 @@ public class Nest {
 	 * @return array size
 	 */
 	public Integer getVcDim() {
-		Integer x = darVarianceCoefficients.length;
-		return x;
+		return darVarianceCoefficients.length;
 	}
 
 	/**
-	 * kluge pipe to deal with 'Mac' coding idiosyncracy.
+	 * kluge pipe to deal with 'Mac' coding idiosyncrasy.
 	 *
 	 * @param sInput input string
 	 * @return sOutput  output string
@@ -1496,14 +1454,14 @@ public class Nest {
 		int L= dict.length();
 		int iDepth = 1;
 		int iCount = 1;
-		String ss = null;
+		String ss;
 		while (iCount <= L) {
 			for (String s : sarNestedNames) {
 				if(s.equals(null) | s.equals(" "))
 						break;
 				ss = s.replace(":", "");
 				if (ss.length() == iDepth) {
-					sb.append(ss.substring(0, 1));
+					sb.append(ss.charAt(0));
 					iCount++;
 				}
 			}
@@ -1533,8 +1491,10 @@ public class Nest {
 	public Boolean isComponent(String sTest) {
 		boolean bContained = false;
 			for (String s : sarNestedNames)
-				if (s.equals(sTest))
+				if (s.equals(sTest)) {
 					bContained = true;
+					break;
+				}
 		return bContained;
 	}
 
@@ -1547,11 +1507,10 @@ public class Nest {
 	public String[] getOrderedNestedNames(String _sOrder) {
 		int iSize = getNestCount();
 		String s;
-		String sOrder = _sOrder;
 		String[] sarOrderedNames = new String[iSize];
 		for (int i = 0; i < iSize; i++) {
 			s = sarNestedNames[i];
-			sarOrderedNames[sOrder.indexOf(s.toCharArray()[0])] = s;
+			sarOrderedNames[_sOrder.indexOf(s.toCharArray()[0])] = s;
 		}
 		return sarOrderedNames;
 	}
@@ -1615,7 +1574,7 @@ public class Nest {
 	/**
 	 * method adding a facet nest to the list
 	 * 
-	 * @param _sNest  name of facet nest to be addedd
+	 * @param _sNest  name of facet nest to be added
 	 */
 	public void addNestedName(String _sNest) {
 		salNestedNames.add(_sNest);
@@ -1644,18 +1603,18 @@ public class Nest {
 	}
 	
 	/**
-	 * Getter for lowest posible value for number of replications.
+	 * Getter for lowest possible value for number of replications.
 	 * 
 	 * @return  iRepMinimum
 	 */
 	public Integer getRepMin() {
 		return iRepMinimum;
-	};
-	
+	}
+
 	/**
 	 * Setter for number of index columns in data file.
 	 * 
-	 * @param  _iHighLight  offset afyer index columns
+	 * @param  _iHighLight  offset after index columns
 	 */
 	public void setHighlight(int _iHighLight) {
 		iHighLight = _iHighLight;
@@ -1708,12 +1667,17 @@ public class Nest {
 	public void printIntArray(int[] iArray) {
 		StringBuilder sb = new StringBuilder(iArray[0]);
 		for (int i =1; i < iArray.length; i++)
-			sb.append(", " + iArray[i]);
-		System.out.println(sb.toString());
+			sb.append(", ").append(iArray[i]);
+		System.out.println(sb);
 	}
 	
 	public Boolean getStackTraceMode() {
-		return bStackTrace;
+		/*
+		 * This is a VERY IMPORTANT SWITCH! It can only be changed by directly
+		 * entering the value here. It controls, whether exceptions get logged, or
+		 * cause a stack trace printout in debugging mode.
+		 */
+		return true;
 	}
 }
 

@@ -72,7 +72,7 @@ public class Facet {
 	/**
 	 * Pointer to 'Nest' for access to design parameters stored.
 	 */
-	private Nest myNest;
+	private final Nest myNest;
 
 	/**
 	 * For D-Studies, differentiates between 'Fixed' and 'Random' facets.
@@ -82,7 +82,7 @@ public class Facet {
 	/**
 	 * Pointer to 'SampleSizeTree' for access to sample size data.
 	 */
-	private SampleSizeTree myTree  = null;
+	private SampleSizeTree myTree;
 
 	/**
 	 * Constructor for empty facet
@@ -138,14 +138,6 @@ public class Facet {
 		bIsNested = _bIsNested;
 	}
 	
-	/**
-	 * 
-	 * @param _bIsReplicating
-	 */
-	/*public void setReplicating( Boolean _bIsReplicating) {
-		bIsReplicating = _bIsReplicating;
-	}*/
-
 	/**
 	 * Setter for the hierarchical order in which the facets increment
 	 * in the data file, and it is in 'sHDictionary'.
@@ -223,9 +215,9 @@ public class Facet {
 	public String getDiagDesignation() {
 		StringBuilder sb = new StringBuilder("Facet " + cDesignation);
 		if(bFixed)
-			sb.append(", fixed; level = " + dFacetLevel + ".\n");
+			sb.append(", fixed; level = ").append(dFacetLevel).append(".\n");
 		else
-			sb.append(", random; level = " + dFacetLevel + ".\n");
+			sb.append(", random; level = ").append(dFacetLevel).append(".\n");
 
 		return sb.toString();
 	}
@@ -304,23 +296,20 @@ public class Facet {
 
 	/**
 	 * Calculates levels for G studies for facets of generalization:
-	 * simple mean of sample sizes for 1 level of nesting, harmoniv mean
+	 * simple mean of sample sizes for 1 level of nesting, harmonic mean
 	 * for higher levels of nesting.
 	 */
 	public void setFacetLevel() {
 		if (myTree == null)
 			myTree = myNest.getTree();
 		switch (iNestingRank) {
-			case -1:		// not g-type facet
-				dFacetLevel = 1.0;
-				break;
-			case 0:			// simple, un-nested g-type facet
-			case 1:			// first order, nested g-type facet
-				dFacetLevel = myTree.getLevel(iOrder);
-				break;
-			default:		// higher order, nested g-type facet
-				dFacetLevel = myTree.getHarmonic(iOrder);
-				break;
+			case -1 ->        // not g-type facet
+					dFacetLevel = 1.0;
+			// simple, un-nested g-type facet
+			case 0, 1 ->            // first order, nested g-type facet
+					dFacetLevel = myTree.getLevel(iOrder);
+			default ->        // higher order, nested g-type facet
+					dFacetLevel = myTree.getHarmonic(iOrder);
 		}
 	}
 
@@ -349,7 +338,7 @@ public class Facet {
 	 * @param sComponent;
 	 */
  	public void doNesting(String sComponent) {
- 		/**
+ 		/*
  		 * based on the nesting input, this method determines the
  		 * nestor/nestees relationships
  		 */
@@ -361,34 +350,6 @@ public class Facet {
 			Facet fNestor = myNest.getFacet(cNestor);
 			fNestor.addNestee(cDesignation);
 		}
-	}
-
- 	/**
- 	 * Getter for rank in nesting hierarchy.
- 	 *
- 	 * @return iNestingRank;
- 	 */
-	public Integer getRank()
-	{
-		return iNestingRank;
-	}
-
-	/**
-	 * Getter for 'crossed' status.
-	 *
-	 * @return !bIsNested;
-	 */
-	public Boolean isCrossed(){
-		return !bIsNested;
-	}
-
-	/**
-	 * Getter for 'Fixed' status.
-	 *
-	 * @return bFixed;
-	 */
-	public Boolean isFixed(){
-		return bFixed;
 	}
 
 	/**
@@ -403,29 +364,7 @@ public class Facet {
 			return;
 		else {
 			String s = sNestees;
-			sNestees = s + String.valueOf(cNestee);
+			sNestees = s + cNestee;
 		}
-	}
-
-	/**
-	 * getter for 'Nestees' as char[].
-	 *
-	 * @return sNestees.toCharArray();
-	 */
-	public char[] getcNestees() {
-		if (sNestees == null)
-			return null;
-		else
-			return sNestees.toCharArray();
-	}
-
-	/**
-	 * getter for 'Nestees' as String.
-	 *
-	 * @return sNestees;
-	 */
-
-	public String getsNestees() {
-		return sNestees;
 	}
 }

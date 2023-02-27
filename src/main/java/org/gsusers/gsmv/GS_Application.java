@@ -141,8 +141,8 @@ public class GS_Application extends Application {
          *
          */
         controller = fxmlLoader.getController();
-        controller.setMainApp(this, logger, prefs);
-        mySteps = new AnaGroups(this, myNest, logger, controller, primaryStage, prefs, flr); 	// object for analysis
+        controller.setMainApp(this, logger);
+        mySteps = new AnaGroups(this, myNest, logger, controller, prefs, flr); 	// object for analysis
         mySynthSteps = new SynthGroups(this, myNest, logger, controller, prefs, flr);	// object for synthesis
 
         try {
@@ -389,7 +389,7 @@ public class GS_Application extends Application {
         flr = new Filer(myNest, prefs, logger, primaryStage);
         myNest.setStage(primaryStage);
         group = null;
-        mySteps = new AnaGroups(this, myNest, logger, controller, primaryStage, prefs, flr);
+        mySteps = new AnaGroups(this, myNest, logger, controller, prefs, flr);
         controller.callForAction(true);
         try {
             stepUp();

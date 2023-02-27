@@ -1,4 +1,14 @@
-module org.gs_users.gs_mv {
+import org.gsusers.gsmv.GS_Application;
+import org.gsusers.gsmv.GS_Controller;
+import org.gsusers.gsmv.model.Facet;
+import org.gsusers.gsmv.model.Nest;
+import org.gsusers.gsmv.model.SampleSizeTree;
+import org.gsusers.gsmv.steps.AnaGroups;
+import org.gsusers.gsmv.steps.GSetup;
+import org.gsusers.gsmv.steps.SynthGroups;
+import org.gsusers.gsmv.utilities.*;
+
+module org.gsusers.gsmv {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
@@ -9,26 +19,26 @@ module org.gs_users.gs_mv {
     requires java.desktop;
     requires javafx.web;
 
-    uses org.gs_users.gs_mv.GS_Application;
-    uses org.gs_users.gs_mv.GS_Controller;
-    uses org.gs_users.gs_mv.model.Nest;
-    uses org.gs_users.gs_mv.model.SampleSizeTree;
-    uses org.gs_users.gs_mv.model.Facet;
-    uses org.gs_users.gs_mv.steps.SynthGroups;
-    uses org.gs_users.gs_mv.steps.AnaGroups;
-    uses org.gs_users.gs_mv.steps.GSetup;
-    uses org.gs_users.gs_mv.utilities.SampleSizeView;
-    uses org.gs_users.gs_mv.utilities.Filer;
-    uses org.gs_users.gs_mv.utilities.Factor;
-    uses org.gs_users.gs_mv.utilities.VarianceComponent;
-    uses org.gs_users.gs_mv.utilities.TextStack;
-    uses org.gs_users.gs_mv.utilities.ConstructSimulation;
-    uses org.gs_users.gs_mv.utilities.Normal;
-    uses org.gs_users.gs_mv.utilities.Lehmer;
-    uses org.gs_users.gs_mv.utilities.FacetModView;
-    uses org.gs_users.gs_mv.utilities.About;
-    uses org.gs_users.gs_mv.utilities.CombConstrct;
+    uses GS_Application;
+    uses GS_Controller;
+    uses Nest;
+    uses SampleSizeTree;
+    uses Facet;
+    uses SynthGroups;
+    uses AnaGroups;
+    uses GSetup;
+    uses SampleSizeView;
+    uses Filer;
+    uses Factor;
+    uses VarianceComponent;
+    uses TextStack;
+    uses ConstructSimulation;
+    uses Normal;
+    uses Lehmer;
+    uses FacetModView;
+    uses About;
+    uses CombConstrct;
 
-    opens org.gs_users.gs_mv to javafx.fxml;
-    exports org.gs_users.gs_mv;
+    opens org.gsusers.gsmv to javafx.fxml;
+    exports org.gsusers.gsmv;
 }

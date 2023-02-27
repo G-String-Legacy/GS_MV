@@ -26,8 +26,8 @@ plugins {
     id "de.inetsoftware.setupbuilder" version "7.2.16"
 }
 
-group 'org.gs_users'
-version '2.0.1'
+group 'org.gsusers'
+version '2.0.2.2'
 
 repositories {
     mavenCentral()
@@ -45,8 +45,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-    mainModule = 'org.gs_users.gs_mv'
-    mainClass = 'org.gs_users.gs_mv.GS_Application'
+    mainModule = 'org.gsusers.gsmv'
+    mainClass = 'org.gsusers.gsmv.GS_Application'
 }
 
 javafx {
@@ -75,7 +75,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'org.gs_users.gs_lv.GS_Application'
+                'Main-Class': 'org.gsusers.gsmv.GS_Application'
         )
     }
 }

@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jpackage" build-on-make="true" name="GS_LV">
-    <output-path>$PROJECT_DIR$/out/artifacts/GS_LV</output-path>
-    <root id="root" />
-  </artifact>
-</component>

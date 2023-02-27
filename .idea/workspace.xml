@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="GS_LV" />
+      <artifact name="GS_LV:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,8 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/GS_LV_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/GS_LV.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/GSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/GSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/steps/Prefs_Default.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +131,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/utilities/help" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [run]">
+  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
     <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -239,10 +246,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
+        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [deb]" />
       </list>
     </recent_temporary>
@@ -283,12 +290,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>400</line>
+          <line>391</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>147</line>
+          <line>144</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -303,7 +310,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>497</line>
+          <line>488</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -318,43 +325,53 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>371</line>
+          <line>372</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>431</line>
+          <line>429</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>474</line>
+          <line>472</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>433</line>
+          <line>431</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>439</line>
+          <line>437</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>1545</line>
+          <line>1543</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/AnaGroups.java</url>
-          <line>1472</line>
+          <line>1470</line>
           <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/GSetup.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/steps/GSetup.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv/GS_Application.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="102" />
+          <line>109</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

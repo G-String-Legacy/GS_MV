@@ -18,39 +18,19 @@ import org.gsusers.gsmv.model.SampleSizeTree;
 public class CombConstrct {
 
 	/**
-	 * pointer to <code>Nest</code>
-	 */
-	private Nest myNest;
-
-	/**
 	 * pointer to <code>SampleSizeTree</code>
 	 */
-	private SampleSizeTree myTree;
-
-	/**
-	 * Array of initial nested names
-	 */
-	private String[] sarNestedNames = null;
-	
-	/**
-	 * Array list of pure facet products
-	 */
-	private ArrayList<String> salConfigs = null;
+	private final SampleSizeTree myTree;
 
 	/**
 	 * 2-Dim string array of factored configurations
 	 */
-	String[][] sarProducts = null;
-	
-	/**
-	 * 1-Dim String array of Configurations
-	 */
-	private String[] sarConfigs = null;
-	
+	String[][] sarProducts;
+
 	/**
 	 * number of configurations (combinations of products
 	 */
-	private int iConfigurationCount = 0;
+	private final int iConfigurationCount;
 	
 	/**
 	 * constructor
@@ -58,37 +38,45 @@ public class CombConstrct {
 	 * @param _nest  pointer to <code>Nest</code>
 	 */
 	public CombConstrct (Nest _nest){
-		myNest = _nest;
-		myTree = myNest.getTree();
-		sarNestedNames = myNest.getNestedNames();
-		salConfigs = new ArrayList<String>(0);
+		/*
+		 * pointer to <code>Nest</code>
+		 */
+		myTree = _nest.getTree();
+		/*
+		 * Array of initial nested names
+		 */
+		String[] sarNestedNames = _nest.getNestedNames();
+		/*
+		 * Array list of pure facet products
+		 */
+		ArrayList<String> salConfigs = new ArrayList<>(0);
 		int iComplexity = sarNestedNames.length;
 		int[] iMasks = new int[iComplexity];
 		int iTop = 1 << iComplexity;
-		int iTemp = 0;
-		String sNN = null;
-		Boolean bContained = false;
-		String sProduct = null;
-		String sTemp = null;
-		/**
+		int iTemp;
+		String sNN;
+		boolean bContained;
+		String sProduct;
+		String sTemp;
+		/*
 		 * initialize ArrayList salProducts with existing nests
 		 */
 		for (int i = 0; i < iComplexity; i++) {
-			iTemp = (int)(1 << i);
+			iTemp = 1 << i;
 			iMasks[i] = iTemp;
 			sTemp = sReverse(sarNestedNames[i]);
 			if (sTemp.length() > 1)
 				sTemp = "(" + sTemp + ")";
 			salConfigs.add(sTemp);
 		}
-		/**
+		/*
 		 * Add all permitted products of nests to salProducts
 		 * In order to get all allowed configurations in the
 		 * correct sequence, we employ a binary enumeration, 
 		 * where each power of 2 corresponds to a specific facet
 		 * in the appropriate nesting context.
 		 */
-		char cLead = ' ';
+		char cLead;
 		for (int i = 1; i <= iTop; i++) {
 			StringBuilder sb = new StringBuilder(0);
 			for (int j = 0; j < iComplexity; j++) {
@@ -103,7 +91,7 @@ public class CombConstrct {
 			sProduct = sb.toString();
 			bContained = false;
 			for (String s : salConfigs) {
-				bContained = (s.indexOf(sProduct) >= 0);
+				bContained = (s.contains(sProduct));
 				if (bContained)
 					break;
 			}
@@ -111,21 +99,24 @@ public class CombConstrct {
 				salConfigs.add(sProduct);
 			}
 		}
-		sarConfigs = salConfigs.toArray(new String[0]);
-		/**
+		/*
+		 * 1-Dim String array of Configurations
+		 */
+		String[] sarConfigs = salConfigs.toArray(new String[0]);
+		/*
 		 * Parse array of strings salProducts into
 		 * 2-Dim array of strings sarConfigs.
 		 */
 		int L = sarConfigs.length;
 		sarProducts = new String[L][];
-		ArrayList<String> salFactors = null;
-		String sP = null;
-		char[] cPs = null;
+		ArrayList<String> salFactors;
+		String sP;
+		char[] cPs;
 		String s;
-		Boolean bComplex = false;
+		boolean bComplex;
 		StringBuilder sb = null;
 		for (int i = 0; i < L; i++) {
-			salFactors = new ArrayList<String>(0);
+			salFactors = new ArrayList<>(0);
 			sP = sarConfigs[i];
 			cPs = sP.toCharArray();
 			bComplex = ((sP.indexOf(':') >= 0) && (sP.indexOf('(') < 0));
@@ -133,31 +124,40 @@ public class CombConstrct {
 				sb = new StringBuilder(0);
 			for (char c : cPs) {
 				switch (c) {
-					case '(': bComplex = true;
+					case '(' -> {
+						bComplex = true;
 						sb = new StringBuilder(0);
-						break;
-					case ':': sb.append(":");
-						break;
-					case ')':  bComplex = false;
-						salFactors.add("(" + sb.toString() + ")");
-						break;
-					default: s = String.valueOf(c);
+					}
+					case ':' -> {
+						assert sb != null;
+						sb.append(":");
+					}
+					case ')' -> {
+						bComplex = false;
+						assert sb != null;
+						salFactors.add("(" + sb + ")");
+					}
+					default -> {
+						s = String.valueOf(c);
 						if (bComplex)
 							sb.append(s);
 						else
 							salFactors.add(s);
+					}
 				}
 			}
-			if (salFactors.isEmpty())
-				salFactors.add("(" + sb.toString() + ")");
+			if (salFactors.isEmpty()) {
+				assert sb != null;
+				salFactors.add("(" + sb + ")");
+			}
 			sarProducts[i] = salFactors.toArray(new String[0]);
 		}
 		
 		iConfigurationCount = sarConfigs.length;
 		myTree.setConfigurations(sarConfigs);
 		int[] iarDepths = new int[iConfigurationCount];
-		String[] sF = null;
-		int iProduct = 0;
+		String[] sF;
+		int iProduct;
 		for (int i = 0; i < iConfigurationCount; i++) {
 			sF = sarProducts[i];
 			iProduct = 1;

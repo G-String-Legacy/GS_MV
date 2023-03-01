@@ -1,3 +1,4 @@
+
 /*
 This is the core control file of GS_M, the latest incarnation of G_String.
 G_String is a java program enabling non-specialist users to perform Generalization Analysis of performance assessments.
@@ -17,16 +18,15 @@ The versioning convention is as follows:
     c - minor bug fixes and cosmetics.
     Initial alpha version: 0.0.0
  */
-
 plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.25.0'
+    id "org.beryx.jlink" version "2.25.0"
 }
 
 group 'org.gsusers'
-version '2.0.2.2'
+version '2.0.2.3'
 
 repositories {
     mavenCentral()
@@ -80,32 +80,16 @@ jar {
 }
 
 jlink {
-    jpackage {
-        /*
-            Before performing 'jpackage', the installer format for and on
-            the desired platform must be specified by un-commenting
-            the corresponding 'installerType'
-         */
-        // Linux Ubuntu/Debian:
-        installerType = "deb"
-
-        // Linux RedHat:
-        //installerType = "rpm"
-
-        //Windows:
-        //installerType = "msi"
-
-        //MacOS:
-        //installerType = "dmg"
-    }
-
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip") as RegularFile
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--linux-shortcut']
     launcher {
         name = 'GS_MV'
     }
-}
-
-jlinkZip {
-    group = 'distribution'
+    jpackage {
+        options = []
+        skipInstaller = false
+        icon = "GS_MV.png"
+        installerType = "deb"
+        vendor = "Open Source"
+    }
 }

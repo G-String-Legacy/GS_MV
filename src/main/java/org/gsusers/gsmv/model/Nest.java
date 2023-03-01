@@ -61,11 +61,6 @@ public class Nest {
 	 * <code>bReplicate</code> flag to operate with replicating measurements
 	 */
 	private Boolean bReplicate;
-	
-	/**
-	 * <code>sFileName</code> path of control file.
-	 */
-	private String sFileName;
 
 	/**
 	 * <code>sScriptTitle</code> title in script; default 'gstudy'.
@@ -130,12 +125,6 @@ public class Nest {
 	 * facets in the order the data appear in the data file.
 	 */
 	private String sHDictionary;
-	
-	/**
-	 * provides instant translation from index order (sHdictionary) to original
-	 * Facet order (sDictionary).
-	 */
-	private int[] iarCeilings = null;
 
 	/**
 	 * <code>iNestCount</code> number of nested facets.
@@ -219,14 +208,9 @@ public class Nest {
 	private Double dRepRange = 0.0;
 
 	/**
-	 * <code>dVectors</code> intermediate double matrix for calculation of variance components.
-	 */
-	private Double[][] dVectors = null;
-
-	/**
 	 * <code>dVC</code> intermediate double vector for calculation of variance components.
 	 */
-	private Double[] dVC = null;
+	private final Double[] dVC = null;
 
 	/**
 	 * <code>darVarianceCoefficients</code> double array of Variance Coefficients.
@@ -358,23 +342,7 @@ public class Nest {
 	 */
 	public void setHDictionary(String _sHDictionary) {
 		sHDictionary = _sHDictionary;
-		int L = sDictionary.length();
-		iarCeilings = new int[L];
-		char[] cHDictionary;
-		cHDictionary = sHDictionary.toCharArray();
-		for (int i = 0; i < L; i++)
-			iarCeilings[i] = sDictionary.indexOf(cHDictionary[i]);
 		}
-
-	/**
-	 * For incrementing through the indices, SampleSizeTree needs to easily
-	 * translate between the 'sDictionary' and 'sHDictionary' order.
-	 * 
-	 * @return order array sHDictionary to sDictionary
-	 */
-	public int[] getCeilings() {
-		return iarCeilings;
-	}
 
 	/**
 	 * setter of <code>iAsterisk</code> by facet char Designation.
@@ -586,15 +554,6 @@ public class Nest {
 	}
 
 	/**
-	 * setter for <code>sOptions</code>.
-	 *
-	 * @param _sOptions  string of options to be included in script
-	 */
-	public void setOptions(String _sOptions) {
-		sOptions = _sOptions;
-	}
-	
-	/**
 	 * method to collect facet information from scripts
 	 * 
 	 * @param _f  facet to be added
@@ -768,30 +727,14 @@ public class Nest {
 	}
 
 	/**
-	 * getter of primary  of <code>Stage</code>.
-	 *
-	 * @return primaryStage
-	 */
-	public Stage getStage() {
-		return primaryStage;
-	}
-
-	/**
 	 * setter of <code>sFileName</code>.
 	 *
 	 * @param _fName  file name
 	 */
 	public void setFileName(String _fName) {
-		sFileName = _fName;
-	}
-
-	/**
-	 * getter of <code>sFileName</code>.
-	 *
-	 * @return sFileName
-	 */
-	public String getFileName() {
-		return sFileName;
+		/**
+		 * <code>sFileName</code> path of control file.
+		 */
 	}
 
 	/**
@@ -1229,17 +1172,6 @@ public class Nest {
 	}
 
 	/**
-	 * creates a one-dimensional and a two-dimensional, Double array
-	 * for the calculation of variance components.
-	 *
-	 * @param iDim  dimension of array
-	 */
-	public void createVectors(Integer iDim) {
-		dVectors = new Double[iDim][];
-		dVC = new Double[iDim];
-	}
-
-	/**
 	 * setter for variance component.
 	 *
 	 * @param iPos  index to position in array
@@ -1267,9 +1199,9 @@ public class Nest {
 	 * @param iPos  position in <code>dVectors</code> of <code>dVector</code>
 	 * @param dVector  one-dimensional array to be placed
 	 */
-	public void setVector(Integer iPos, Double[] dVector) {
+	/*public void setVector(Integer iPos, Double[] dVector) {
 		dVectors[iPos] = dVector;
-	}
+	}*/
 
 	/**
 	 * getter of a facet's 'Nestor' facet.

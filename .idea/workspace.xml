@@ -206,7 +206,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GS_MV [deb]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GS_MV [jlink]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -217,7 +217,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="deb" />
+            <option value="jlink" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -228,7 +228,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.GS_MV [deb]" />
+      <item itemvalue="Gradle.GS_MV [jlink]" />
       <item itemvalue="Gradle.GS_MV [build]" />
       <item itemvalue="Gradle.GS_LV [clean]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
@@ -237,10 +237,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_LV [jpackage]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
-        <item itemvalue="Gradle.GS_MV [deb]" />
+        <item itemvalue="Gradle.GS_MV [jlink]" />
+        <item itemvalue="Gradle.GS_MV [build]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
       </list>
     </recent_temporary>
   </component>

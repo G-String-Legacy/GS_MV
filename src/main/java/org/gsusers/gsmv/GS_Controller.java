@@ -12,7 +12,6 @@ import org.gsusers.gsmv.utilities.About;
 
 import java.io.File;
 import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 
 /**
  * LayoutController for JavaFX GUI
@@ -75,13 +74,6 @@ public class GS_Controller {
     @FXML
     private Menu mnuAction;
 
-    /*@FXML
-    void typedBS(KeyEvent event) {
-        if (event.getCode() == KeyCode.BACK_SPACE) {
-            lblStep.setText(event.getText() + " typed.");
-        }
-    }*/
-
     /**
      * initialize rootLayoutController at program start.
      */
@@ -93,7 +85,7 @@ public class GS_Controller {
         mnuActionStartOver.setOnAction((event) -> myMain.startOver());
         mnuCHelp.setOnAction((event) -> myMain.helpSwitch("help"));
         mnuIntro.setOnAction((event) -> myMain.helpSwitch("intro"));
-        mnuUHelp.setOnAction((event) -> displayResource("urGENOVA_manual.pdf"));
+        mnuUHelp.setOnAction((event) -> displayResource());
         mnuSimulate.setOnAction((event) -> myMain.Simulate());
         mnuResimulate.setOnAction((event) -> myMain.Resimulate());
         mnuChangePreferences.setOnAction((event) -> myMain.switchChangePreferences(true));
@@ -118,9 +110,6 @@ public class GS_Controller {
     void setMainApp(GS_Application _main, Logger _logger){
         myMain = _main;
         logger = _logger;
-        /**
-         * org.gs_users.gs_lv.GS_Application preferences
-         */
     }
 
     /**
@@ -148,10 +137,7 @@ public class GS_Controller {
      */
     public void setStep(Integer _iStep) {
         lblStep.setText("Step " + _iStep);
-        if (_iStep == 0)
-            buttonsEnabled(false);
-        else
-            buttonsEnabled(true);
+        buttonsEnabled(_iStep != 0);
     }
 
     /**
@@ -205,11 +191,9 @@ public class GS_Controller {
 
     /**
      * Displays pdf file (for urGENOVA manual)
-     *
-     * @param _sName file path
      */
-    private void displayResource(String _sName) {
-        File docFile = myMain.showPDF(_sName);
+    private void displayResource() {
+        File docFile = myMain.showPDF("urGENOVA_manual.pdf");
         HostServices hostServices = myMain.getHostServices();
         hostServices.showDocument(docFile.toURI().toString());
         docFile.deleteOnExit();

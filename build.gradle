@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gsusers'
-version '2.0.2.3'
+version '2.0.3'
 
 repositories {
     mavenCentral()
@@ -78,18 +78,52 @@ jar {
         )
     }
 }
+// un-comment the appropriate installerType
+    //installerType = "deb"
+    //installerType = "msi"
+    //installerType = "dmg"
 
 jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip") as RegularFile
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--linux-shortcut']
+    options = [
+            '--strip-debug',
+            '--compress', '2',
+            '--no-header-files',
+            '--no-man-pages'
+    ]
     launcher {
         name = 'GS_MV'
     }
     jpackage {
-        options = []
+        installerOptions = [
+            '--description', 'Generalizability  Analysis',
+            '--copyright', 'Copyright 2007-2023 papaworx.com'
+        ]
         skipInstaller = false
-        icon = "GS_MV.png"
-        installerType = "deb"
         vendor = "Open Source"
+
+        //un-comment appropriate installerType
+            //installerType = "deb"
+            //installerType = "msi"
+            //installerType = "dmg"
+
+        installerType = "deb"
+         if (installerType = 'deb') {
+            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
+            installerOptions += [
+                    '--linux-deb-maintainer', 'ralph@papaworx.com'
+            ]
+        }
+        if (installerType = 'msi') {
+            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.ico']
+            installerOptions += [
+             '--win-menu',
+                '--win-shortcut'
+            ]
+        }
+        if (installerType = 'dmg'){
+            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
+
+        }
     }
 }

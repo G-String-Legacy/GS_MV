@@ -143,7 +143,7 @@ public class GS_Application extends Application {
         controller = fxmlLoader.getController();
         controller.setMainApp(this, logger);
         mySteps = new AnaGroups(this, myNest, logger, controller, prefs, flr); 	// object for analysis
-        mySynthSteps = new SynthGroups(this, myNest, logger, controller, prefs, flr);	// object for synthesis
+        mySynthSteps = new SynthGroups(myNest, logger, controller, prefs, flr);	// object for synthesis
 
         try {
             stepUp();	// now ready for work
@@ -215,7 +215,7 @@ public class GS_Application extends Application {
      * In response to GUI, initiates setup; to be done on first use.
      */
     public void doSetup() {
-       GSetup gSetup = new GSetup(primaryStage, logger, prefs);
+       GSetup gSetup = new GSetup(this.getBrennan(), primaryStage, logger, prefs);
     }
 
     /**
@@ -560,6 +560,19 @@ public class GS_Application extends Application {
         });
         hbReturn.getChildren().addAll(lbKey, tfValue);
         return hbReturn;
+    }
+
+    /**
+     * In earlier versions, the urGenova working directory name could be
+     * selected by the user. Later it was set automatically to 'Brennan'.
+     * To reduce the risk of a user accidentally erasing it, we give it a
+     * more distinctive name.
+     *
+     * @return name of G_String working directory, to be placed in 'user'.
+     */
+    public String getBrennan(){
+        String sWorking = "G_String_Working_Directory";
+        return System.getProperty("user.home") + File.separator + sWorking;
     }
 }
 

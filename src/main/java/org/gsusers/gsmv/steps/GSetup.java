@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import org.gsusers.gsmv.GS_Application;
 
 /**
  * Provides the screen for program setup
@@ -25,13 +26,15 @@ public class GSetup
 	/**
 	 * pointer to <code>logger</code>
 	 */
-	private Logger logger = null;
+	private Logger logger;
 
 	/**
 	 * pointer to Preferences API
 	 */
-	private Preferences prefs = null;
+	private Preferences prefs;
 	//private Long iBytes;
+
+	private String sWorking ;
 
 	/**
 	 * constructor for <code>gSetup</code>.
@@ -40,9 +43,9 @@ public class GSetup
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _prefs  Preferences
 	 */
-	public GSetup(Stage _stage, Logger _logger, Preferences _prefs)
+	public GSetup(String _sWorking, Stage _stage, Logger _logger, Preferences _prefs)
 	{
-		//  dummy constructor
+		sWorking = _sWorking;
 		myStage = _stage;
 		logger = _logger;
 		prefs = _prefs;
@@ -60,12 +63,12 @@ public class GSetup
 	 */
 	public void ask() throws IOException
 	{
-		DirectoryChooser dc = new DirectoryChooser();
+		/*DirectoryChooser dc = new DirectoryChooser();
 		dc.setInitialDirectory(null);
 		File fDir = new File(System.getProperty("user.home"));
 		if (fDir.exists())
 			dc.setInitialDirectory(fDir);
-		/*dc.setTitle("Choose location and create new working directory");
+		dc.setTitle("Choose location and create new working directory");
 		File dir = dc.showDialog(myStage);
 		try
 		{
@@ -117,7 +120,7 @@ public class GSetup
 		byte[] b = new byte[1024];
 		String sTarget;
 		File fTarget;
-		String sBrennan = System.getProperty("user.home") + File.separator + "Brennan";
+		String sBrennan = sWorking;
 		File fWorking = new File(sBrennan);
 		if (fWorking.mkdir()){
 			sTarget = sBrennan + File.separator + _sTargetName;

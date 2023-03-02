@@ -1,46 +1,18 @@
 package org.gsusers.gsmv.steps;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -54,6 +26,13 @@ import org.gsusers.gsmv.model.Nest;
 import org.gsusers.gsmv.model.SampleSizeTree;
 import org.gsusers.gsmv.utilities.FacetModView;
 import org.gsusers.gsmv.utilities.Filer;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 /**
  * Manages G-Analysis by taking the user step-by-step
@@ -735,7 +714,7 @@ public class AnaGroups {
 		hb.getChildren().add(lbLabel);
 		vb.getChildren().add(lbNesting);
 		hb2.getChildren().addAll(lbCrossed, lbNested);
-		if (bReplicate == true)
+		if (bReplicate)
 			hb2.getChildren().add(lbReplicate);
 		vb.getChildren().add(hb2);
 		hb.getChildren().add(vb);
@@ -749,7 +728,7 @@ public class AnaGroups {
 	 * 'Grab and Drop'. A visual item can be 'grabbed' by clicking with the mouse
 	 * button on it. The item then follows the mouse movement, and is then
 	 * finally dropped, where the mouse button is released.
-	 * see e.g. http://tutorials.jenkov.com/javafx/drag-and-drop.html
+	 * see e.g. <a href="http://tutorials.jenkov.com/javafx/drag-and-drop.html">...</a>
 	 * In this, and the following group, items are moved from one cell in a list
 	 * to another.
 	 * Based on the new facet order, G_String creates a new dictionary 'sHdictionary',
@@ -779,15 +758,15 @@ public class AnaGroups {
 		sDictionary = myNest.getDictionary();
 		sHDictionary = sDictionary;
 		cAsterisk = myNest.getAsterisk();
-		for (Integer i = 0; i < sHDictionary.length(); i++)
+		for (int i = 0; i < sHDictionary.length(); i++)
 			orderedData.add(sHDictionary.substring(i, i + 1));
 		lvFacets.setItems(orderedData);
 		lvFacets.setMaxWidth(150);
 		lvFacets.setMaxHeight(300);
-		lvFacets.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		lvFacets.setCellFactory(new Callback<>() {
 			@Override
 			public ListCell<String> call(ListView<String> lv) {
-				final ListCell<String> cell = new ListCell<String>() {
+				final ListCell<String> cell = new ListCell<>() {
 
 					@Override
 					protected void updateItem(String t, boolean bln) {
@@ -807,42 +786,31 @@ public class AnaGroups {
 					}
 				};
 
-				cell.setOnDragDetected(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						/* drag was detected, start a drag-and-drop gesture */
-						/* allow any transfer mode */
-						String item = null;
-						if (cell != null) {
-							/* Put cell content on a dragboard */
-							// listArray(orderedData);
-							Dragboard dragboard = cell.startDragAndDrop(TransferMode.MOVE);
-							ClipboardContent content = new ClipboardContent();
-							item = lvFacets.getSelectionModel().getSelectedItem().toString();
-							content.putString(item);
-							iFrom = cell.getIndex();
-							dragboard.setContent(content);
-							event.setDragDetect(true);
-							event.consume();
-						}
-					}
+				cell.setOnDragDetected(event -> {
+					/* drag was detected, start a drag-and-drop gesture */
+					/* allow any transfer mode */
+					String item;
+					/* Put cell content on a dragboard */
+					// listArray(orderedData);
+					Dragboard dragboard = cell.startDragAndDrop(TransferMode.MOVE);
+					ClipboardContent content = new ClipboardContent();
+					item = lvFacets.getSelectionModel().getSelectedItem();
+					content.putString(item);
+					iFrom = cell.getIndex();
+					dragboard.setContent(content);
+					event.setDragDetect(true);
+					event.consume();
 				});
 
-				cell.setOnDragDropped(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						iTo = cell.getIndex();
-						event.setDropCompleted(true);
-						event.consume();
-					}
+				cell.setOnDragDropped(event -> {
+					iTo = cell.getIndex();
+					event.setDropCompleted(true);
+					event.consume();
 				});
 
-				cell.setOnDragExited(new EventHandler<DragEvent>() {
-					@Override
-					public void handle(DragEvent event) {
-						cell.setStyle("-fx-background-color: WHITE;");
-						event.consume();
-					}
+				cell.setOnDragExited(event -> {
+					cell.setStyle("-fx-background-color: WHITE;");
+					event.consume();
 				});
 
 				cell.setOnDragOver(event -> {
@@ -1489,23 +1457,11 @@ public class AnaGroups {
 	}
 
 	/**
-	 * in response to menu item 'Start Over'
-	 * resets essential variables for new start.
-	 */
-	public void reset() {
-		nestedData.clear();
-		crossedData.clear();
-		sDictionary = null;
-		sHDictionary = null;
-	}
-
-	/**
 	 * Checks if a working directory has been specified previously,
 	 * and the operating system specific urGENOVA code has been installed.
 	 */
 	private void testSetup() {
-		//String sWorkingDirectory = prefs.get("Working Directory", null);
-		String sWorkingDirectory = "~/Brennan";
+		String sWorkingDirectory = myMain.getBrennan();
 		String sOS_Full = System.getProperty("os.name");
 		String sUrGenova;
 		if (sOS_Full.contains("Windows"))
@@ -1551,10 +1507,8 @@ public class AnaGroups {
 	 * Handles replications in analysis. In contrast to the method with the same
 	 * name in SynthGroups, this method extracts the replication sample sizes
 	 * from the data file, interpreting the leading index columns.
-	 * 
-	 * @return true if successful false otherwise
 	 */
-	private Boolean doReplications() {
+	private void doReplications() {
 		String[][] sRawData = flr.getRawData();
 		boolean bCondition = (cAsterisk == cReplicate);
 		char cNestor = myNest.getFacet(cReplicate).getNestor();
@@ -1586,7 +1540,7 @@ public class AnaGroups {
 				} else {				// all replicates and dependents on same line
 					if (iCount >= iarReps.length) {
 						myNest.setProblem(3);
-						return false;
+						return;
 					}
 					iarReps[iCount] = (sLine.length - iHighLight)/iFactor;
 					iCount++;
@@ -1601,7 +1555,6 @@ public class AnaGroups {
 		int iR = sDictionary.indexOf(cReplicate);
 		myTree.addSampleSize(iR, iarReps);
 		myNest.setDawdle(iSample++ < myNest.getNestCount() - 1);
-		return true;
 	}
 	
 	/**

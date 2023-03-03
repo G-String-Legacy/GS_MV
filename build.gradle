@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gsusers'
-version '2.0.3'
+version '2.0.4'
 
 repositories {
     mavenCentral()
@@ -103,27 +103,27 @@ jlink {
         vendor = "Open Source"
 
         //un-comment appropriate installerType
-            //installerType = "deb"
-            //installerType = "msi"
-            //installerType = "dmg"
 
-        installerType = "deb"
-         if (installerType = 'deb') {
+        /*
+            installerType = "deb"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
             installerOptions += [
-                    '--linux-deb-maintainer', 'ralph@papaworx.com'
+                '--linux-deb-maintainer', 'ralph@papaworx.com'
             ]
-        }
-        if (installerType = 'msi') {
+        */
+
+        /*
+            installerType = "msi"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.ico']
             installerOptions += [
              '--win-menu',
                 '--win-shortcut'
             ]
-        }
-        if (installerType = 'dmg'){
-            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
+        */
 
-        }
+        /*
+            installerType = "dmg"
+            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.icns']
+        */
     }
 }

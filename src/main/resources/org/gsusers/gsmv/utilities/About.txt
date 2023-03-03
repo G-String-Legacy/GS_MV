@@ -1,5 +1,5 @@
 Application = G_String_M
-Version = 2.0.3  (Java 17)
+Version = 2.0.4  (Java 17)
 Build Date = 2023-03-02
 Copyright = papaworx.com (2007-2023)
 Support = ralph@papaworx.com

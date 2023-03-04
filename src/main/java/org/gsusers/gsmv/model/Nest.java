@@ -875,7 +875,7 @@ public class Nest {
 	 * @param _line  string from ANOVA table
 	 */
 	public void setVariance(String _line) {
-		salVarianceComponents.add(new VarianceComponent(this, _line, sPlatform, logger));
+		salVarianceComponents.add(new VarianceComponent(this, _line, logger));
 	}
 
 	/**

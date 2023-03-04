@@ -86,12 +86,7 @@ public class VarianceComponent {
 	 * string for denominar
 	 */
 	private String sDenominator = null;
-	
-	/**
-	 * current operating system
-	 */
-	private String sPlatform = null;
-	
+
 	/**
 	 * pointer to logger
 	 */
@@ -101,10 +96,9 @@ public class VarianceComponent {
 	 * 
 	 * @param _nest  pointer to Nest
 	 * @param _line  String argument formally characterizing the configuration of the variance component
-	 * @param _sPlatform  String - current operating system
 	 * @param _logger pointer to org.gs_users.gs_lv.GS_Application logger
 	 */
-	public VarianceComponent(Nest _nest, String _line, String _sPlatform, Logger _logger) {
+	public VarianceComponent(Nest _nest, String _line, Logger _logger) {
 		/*
 		 * constructor for G-Analysis
 		 */
@@ -118,7 +112,6 @@ public class VarianceComponent {
 			dVC = 0.0;
 		sPattern = sWords[0];
 		cPattern = sPattern.toCharArray();
-		sPlatform = _sPlatform;
 	}
 
 	public void doCoefficient(StringBuilder sbOut) {
@@ -138,17 +131,9 @@ public class VarianceComponent {
 						dFactor = f.dGetLevel();
 					dDenominator *= dFactor;
 					if (bFirst)
-						try {
-							sb.append(reCode(String.format("%.2f", dFactor)));
-						} catch (UnsupportedEncodingException e) {
-							logger.warning(e.getMessage());
-						}
+						sb.append(String.format("%.2f", dFactor));
 					else
-						try {
-							sb.append(reCode(" x " + String.format("%.2f", dFactor)));
-						} catch (UnsupportedEncodingException e) {
-							logger.warning(e.getMessage());
-						}
+						sb.append(" x " + String.format("%.2f", dFactor));
 					bFirst = false;
 				}
 		}
@@ -176,7 +161,7 @@ public class VarianceComponent {
 		if (sbOut != null) {
 			try {
 				sbOut.append("Variance component '" + sPattern + "' (" + sSignature + ") is " + dVC
-						+ "; denominator is " + sDenominator + ";  " + reCode(sTarget) + "\n");
+						+ "; denominator is " + sDenominator + ";  " + sTarget + "\n");
 			} catch (Exception e) {
 				logger.warning(e.getMessage());
 			}
@@ -235,15 +220,5 @@ public class VarianceComponent {
 
 	public Boolean b_Delta() {
 		return b_Delta;
-	}
-
-	private String reCode(String sInput) throws UnsupportedEncodingException {
-		String sOutput = sInput;
-		if (sPlatform.equals("Mac")) {
-			byte[] buffer = sInput.getBytes("MacGreek");
-			sOutput = new String(buffer);
-			return sOutput;
-		}
-		return sOutput;
 	}
 }

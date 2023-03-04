@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gsusers'
-version '2.0.5'
+version '2.0.6'
 
 repositories {
     mavenCentral()
@@ -78,19 +78,8 @@ jar {
         )
     }
 }
-// un-comment the appropriate installerType
-    //installerType = "deb"
-    //installerType = "msi"
-    //installerType = "dmg"
 
 jlink {
-    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip") as RegularFile
-    options = [
-            '--strip-debug',
-            '--compress', '2',
-            '--no-header-files',
-            '--no-man-pages'
-    ]
     launcher {
         name = 'GS_MV'
     }
@@ -104,13 +93,13 @@ jlink {
 
         //un-comment appropriate installerType
 
-        /*
+/*
             installerType = "deb"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
             installerOptions += [
                 '--linux-deb-maintainer', 'ralph@papaworx.com'
             ]
-        */
+*/
 
         /*
             installerType = "msi"

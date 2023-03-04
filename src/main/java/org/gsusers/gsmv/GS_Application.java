@@ -132,7 +132,7 @@ public class GS_Application extends Application {
         primaryStage = stage;
         scene0 = new Scene(rootLayout, 900, 800);
         Image _img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("GS_MV.png")));
-        stage.setTitle("G_String - GS_M.2.0.1");
+        stage.setTitle("G_String");
         stage.getIcons().add(_img);
         myNest.setScene(scene0);
         flr = new Filer(myNest, prefs, logger, primaryStage);

@@ -1100,15 +1100,15 @@ public class Nest {
 		}
 		sbResult.append("\n");
 
-		sbResult.append(reCode("σ²(τ) = " + String.format("%.4f", dS2_t) + "\n"));
-		sbResult.append(reCode("σ²(δ) = " + String.format("%.4f", dS2_d) + "\n"));
-		sbResult.append(reCode("σ²(Δ) = " + String.format("%.4f", dS2_D) + "\n"));
+		sbResult.append("σ²(τ) = " + String.format("%.4f", dS2_t) + "\n");
+		sbResult.append("σ²(δ) = " + String.format("%.4f", dS2_d) + "\n");
+		sbResult.append("σ²(Δ) = " + String.format("%.4f", dS2_D) + "\n");
 		dRel = dS2_t / (dS2_t + dS2_d);
 		dAbs = dS2_t / (dS2_t + dS2_D);
 		try {
-			sbResult.append(reCode("\nGENERALIZABILITY COEFFICIENTS:\n\n"));
-			sbResult.append(reCode("Eρ²      	= " + String.format("%.2f", dRel) + "\n"));
-			sbResult.append(reCode("Φ           = " + String.format("%.2f", dAbs) + "\n"));
+			sbResult.append("\nGENERALIZABILITY COEFFICIENTS:\n\n");
+			sbResult.append("Eρ²      	= " + String.format("%.2f", dRel) + "\n");
+			sbResult.append("Φ           = " + String.format("%.2f", dAbs) + "\n");
 		} catch (Exception e) {
 			logger.warning(e.getMessage());
 		}
@@ -1346,22 +1346,6 @@ public class Nest {
 	 */
 	public Integer getVcDim() {
 		return darVarianceCoefficients.length;
-	}
-
-	/**
-	 * kluge pipe to deal with 'Mac' coding idiosyncrasy.
-	 *
-	 * @param sInput input string
-	 * @return sOutput  output string
-	 * @throws UnsupportedEncodingException  heuristic for undefined exceptions
-	 */
-	private String reCode(String sInput) throws UnsupportedEncodingException {
-		String sOutput = sInput;
-		if (sPlatform.equals("Mac")) {
-			byte[] buffer = sInput.getBytes("MacGreek");
-			sOutput = new String(buffer);
-		}
-		return sOutput;
 	}
 
 	/**

@@ -8,6 +8,9 @@ import org.gsusers.gsmv.steps.GSetup;
 import org.gsusers.gsmv.steps.SynthGroups;
 import org.gsusers.gsmv.utilities.*;
 
+/**
+ * @author ralph
+ */
 module org.gsusers.gsmv {
     requires javafx.controls;
     requires javafx.fxml;

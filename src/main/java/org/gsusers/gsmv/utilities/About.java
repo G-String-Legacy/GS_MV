@@ -18,6 +18,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Class 'About': formats the two auxiliary Help screens.
+ */
 public class About {
 
 	/**
@@ -36,7 +39,7 @@ public class About {
 	private final String sTitle;
 
 	/**
-	 * constructor
+	 * Constructor
 	 *
 	 * @param _myStage  pointer to MainStage
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger

@@ -44,6 +44,13 @@ public class Lehmer {
 	private Integer iCount = 0;
 	private Boolean bSign = false;
 
+	/**
+	 * Constructor for the case of integer scores
+	 * Generation and initialization, when the class is first called
+	 *
+	 * @param _min  int, lowest possible value
+	 * @param _max  int, highest possible value
+	 */
 	public Lehmer(int _min, int _max){
 		// null generator/initializer
 		iMin = _min;
@@ -52,11 +59,25 @@ public class Lehmer {
 		// to prevent signing, comment out above
 	}
 
+	/**
+	 * Constructor for the case of Double scores
+	 * Generation and initialization, when the class is first called
+	 *
+	 * @param _dMin  Double, lowest possible value
+	 * @param _dMax  Double, highest possible value
+	 */
 	public Lehmer(Double _dMin, Double _dMax){
 		dMin = _dMin;
 		dMax = _dMax;
 	}
 
+	/**
+	 * Iteration step adjusting each generated simulated data item
+	 * according to the current random number
+	 *
+	 * @param data_raw  int input score
+	 * @return  int adjusted output score
+	 */
 	public int adjust(int data_raw){
 		Integer data_adjusted = data_raw;
 		Boolean dataEven = (data_raw % 2 == 0);
@@ -69,10 +90,20 @@ public class Lehmer {
 		return data_adjusted;
 	}
 
+	/**
+	 * Summarize, exports the total number of signature violations
+	 *
+	 * @return  Integer number of violations
+	 */
 	public Integer Summarize(){
 		return iCount;
 	}
 
+	/**
+	 * Test, counts the number of times the signature is violated
+	 *
+	 * @param data  Double current score
+	 */
 	public void Test(Double data){
 		Boolean bEven = Even();
 		Double dMod = data % 2.0;
@@ -82,6 +113,11 @@ public class Lehmer {
 			iCount++;
 	}
 
+	/**
+	 * returns a boolean based on Lehmer's method, each time it is called
+	 *
+	 * @return
+	 */
 	private Boolean Even(){
 		// Lehmer calculation returning even/odd binary
 		X = (X * a) % m;

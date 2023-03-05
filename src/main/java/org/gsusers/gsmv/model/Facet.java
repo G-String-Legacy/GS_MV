@@ -280,6 +280,12 @@ public class Facet {
 		return cFacetType;
 	}
 
+	/**
+	 * Getter for FacetLevel, the appropriate sample size average
+	 * for a given facet, used in D-Studies.
+	 *
+	 * @return  Double value of level
+	 */
 	public Double getFacetLevel()
 	{
 		return dFacetLevel;

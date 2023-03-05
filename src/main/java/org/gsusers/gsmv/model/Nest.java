@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import org.gsusers.gsmv.utilities.VarianceComponent;
 
 /**
- * <h1>class Nest</h1>
+ * class Nest
  * Encapsulates the major parameters of the assessment design, and the central variables required for analysis.
  * <code>Nest</code> is used in most other classes as common repository to access central variables and parameters.
  *
@@ -450,6 +450,11 @@ public class Nest {
 		bSimulate = _bSimulate;
 	}
 
+	/**
+	 * Setter for script title
+	 *
+	 * @param _sTitle  String title of control file
+	 */
 	public void setTitle(String _sTitle) {
 		sScriptTitle = _sTitle;
 	}
@@ -471,7 +476,12 @@ public class Nest {
 	public void setFacetCount(Integer _iFacetCount) {
 		iFacetCount = _iFacetCount;
 	}
-	
+
+	/**
+	 * Setter for subject facet
+	 *
+	 * @param  _fSubject  subject facet
+	 */
 	public void setSubject(Facet _fSubject) {
 		fSubject = _fSubject;
 	}
@@ -970,7 +980,10 @@ public class Nest {
 		}
 		
 	}
-	
+
+	/**
+	 * Setter of Facet array
+	 */
 	public void createFacets() {
 		farFacets = new Facet[iFacetCount];
 		farFacets[0] = fSubject;
@@ -1279,7 +1292,7 @@ public class Nest {
 	/**
 	 * converts String array list to String array.
 	 *
-	 * @param _salNestedNames
+	 * @param _salNestedNames Array of Strings  names of nested combinations
 	 */
 	public void setSarNestedNames(ArrayList<String> _salNestedNames) {
 		int i = 0;
@@ -1357,7 +1370,7 @@ public class Nest {
 		return myTree;
 	}
 
-	/*
+	/**
 	 * Returns dictionary ordered for purpose of synthesis:
 	 * first from crossed to most nested, then according
 	 * to data order.
@@ -1373,7 +1386,7 @@ public class Nest {
 		String ss;
 		while (iCount <= L) {
 			for (String s : sarNestedNames) {
-				if(s.equals(null) | s.equals(" "))
+				if((s == null) || s.equals(" "))
 						break;
 				ss = s.replace(":", "");
 				if (ss.length() == iDepth) {
@@ -1578,6 +1591,7 @@ public class Nest {
 	
 	/**
 	 * Debug utility, prints out an int[] array.
+	 *
 	 * @param iArray  any integer array to be printed
 	 */
 	public void printIntArray(int[] iArray) {
@@ -1586,13 +1600,16 @@ public class Nest {
 			sb.append(", ").append(iArray[i]);
 		System.out.println(sb);
 	}
-	
+
+	/**
+	 * Dummy switch constant for internal control
+	 * This is a VERY IMPORTANT SWITCH! It can only be changed by directly
+	 * entering the value here. It controls, whether exceptions get logged, or
+	 * cause a stack trace printout in debugging mode.
+	 *
+	 * @return Boolean switch for trace mode
+	 */
 	public Boolean getStackTraceMode() {
-		/*
-		 * This is a VERY IMPORTANT SWITCH! It can only be changed by directly
-		 * entering the value here. It controls, whether exceptions get logged, or
-		 * cause a stack trace printout in debugging mode.
-		 */
 		return true;
 	}
 }

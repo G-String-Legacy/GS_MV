@@ -9,14 +9,14 @@ import org.gsusers.gsmv.model.Nest;
 /**
  * 'VarianceComponent' (vc) is a class of objects for the calculation of
  * Generalizability Coefficients used in 'Nest', method 'formatResults'.
- * There is one one vc object for each actual variance component value.
+ * There is one vc object for each actual variance component value.
  * The object calculates the contribution of this variance component
  * to the final Generalization Coefficient.
  * VC also handles Brennan's rules for calculating sigma2(tau), sigma2(delta),
  * and sigma2(Delta) [Brennan, Generalizability Theory, pp 144/5]
  * For each variance component it thus determines three booleans (b_tau, b_delta,
  * and b_Delta to signify that this variance component gets added to the corresponding
- * sigma squares. This step then occurs in Nest.formatResults.
+ * sigma square. This step then occurs in Nest.formatResults.
  * During D-Studies it changes the signature item of fixed facets to 'f', thus
  * excluding them from contributing to the error terms delta and Delta.
  *
@@ -93,7 +93,8 @@ public class VarianceComponent {
 	private Logger logger;
 	
 	/**
-	 * 
+	 * Class constructor
+	 *
 	 * @param _nest  pointer to Nest
 	 * @param _line  String argument formally characterizing the configuration of the variance component
 	 * @param _logger pointer to org.gs_users.gs_lv.GS_Application logger
@@ -114,6 +115,11 @@ public class VarianceComponent {
 		cPattern = sPattern.toCharArray();
 	}
 
+	/**
+	 * Assembles formal lexical description of coefficient
+	 *
+	 * @param sbOut pointer to string builder returning the description
+	 */
 	public void doCoefficient(StringBuilder sbOut) {
 			StringBuilder sb = new StringBuilder();
 			Double dFactor = 0.0;
@@ -168,6 +174,12 @@ public class VarianceComponent {
 		}
 	}
 
+	/**
+	 * Tests if Variance component contains a specific facet
+	 *
+	 * @param _c  char of facet
+	 * @return Boolean of confirmation
+	 */
 	private Boolean has(char _c) {
 		/**
 		 * simplified 'Signature contains' function
@@ -175,25 +187,51 @@ public class VarianceComponent {
 		return (sSignature.indexOf(_c) >= 0);
 	}
 
+	/**
+	 * getter of vc denominator
+	 *
+	 * @return Doublr denominator
+	 */
 	public Double getDenominator() {
 		return dDenominator;
 	}
 
+	/**
+	 * getter of vc pattern
+	 *
+	 * @return String lexical description of vc
+	 */
 	public String getPattern() {
 		return sPattern;
 	}
 
+	/**
+	 *getter of vc value
+	 *
+	 * @return Double vc value
+	 */
 	public Double getVarianceComponent() {
 		return dVC;
 	}
 
+	/**
+	 * getter of signature of vc in terms of facet types ('d', 'g', or 's' for G-Studies)
+	 *
+	 * @return String of signature
+	 */
 	public String getSignature() {
 		return sSignature;
 	}
 
+	/**
+	 * getter of signature of vc in D-Studies ('d', 's' and 'r' or 'f' for facets of generalization
+	 *
+	 * @param _pattern String, lexical description in terms of 'd', 'g', 's' and ':'
+	 * @return
+	 */
 	private String sign(String _pattern) {
 		char[] cPattern = _pattern.toCharArray();
-		char cTemp = 'x';
+		char cTemp;
 		StringBuilder sb = new StringBuilder();
 		for (char c : cPattern) {
 			if (c == ':')
@@ -210,14 +248,29 @@ public class VarianceComponent {
 		return sb.toString();
 	}
 
+	/**
+	 * getter of confirmation that vc is a tau
+	 *
+	 * @return Boolean confirmation
+	 */
 	public Boolean b_tau() {
 		return b_tau;
 	}
 
+	/**
+	 * getter of confirmation that vc is delta
+	 *
+	 * @return Boolean confirmation
+	 */
 	public Boolean b_delta() {
 		return b_delta;
 	}
 
+	/**
+	 * getter of confirmation that vc is Delta
+	 *
+	 * @return Boolean confirmation
+	 */
 	public Boolean b_Delta() {
 		return b_Delta;
 	}

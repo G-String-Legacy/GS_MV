@@ -17,7 +17,7 @@ import org.gsusers.gsmv.utilities.Factor;
 import org.gsusers.gsmv.utilities.SampleSizeView;
 
 /**
- * <h1>Class SampleSizeTree</h1>
+ * Class SampleSizeTree
  * The SampleSizeTree object contains the whole structure of the sample
  * sizes for both crossed and nested facets, as well management of indices,
  * incrementing indices (stepping), and calculation of of range for each
@@ -1153,7 +1153,13 @@ public class SampleSizeTree {
 	public int getDepth(int _iC) {
 		return iarDepths[_iC];
 	}
-	
+
+	/**
+	 * Getter of iarDepth by facet character
+	 *
+	 * @param cF char of 'Effect' facet
+	 * @return  int  maximal number of states per 'Effect'
+	 */
 	public int getDepth(char cF) {
 		int i = sHDictionary.indexOf(cF);
 		return iarDepths[i];

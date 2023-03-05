@@ -183,13 +183,24 @@ public class CombConstrct {
 		int L = cArray.length - 1;
 		return myTree.getMaxSum(cArray[L]);
 	}
-	
+
+	/**
+	 * inverts a string
+	 *
+	 * @param s  String input
+	 * @return  String inverted string
+	 */
 	private String sReverse(String s) {
 		StringBuilder sb = new StringBuilder(0);
 		sb.append(s);
 		return sb.reverse().toString();
 	}
-	
+
+	/**
+	 * Counts the number of facet combination for the Variance components
+	 *
+	 * @return  number of facet combinations giving raise to variance components
+	 */
 	public int getConfigurationCount() {
 		return iConfigurationCount;
 	}

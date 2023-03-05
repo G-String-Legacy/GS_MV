@@ -2,9 +2,20 @@ package org.gsusers.gsmv.utilities;
 
 import org.gsusers.gsmv.model.Facet;
 import org.gsusers.gsmv.model.SampleSizeTree;
+/**
+ * This class encapsulates design factors - factors
+ * within a configuration. It  calculates the absolute size
+ * of this factor, and the indices dependent count for
+ * this factor. That makes it easy to calculate size and count
+ * for the configuration.
+ * A 'factor' encapsulates the structure and properties of individual or nested facet combinations
+ * forming factors' in crossed designs.
+ *
+ */
+
 
 public class Factor {
-	
+
 	/**
 	 * pointer to SampleSizeTree object
 	 */
@@ -51,12 +62,8 @@ public class Factor {
 	private String sFloor;
 
 	/**
-	 * This class encapsulates design factors - factors
-	 * within a configuration. It  calculates the absolute size
-	 * of this factor, and the indices dependent count for
-	 * this factor. That makes it easy to calculate size and count 
-	 * for the configuration.
-	 * 
+	 * Constructor
+	 *
 	 * @param _tree  pointer to SampleSizeTree
 	 * @param _sFactor  description of actual 'Factor' content
 	 */
@@ -69,7 +76,13 @@ public class Factor {
 		iFloors = sarFloors.length;
 		iarSizes = new int[iFloors][][];
 	}
-	
+
+	/**
+	 * Getter of factor size, i.e. the maximal number of states, this factor
+	 * can assuem.
+	 *
+	 * @return  int maximal number of states
+	 */
 	public int getSize() {
 		int iF = -1;
 		int[] iProducts = null;
@@ -113,7 +126,13 @@ public class Factor {
 		}
 		return iProduct;
 	}
-	
+
+	/**
+	 * Current count of states in the factor, as function of the
+	 * relevant facet indices.
+	 *
+	 * @return  int number of states
+	 */
 	public int getCount() {
 		int iF = -1;
 		int[] iProducts = null;

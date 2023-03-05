@@ -39,6 +39,7 @@ public class GSetup
 	/**
 	 * constructor for <code>gSetup</code>.
 	 *
+	 * @param _sWorking  name of 'Working Directory'
 	 * @param _stage  display screen
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _prefs  Preferences

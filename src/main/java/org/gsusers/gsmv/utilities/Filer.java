@@ -559,6 +559,11 @@ public class Filer {
 		return iHilight;
 	}
 
+	/**
+	 * Getter of missing scores in data file
+	 *
+	 * @return  Integer number of missing scores
+	 */
 	public Integer missingItems() {
 		/*
 		 * number of missing items

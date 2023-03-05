@@ -31,6 +31,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+/**
+ * Main class of project
+ */
 public class GS_Application extends Application {
 
     /**
@@ -105,6 +108,15 @@ public class GS_Application extends Application {
      */
     private Scene storedScene = null;
 
+    /**
+     * 'start' method of javafx application
+     *
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws IOException  if FXMLLoader fails to load
+     */
     @Override
     public void start(Stage stage) throws IOException {
         String sUser = System.getProperty("user.home");
@@ -152,6 +164,11 @@ public class GS_Application extends Application {
         }
     }
 
+    /**
+     * Obligatory main stub of javafx application
+     *
+     * @param args  optional string array of arguments, unused
+     */
     public static void main(String[] args) {
         launch();
     }
@@ -496,6 +513,8 @@ public class GS_Application extends Application {
      * In response to GUI, allows user to set program preferences that will be stored.
      * <p>
      * {@code @return,} Scene for preferences control;
+     *
+     * @return  javafx scene showing user preferences, interactive
      */
     public Scene prefChanger() {
 

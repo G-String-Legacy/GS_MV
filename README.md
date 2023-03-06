@@ -11,6 +11,6 @@ So what does the **M** in **GS_M** stand for?
 - **M** for **Modern**: Java 8 was strictly an Oracle product that also included graphic libraries. From version 9 on, the graphics libraries (javafx) became a separate product, and the market split further between official, commercially licensed Oracle products, and a variety of Open Sources. So each installation of an operating system typically can have different combinations of java and javafx versions installed. As a consequence, installing non-modular graphical applications has become a nightmare. Modern G_String **GS_M** therefore carries the required libraries already in the installation package.
 - **M** for **Mega**: as a consequence **GS_M** is much bigger than **GS_L**, typically closer to 100 MB.
 
-In other words **GS_M** will make G_String more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital ecosystem.
+In other words **GS_M** is making G_String more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital ecosystem.
 
 Early releases for Linux, Windows and macOS can now be [downloaded here](https://github.com/Papa-26/GS_LV/releases).

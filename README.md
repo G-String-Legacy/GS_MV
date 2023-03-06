@@ -1,4 +1,4 @@
-(you came here via the "factory entrance". Unless you are highly computer literate, you are better off skipping to the [wiki](https://github.com/Papa-26/GS_LV/wiki).)
+(You came here via the "factory entrance". Unless you are highly computer literate, you are better off skipping to the [wiki](https://github.com/Papa-26/GS_LV/wiki).)
 ## The GS_M Project
 This repository serves the distribution, maintenance, support, and further development of G_String_M, an upgraded version of [G_String](https://github.com/G-String-Legacy/G_String), a software tool allowing generalists to perform Generalizability Analysis of performance evaluations.
 In contrast to more general statistical tools, G_String does not require a great deal of mathematical sophistication. It guides the user through the accepted mathematical algorithms.
@@ -13,6 +13,4 @@ So what does the **M** in **GS_M** stand for?
 
 In other words **GS_M** will make G_String more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital ecosystem.
 
-Early releases for Linux, Windows and macOS can now be [downloaded](https://github.com/Papa-26/GS_LV/releases).
-
-*** The GS_M software is protected by a GPLv3 license. ***
+Early releases for Linux, Windows and macOS can now be [downloaded here](https://github.com/Papa-26/GS_LV/releases).

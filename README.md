@@ -7,7 +7,7 @@ Until the present, G_String was programmed in traditional Oracle Java 8. But ove
 The key to this development was to incorporate G_String with its own build tool - Gradle.
 
 So what does the **M** in **GS_M** stand for?
-- **M** for **Modular**: old G_String was coded entirely in Oracle Java version 8, which had an overly simple structure structure, and therefore was more subsceptible to problems. Since Java 9, Oracle has introduced a modular program structure. **GS_M** is coded accordingly.
+- **M** for **Modular**: old G_String was coded entirely in Oracle Java version 8, which had an overly simple structure, and therefore was more subsceptible to problems. Since Java 9, Oracle has introduced a modular program structure. **GS_M** is coded accordingly.
 - **M** for **Modern**: Java 8 was strictly an Oracle product that also included graphic libraries. From version 9 on, the graphics libraries (javafx) became a separate product, and the market split further between official, commercially licensed Oracle products, and a variety of Open Source software. So each installation of an operating system typically can have different combinations of java and javafx versions installed. As a consequence, installing non-modular graphical applications has become a nightmare. Modern G_String **GS_M** carries the required libraries already in the installation package.
 - **M** for **Mega**: as a consequence **GS_M** is much bigger than **GS_L**, typically closer to 100 MB.
 

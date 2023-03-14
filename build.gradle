@@ -10,7 +10,7 @@ GS_M builds install packages for the three major OS platforms: Linux, Windows, a
 Consequently GS_M has three versions, one for each of the three platforms.
 They only differ in a few lines, dealing with installer packaging. These sections will be commented.
 However, it is important to keep the software version synchronized between the platform builds.
-Version number has to be updated on: (i) build gradle, (i) resource /utilities/About.txt, (iii) GS_Application (~141)
+Version number has to be updated on: (i) build gradle, (ii) resource /utilities/About.txt.
 The versioning convention is as follows:
     version: a.b.c (a, b, and c are integers from 0 incrementing)
     a - major version, incorporating significant functional changes.
@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gsusers'
-version '2.0.6'
+version '2.0.7'
 
 repositories {
     mavenCentral()

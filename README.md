@@ -1,4 +1,4 @@
-(You came here via the "factory entrance". Unless you are highly computer literate, you are better off skipping to the [wiki](https://github.com/Papa-26/GS_LV/wiki).)
+(You came here via the "factory entrance". Unless you are highly computer literate, you are better off skipping to the **[wiki](https://github.com/Papa-26/GS_LV/wiki)**.)
 ## The GS_MV Project
 This repository serves the distribution, maintenance, support, and further development of G_String_M, an upgraded version of [G_String_L](https://github.com/G-String-Legacy/G_String), a software tool allowing generalists to perform [Generalizability Analysis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699529/#:~:text=Generalizability%20studies%20provide%20a%20better,within%20the%20universe%20of%20scores.) of performance evaluations.
 In contrast to more general statistical tools, G_String does not require a great deal of mathematical sophistication. It guides the user through the accepted mathematical algorithms.

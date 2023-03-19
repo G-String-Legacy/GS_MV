@@ -519,17 +519,6 @@ public class AnaGroups {
 		return content;
 	}
 
-	/*
-	 * generates bound GUI sub form to specify each specific facet.
-	 * iFacetID provides an index for the specific facet.
-	 * It is used in both 'mainSubjectGroup' (x 1), and 'subjectsGroup' (x1 to many).
-	 * It assigns full facet name, facet char designation, and the facts whether a facet
-	 * is crossed or nested, and if the latter, is replicated.
-	 *
-	 * @param sCue  header string
-	 * @param iFacetID original order of new Facet
-	 * @return <code>Group</code> essentially the sub -'Scene' for Facet details entry to be sent to the GUI
-	 */
 	/**
 	 * generates bound GUI sub form to specify each specific facet.
 	 * iFacetID provides an index for the specific facet.

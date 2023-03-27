@@ -144,7 +144,7 @@ public class GS_Controller {
      * displaye 'About G_String' info
      */
     private void about() {
-        About myAbout = new About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_L");
+        About myAbout = new About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_M");
         myAbout.show();
     }
 

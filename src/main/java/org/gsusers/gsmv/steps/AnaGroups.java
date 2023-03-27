@@ -1093,7 +1093,7 @@ public class AnaGroups {
 		ArrayList<String> result = new ArrayList<>();
 		int iMax;
 		String sTemp;
-		if (myNest.getNests() != null)
+		if (myNest.complete())
 			if (!isNested)
 				return myNest.getNests();
 			else

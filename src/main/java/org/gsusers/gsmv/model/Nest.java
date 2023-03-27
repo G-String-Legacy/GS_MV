@@ -1612,5 +1612,14 @@ public class Nest {
 	public Boolean getStackTraceMode() {
 		return true;
 	}
+
+	/**
+	 * Test if previous nest setup was complete
+	 *
+	 * @return true, if complete
+	 */
+	public Boolean complete(){
+		return (sarNestedNames != null);
+	}
 }
 

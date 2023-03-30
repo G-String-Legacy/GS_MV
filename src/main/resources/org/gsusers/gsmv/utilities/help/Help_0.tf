@@ -8,3 +8,7 @@
 <sub>Action > Re-analyze|If you already have a script with the necessary information to re-run a previous analysis.</sub>
 <sub>Action > Analyze Replication|To run an analysis of a new replicating data set.</sub>
 <sub>Action > Re-analyze Replication|To re-analyze a replicating data set with an exiating script</sub>
+<sub>Action > Synthesize new|Allows experts to generate synthetic data files for a new scenario</sub>
+<sub>Action > Re-synthesize|To generate a new synthetic data file, using an existing script.</sub>
+<sub>Preferences > Change Preferences|allows expert users to modify some functionality and appearance of G_String_V.</sub>
+<sub>Help > Access to a variety of 'Help' screens|</sub>

@@ -510,7 +510,7 @@ public class SampleSizeTree {
 		// returns effect line for control file
 		StringBuilder sb = new StringBuilder("EFFECT       ");
 		String sNest = sarNests[iRow];
-		if (sNest.toCharArray()[0] == cAsterisk)
+		if (sNest.toCharArray()[0] == sDictionary.toCharArray()[0])
 			sb.append("* ");
 		sb.append(padRight(sNest, 12));
 		char cFacet = sNest.toCharArray()[0];

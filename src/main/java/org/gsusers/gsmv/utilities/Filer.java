@@ -42,7 +42,6 @@ import org.gsusers.gsmv.model.SampleSizeTree;
  * parameters). 'Scan': reads, scans and displays data to establish format
  * parameters and sample sizes (auto-index)
  *
- * @see <a href="https://github.com/G-String-Legacy/G_String/blob/main/workbench/GS_L/src/utilities/Popup.java">utilities.Filer</a>
  * @author ralph
  * @version %v..%
  */

@@ -247,7 +247,11 @@ public class Nest {
 	 * i.e. a setback.
 	 */
 	private int iResume = -1;
-	
+
+	/**
+	 * Builds sDictionary and sHDictionary strings;
+	 */
+	private StringBuilder sbDictionary = null;
 	/**
 	 * Placeholder for subject facet.
 	 */
@@ -266,6 +270,7 @@ public class Nest {
 		sbHFO = new StringBuilder();
 		logger = _logger;
 		myMain = _myMain;
+		sbDictionary = new StringBuilder();
 		/*
 		 * <code>prefs</code> pointer to <code>Preferences</code> API.
 		 */
@@ -361,6 +366,7 @@ public class Nest {
 	public void setAsterisk(int _iAsterisk) {
 		char[] cFacets = sDictionary.toCharArray();
 		cAsterisk = cFacets[_iAsterisk];
+		myTree.setAsterisk(cAsterisk);
 		for (char c : cFacets)
 			getFacet(c).setAsterisk(c == cAsterisk);
 	}
@@ -561,6 +567,7 @@ public class Nest {
 	 */
 	public void addComment(String _sCommentLine) {
 		salComments.add(_sCommentLine);
+
 	}
 
 	/**
@@ -573,6 +580,7 @@ public class Nest {
 			falFacets = new ArrayList<>();
 		_f.setAsterisk(false);
 		falFacets.add(_f);
+		sbDictionary.append(_f.getDesignation());
 	}
 
 	/**
@@ -587,16 +595,13 @@ public class Nest {
 		 */
 
 		if ((farFacets == null) || (farFacets.length == 0)) {
-			StringBuilder sb = new StringBuilder();
 			iFacetCount = falFacets.size();
 			farFacets = new Facet[iFacetCount];
-			for (int i = 0; i < iFacetCount; i++) {
-				Facet f = falFacets.get(i);
-				farFacets[i] = f;
-				sb.append(f.getDesignation());
-			}
-			sDictionary = sb.toString();
+			for (int i = 0; i<iFacetCount; i++)
+				farFacets[i] = falFacets.get(i);
 			falFacets = null;
+			sDictionary = sbDictionary.toString();
+			sbDictionary = new StringBuilder();
 		}
 		boolean bAsterisk = false;
 		char cTarget;
@@ -617,16 +622,22 @@ public class Nest {
 				sNest = words[0].substring(1, iLength);
 			}
 			cAsterisk = sNest.toCharArray()[0];
+			myTree.setAsterisk(cAsterisk);
 			getFacet(cAsterisk).setAsterisk(true);
 		}
 		String[] sFacets = sNest.split(":");
 		cTarget = sFacets[0].charAt(0);
-		if (bAsterisk)
+		if (bAsterisk) {
 			cAsterisk = cTarget;
+			myTree.setAsterisk(cAsterisk);
+		}
 		if (sNest.length() > 1) {
 			bPrimary = false;
 			cNestor = sFacets[1].charAt(0);
+			if ((cNestor == cAsterisk) && bReplicate)
+				cReplicate = cTarget;
 		}
+		sbDictionary.append(cTarget);
 		this.getFacet(cTarget).setNested(!bPrimary);
 		this.getFacet(cTarget).setNestor(cNestor);
 		salNestedNames.add(sNest);
@@ -649,6 +660,7 @@ public class Nest {
 	 */
 	public void addFormat(String _sFormat) {
 		sFormat = _sFormat;
+		sHDictionary = sbDictionary.toString();
 	}
 
 	/**
@@ -996,10 +1008,12 @@ public class Nest {
 	 */
 	public void createDictionary() {
 		StringBuilder sb = new StringBuilder();
-		for (Facet f : farFacets)
-			sb.append(f.getDesignation());
-		sDictionary = sb.toString();
-		sHDictionary = sDictionary;
+		if (sDictionary == null) {
+			for (Facet f : farFacets)
+				sb.append(f.getDesignation());
+			sDictionary = sb.toString();
+			sHDictionary = sDictionary;
+		}
 	}
 
 	/**
@@ -1171,6 +1185,10 @@ public class Nest {
 	 * @return nested names array
 	 */
 	public String[] getNestedNames() {
+		int i = 0;
+		sarNestedNames = new String[salNestedNames.size()];
+		for (String s : salNestedNames)
+			sarNestedNames[i++] = s;
 		return sarNestedNames;
 	}
 
@@ -1619,7 +1637,7 @@ public class Nest {
 	 * @return true, if complete
 	 */
 	public Boolean complete(){
-		return (sarNestedNames != null);
+		return (sarNestedNames.length != 0);
 	}
 }
 

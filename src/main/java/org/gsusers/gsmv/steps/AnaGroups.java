@@ -531,6 +531,7 @@ public class AnaGroups {
 	 * @return <code>Group</code> essentially the sub -'Scene' for Facet details entry to be sent to the GUI
 	 */
 	private Group facetGroup(String sCue, Integer iFacetID) {
+		Boolean bIsReplicate = false;
 		Facet tempFacet;
 		Boolean isNested = false;
 		Group facetGroup = new Group();
@@ -596,8 +597,8 @@ public class AnaGroups {
 		butNested.setToggleGroup(nestGroup);
 		butNested.setSelected(isNested);
 		butNested.setToggleGroup(nestGroup);
-		//nestGroup.selectToggle(isNested ? butNested : butCrossed);
 		RadioButton butReplication = new RadioButton();
+		butReplication.setSelected(bRep);
 		butNested.selectedProperty().addListener((observable, oldToggle, newToggle) -> {
 			if (newToggle != oldToggle) {
 				myNest.setFacetNested(iFacetID, newToggle);
@@ -745,8 +746,8 @@ public class AnaGroups {
 		vbOuter.getChildren().add(lbTitle);
 		myNest.createDictionary();
 		sDictionary = myNest.getDictionary();
-		sHDictionary = sDictionary;
-		cAsterisk = myNest.getAsterisk();
+		sHDictionary = myNest.getHDictionary();
+		cAsterisk = sDictionary.toCharArray()[0];
 		for (int i = 0; i < sHDictionary.length(); i++)
 			orderedData.add(sHDictionary.substring(i, i + 1));
 		lvFacets.setItems(orderedData);
@@ -887,10 +888,15 @@ public class AnaGroups {
 	 */
 	private Group setNestingGroup() {
 		String dataFormat = "-fx-font-size: 1.5em ;";
+		String[] sarNestedNames = myNest.getNestedNames();
 		nestedData.clear();
-		nestedData.addAll(filteredFacetList(true));
 		crossedData.clear();
-		crossedData.addAll(filteredFacetList(false));
+		if (sarNestedNames.length != 0)
+			crossedData.addAll(sarNestedNames);
+		else {
+			crossedData.addAll(filteredFacetList(false));
+			nestedData.addAll(filteredFacetList(true));
+		}
 		saveNested(crossedData);
 		Group group = new Group();
 		VBox vb = new VBox(20);

@@ -13,7 +13,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads" />
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,7 +137,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [run]">
+  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
     <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -260,10 +265,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
-        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_MV [jlink]" />
       </list>
     </recent_temporary>
@@ -298,19 +303,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java</url>
-          <line>637</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java</url>
-          <line>306</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java</url>
-          <line>325</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
+          <line>739</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

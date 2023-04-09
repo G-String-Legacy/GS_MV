@@ -30,7 +30,7 @@
         <MenuItem fx:id="mnuIntro" mnemonicParsing="false" text="Background" />
         <MenuItem fx:id="mnuUHelp" mnemonicParsing="false" text="urGenova Manual" />
         <SeparatorMenuItem mnemonicParsing="false" />
-        <MenuItem fx:id="mnuAbout" mnemonicParsing="false" text="About G_String_L" />
+        <MenuItem fx:id="mnuAbout" mnemonicParsing="false" text="About G_String_M" />
         <MenuItem fx:id="mnuAboutB" mnemonicParsing="false" text="About urGenova" />
       </Menu>
     </MenuBar>

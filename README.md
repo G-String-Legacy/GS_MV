@@ -13,4 +13,4 @@ So what does the **M** in **GS_M** stand for?
 
 In other words **GS_M** is more stable, easier to install, easier to maintain, and easier to adapt to changes in the digital ecosystem than old **GS_L**.
 
-Early releases for Linux, Windows and macOS can now be [downloaded here](https://github.com/Papa-26/GS_LV/releases).
+GS_M releases for Linux, Windows and macOS can now be [downloaded here](https://github.com/Papa-26/GS_LV/releases).

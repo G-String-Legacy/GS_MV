@@ -3,5 +3,5 @@
 <sub>Facet Name:|a term adequately describing a given categorizable factor that could influence the performance measure of the subject.</sub>
 <sub>Label:|a single character that stands for that facet in the calculations. Make sure that subject and facets carry distinct labels.</sub>
 <sub>Nesting:|a dichotomous choice whether this facet stands by itself, or it is nested in another facet.</sub>
-<sub>Column Index:|if you are in Auto-Index mode, and the facet has an index column, set the value to the number of the column (counting from 1).</sub>
+<sub>Replicate:|When analyzing a design with a replicating facet, the facet can be labeled as such by first selecting 'Nested', followed by 'Replicate'.</sub>
 <para>When you are done with this screen, click on "Next Step".</para>

@@ -1,6 +1,6 @@
 Application = G_String_M
-Version = 2.0.9  (Java 17)
-Build Date = 2023-04-09
+Version = 2.0.10  (Java 17)
+Build Date = 2023-05-16
 Copyright = papaworx.com (2007-2023)
 Support = ralph@papaworx.com
 Institution = McMaster University

@@ -13,12 +13,12 @@
         <MenuItem fx:id="mnuExit" mnemonicParsing="false" text="Exit" />
       </Menu>
       <Menu fx:id="mnuAction" mnemonicParsing="false" text="Action">
-        <MenuItem fx:id="mnuActionFresh" mnemonicParsing="false" text="Analyze new" />
-        <MenuItem fx:id="mnuActionStartOver" mnemonicParsing="false" text="Re-analyze" />
-        <MenuItem fx:id="mnuReplicate" mnemonicParsing="false" text="Analyze replication" />
-        <MenuItem fx:id="mnuReReplicate" mnemonicParsing="false" text="Re-analyse replication" />
-        <MenuItem fx:id="mnuSimulate" mnemonicParsing="false" text="Synthesize new " />
-        <MenuItem fx:id="mnuResimulate" mnemonicParsing="false" text="Re-synthesize" />
+        <MenuItem fx:id="mnuActionFresh" mnemonicParsing="false" text="Manual G Study" />
+        <MenuItem fx:id="mnuActionStartOver" mnemonicParsing="false" text="Scripted G Study" />
+        <MenuItem fx:id="mnuReplicate" mnemonicParsing="false" text="Manual Replication" />
+        <MenuItem fx:id="mnuReReplicate" mnemonicParsing="false" text="Scripted Replication" />
+        <MenuItem fx:id="mnuSimulate" mnemonicParsing="false" text="Manual Synthesis" />
+        <MenuItem fx:id="mnuResimulate" mnemonicParsing="false" text="Scripted Synthesis" />
       </Menu>
       <Menu mnemonicParsing="false" text="Preferences">
             <items>

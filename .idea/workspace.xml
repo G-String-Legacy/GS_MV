@@ -14,10 +14,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/GS_MV.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/GS_MV_1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_0.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_0.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_3.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_4.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_4.tf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +90,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/package-info.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Help_4.tf" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -108,26 +116,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ralph/IDEA_Projects/GS_MV&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/ralph/IDEA_Projects/GS_MV/src/main/resources/org/gsusers/gsmv",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv" />
+      <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
       <recent name="$PROJECT_DIR$/src/main/java/org/gs_users/gs_mv" />
-      <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv/steps" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv" />
@@ -137,7 +145,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
+  <component name="RunManager" selected="Gradle.GS_LV [run]">
     <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -265,9 +273,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [build]" />
+        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [clean]" />
         <item itemvalue="Gradle.GS_MV [jlink]" />
       </list>
@@ -302,10 +310,30 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
           <line>739</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
+          <line>415</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java</url>
+          <line>1351</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/ConstructSimulation.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/ConstructSimulation.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

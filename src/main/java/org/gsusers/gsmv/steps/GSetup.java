@@ -5,9 +5,7 @@ import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import org.gsusers.gsmv.GS_Application;
 
 /**
  * Provides the screen for program setup
@@ -35,19 +33,26 @@ public class GSetup
 	//private Long iBytes;
 
 	private String sWorking ;
+	private String sTargetName = null;
+	private String sResourceName = null;
+
 
 	/**
 	 * constructor for <code>gSetup</code>.
+	 * GSetup tests if working directory for Brennan's urGenova exists,
+	 * and creates it, if not. It populates it with the appropriate
+	 * version of urGenova, according the the actual operating system.
+	 *   In earlier versions of G_String users had had to create a working directory anywhere,
+	 *   and with any name. Now it happens automatically in the user's home directory,
+	 *   and it is named "G_String_Working_Directory".
 	 *
-	 * @param _sWorking  name of 'Working Directory'
-	 * @param _stage  display screen
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _prefs  Preferences
 	 */
-	public GSetup(String _sWorking, Stage _stage, Logger _logger, Preferences _prefs)
-	{
-		sWorking = _sWorking;
-		myStage = _stage;
+	public GSetup(Logger _logger, Preferences _prefs) throws IOException {
+		String sHome = System.getProperty("user.home");
+		String fileSeparator = File.separator;
+		sWorking = sHome + fileSeparator + "G_String_Working_Directory";
 		logger = _logger;
 		prefs = _prefs;
 		try {
@@ -55,6 +60,9 @@ public class GSetup
 		} catch(Exception e) {
 			logger.warning (e.getMessage());
 		}
+		File fTemp = new File(sWorking);
+		if (!fTemp.exists())
+			getBrennan(sWorking);
 	}
 
 	/**
@@ -64,27 +72,7 @@ public class GSetup
 	 */
 	public void ask() throws IOException
 	{
-		/*DirectoryChooser dc = new DirectoryChooser();
-		dc.setInitialDirectory(null);
-		File fDir = new File(System.getProperty("user.home"));
-		if (fDir.exists())
-			dc.setInitialDirectory(fDir);
-		dc.setTitle("Choose location and create new working directory");
-		File dir = dc.showDialog(myStage);
-		try
-		{
-			dir.mkdir();
-		} catch (Exception e)
-		{
-			logger.warning(e.getMessage());
-		}
-		dir.setWritable(true, false);
-		String sWork = dir.getPath();
-		*/
-		//prefs.put("Home Directory", System.getProperty("user.home"));
 		String sOS_Full = System.getProperty("os.name");
-		String sTargetName = null;
-		String sResourceName = null;
 		String sOS = null;
 		if (sOS_Full.indexOf("Windows") >=0)
 		{
@@ -111,12 +99,11 @@ public class GSetup
 			alert.showAndWait();
 			System.exit(1);
 		}
-		String sWork =  getBrennan(sResourceName, sTargetName, logger);
-		prefs.put("Working Directory", sWork);
+		prefs.put("Working Directory", sWorking);
 		prefs.put("OS", sOS);
 	}
 
-	private String getBrennan(String _sResourceName, String _sTargetName, Logger logger) throws IOException {
+	public void getBrennan(String sWorking) throws IOException {
 		int len;
 		byte[] b = new byte[1024];
 		String sTarget;
@@ -124,10 +111,10 @@ public class GSetup
 		String sBrennan = sWorking;
 		File fWorking = new File(sBrennan);
 		if (fWorking.mkdir()){
-			sTarget = sBrennan + File.separator + _sTargetName;
+			sTarget = sBrennan + File.separator + sTargetName;
 			fTarget = new File(sTarget);
 			FileOutputStream out = new FileOutputStream(sTarget);
-			InputStream is = this.getClass().getResourceAsStream(_sResourceName);
+			InputStream is = this.getClass().getResourceAsStream(sResourceName);
 			if (is == null) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setContentText("urGenova Input stream null.");
@@ -140,7 +127,6 @@ public class GSetup
 			out.close();
 		fTarget.setExecutable(true, false);
 		}
-		return fWorking.getPath();
 	}
 }
 

@@ -119,24 +119,23 @@ public class GS_Application extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        String sUser = System.getProperty("user.home");
-        String sHomeDir = prefs.get("Home Directory",sUser);
-
-        /*
+         /*
           String containing current location of log file output.
          */
-        String sLogPath = sHomeDir + File.separator + "org.gsusers.gsvm.Log";
-        FileHandler fh = null;							// just for initialization
-        try {
-            fh = new FileHandler(sLogPath, true);		// log handler, creates append logs, rather than new ones
-        } catch (IOException e1) {
-            e1.printStackTrace(); 						// emergency exit
-        }
-        logger = Logger.getLogger(GS_Application.class.getName());
+        logger = Logger.getLogger("org.gsusers.gsmv");
+        FileHandler fh = new FileHandler();							// just for initialization
         logger.addHandler(fh);
         myNest = new Nest(logger, this, prefs);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
+        /*
+            Check for presence of Brennan working directory.
+            if not present, create it.
+         */
+
+        GSetup gs = new GSetup(logger, prefs);
+        gs = null;
+
+        FXMLLoader  fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
         /*
           the rootLayout of the mainStage is formatted as a <code>BorderPane</code>
          */
@@ -226,13 +225,6 @@ public class GS_Application extends Application {
             logger.warning(e.getMessage());
         }
         return docFile;
-    }
-
-    /**
-     * In response to GUI, initiates setup; to be done on first use.
-     */
-    public void doSetup() {
-       GSetup gSetup = new GSetup(this.getBrennan(), primaryStage, logger, prefs);
     }
 
     /**
@@ -579,19 +571,6 @@ public class GS_Application extends Application {
         });
         hbReturn.getChildren().addAll(lbKey, tfValue);
         return hbReturn;
-    }
-
-    /**
-     * In earlier versions, the urGenova working directory name could be
-     * selected by the user. Later it was set automatically to 'Brennan'.
-     * To reduce the risk of a user accidentally erasing it, we give it a
-     * more distinctive name.
-     *
-     * @return name of G_String working directory, to be placed in 'user'.
-     */
-    public String getBrennan(){
-        String sWorking = "G_String_Working_Directory";
-        return System.getProperty("user.home") + File.separator + sWorking;
     }
 }
 

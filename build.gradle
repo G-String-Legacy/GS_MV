@@ -26,7 +26,7 @@ plugins {
 }
 
 group 'org.gsusers'
-version '2.0.10'
+version '2.0.11'
 
 repositories {
     mavenCentral()
@@ -56,9 +56,6 @@ javafx {
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-    implementation('com.github.almasb:fxgl:17.1') {
-        exclude(group: 'org.openjfx')
-    }
 // https://mvnrepository.com/artifact/org.openjfx/javafx-web
     implementation group: 'org.openjfx', name: 'javafx-web', version: '20-ea+11'
 

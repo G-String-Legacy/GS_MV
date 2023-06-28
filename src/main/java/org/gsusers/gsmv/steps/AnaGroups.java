@@ -214,7 +214,7 @@ public class AnaGroups {
 		sStyle_20 = prefs.get("Style_20",
 				"-fx-font-size: 30px; -fx-font-family: \"ARIALSerif\"; -fx-padding: 10; -fx-background-color: #805015; -fx-text-fill: #FFFFFF;");
 		customBorder = prefs.get("Border", null);
-		testSetup();							// just for security, the program checks if
+		//testSetup();							// just for security, the program checks if
 		// it had been properly set up, and provides feedback
 		// otherwise.
 	}
@@ -479,7 +479,6 @@ public class AnaGroups {
 	private Group mainSubjectGroup() {
 		Group content = new Group();
 		VBox vb = new VBox(20);
-		// vb.setPrefHeight(600);
 		Label title = new Label("Specify subject and number of facets.");
 		title.setPrefWidth(800);
 		title.setStyle(sStyle_18);
@@ -531,7 +530,7 @@ public class AnaGroups {
 	 * @return <code>Group</code> essentially the sub -'Scene' for Facet details entry to be sent to the GUI
 	 */
 	private Group facetGroup(String sCue, Integer iFacetID) {
-		Boolean bIsReplicate = false;
+		//Boolean bIsReplicate = false;
 		Facet tempFacet;
 		Boolean isNested = false;
 		Group facetGroup = new Group();
@@ -1324,15 +1323,13 @@ public class AnaGroups {
 		prefs.get("Home Directory", File.separator);
 		String sInitial;
 
-		if (myNest.getDoOver()) {
-			File selectedFile = flr.getFile(true, "Select Synthesis Control File");
-			if (selectedFile != null) {
-				sInitial = selectedFile.getParent();
-				prefs.put("Home Directory", sInitial);
-				String sFileName = selectedFile.getName();
-				prefs.put("Control", sFileName);
-				flr.readFile(selectedFile);
-			}
+		File selectedFile = flr.getFile(true, "Select Synthesis Control File");
+		if (selectedFile != null) {
+			sInitial = selectedFile.getParent();
+			prefs.put("Home Directory", sInitial);
+			String sFileName = selectedFile.getName();
+			prefs.put("Control", sFileName);
+			flr.readFile(selectedFile);
 		}
 	}
 
@@ -1449,24 +1446,6 @@ public class AnaGroups {
 			//return String.format("%.4f", _d);	// Frithjoff change
 		else
 			return String.format("%.0f", _d);
-	}
-
-	/**
-	 * Checks if a working directory has been specified previously,
-	 * and the operating system specific urGENOVA code has been installed.
-	 */
-	private void testSetup() {
-		String sWorkingDirectory = myMain.getBrennan();
-		String sOS_Full = System.getProperty("os.name");
-		String sUrGenova;
-		if (sOS_Full.contains("Windows"))
-			sUrGenova = "urgenova.exe";
-		else
-			sUrGenova = "urGenova";
-		File f = new File(sWorkingDirectory, sUrGenova);
-		if (!f.isFile()){
-			myMain.doSetup();
-		}
 	}
 
 	/**

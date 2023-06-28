@@ -14,8 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Background.tf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/help/Background.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,13 +92,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="NamedScopeManager">
     <scope name="~/Documents/GS_L/Gradle/GS_MV/src/java" pattern="!test:*..*&amp;&amp;!lib:*..*" />
   </component>
@@ -112,12 +111,19 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;papaMaster&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/ralph/IDEA_Projects/GS_MV/Support&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -136,27 +142,19 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_MV [build]">
-    <configuration name="GS_LV [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="GS_MV" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="GS_MV" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="GS_LV [jpackage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -177,6 +175,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="GS_LV [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -198,6 +197,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="GS_MV [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -219,6 +219,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="GS_MV [jlink]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -240,35 +241,38 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="GS_MV" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="GS_MV" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="GS_MV" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/build/image/bin/GS_MV" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/build/image/bin" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/sh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Gradle.GS_MV [jlink]" />
       <item itemvalue="Gradle.GS_MV [build]" />
-      <item itemvalue="Gradle.GS_LV [clean]" />
       <item itemvalue="Gradle.GS_LV [jpackage]" />
       <item itemvalue="Gradle.GS_LV [run]" />
+      <item itemvalue="Shell Script.GS_MV" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_MV [build]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
-        <item itemvalue="Gradle.GS_LV [clean]" />
+        <item itemvalue="Gradle.GS_MV [build]" />
+        <item itemvalue="Shell Script.GS_MV" />
         <item itemvalue="Gradle.GS_MV [jlink]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
       </list>
     </recent_temporary>
   </component>
@@ -280,8 +284,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674913272176</updated>
+      <workItem from="1687866627073" duration="2013000" />
+      <workItem from="1687873721472" duration="6285000" />
+      <workItem from="1687880141944" duration="378000" />
+      <workItem from="1687888285826" duration="6998000" />
+      <workItem from="1687946834079" duration="1627000" />
+      <workItem from="1687956484878" duration="2470000" />
+      <workItem from="1687975475951" duration="3869000" />
+      <workItem from="1687980349971" duration="1820000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -301,30 +316,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java</url>
+          <line>1325</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
-          <line>739</line>
-          <option name="timeStamp" value="6" />
+          <line>580</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
-          <line>415</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java</url>
-          <line>1351</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/ConstructSimulation.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/ConstructSimulation.java</url>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java</url>
           <line>124</line>
-          <option name="timeStamp" value="17" />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

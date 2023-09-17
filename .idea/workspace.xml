@@ -15,6 +15,10 @@
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,27 +103,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "papaMaster",
-    "last_opened_file_path": "/home/ralph/IDEA_Projects/GS_MV/Support",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;papaMaster&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ralph/IdeaProjects/GS_MV&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Support" />
@@ -263,10 +267,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_MV [build]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Shell Script.GS_MV" />
         <item itemvalue="Gradle.GS_MV [jlink]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +289,15 @@
       <workItem from="1687946834079" duration="1627000" />
       <workItem from="1687956484878" duration="2470000" />
       <workItem from="1687975475951" duration="3869000" />
-      <workItem from="1687980349971" duration="2203000" />
+      <workItem from="1687980349971" duration="3414000" />
+      <workItem from="1687986985309" duration="129000" />
+      <workItem from="1688060526693" duration="45000" />
+      <workItem from="1688060710125" duration="27000" />
+      <workItem from="1688302316142" duration="5281000" />
+      <workItem from="1694945527343" duration="84000" />
+      <workItem from="1694945627303" duration="216000" />
+      <workItem from="1694945937333" duration="216000" />
+      <workItem from="1694946252485" duration="214000" />
     </task>
     <servers />
   </component>
@@ -321,20 +333,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java</url>
-          <line>1325</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java</url>
-          <line>580</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="38" />
+          <line>892</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

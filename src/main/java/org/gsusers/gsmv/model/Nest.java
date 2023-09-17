@@ -1,18 +1,16 @@
 package org.gsusers.gsmv.model;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
-
-import org.gsusers.gsmv.GS_Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.gsusers.gsmv.GS_Application;
 import org.gsusers.gsmv.utilities.VarianceComponent;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 /**
  * class Nest
@@ -73,21 +71,6 @@ public class Nest {
 	private ArrayList<String> salComments = new ArrayList<>();
 
 	/**
-	 * <code>sOptions</code> official option specifications for urGenova (see urGenova manual).
-	 */
-	private String sOptions;
-
-	/**
-	 * <code>sFormat</code> official format specifications  for urGenova (see urGenova manual).
-	 */
-	private String sFormat;
-
-	/**
-	 * <code>sFormat</code> official process specifications for urGenova (see urGenova manual).
-	 */
-	private String sProcess;
-
-	/**
 	 * <code>sbHFO</code> stringbuilder to build hierarchic facet directory <code>sHDictionary</code>,
 	 * the order they were arranged subsequently.
 	 */
@@ -135,11 +118,6 @@ public class Nest {
 	 * <code>scene</code> standard empty display <code>Scene</code> for use in objects.
 	 */
 	private Scene scene = null;
-
-	/**
-	 * <code>primaryStage</code> display stage of GUI.
-	 */
-	private Stage primaryStage = null;
 
 	/**
 	 * <code>bDawdle</code> boolean <code>false</code> (default): proceed to normal next step; <code>true</code>: instead steps through sample size collection.
@@ -208,19 +186,9 @@ public class Nest {
 	private Double dRepRange = 0.0;
 
 	/**
-	 * <code>dVC</code> intermediate double vector for calculation of variance components.
-	 */
-	private final Double[] dVC = null;
-
-	/**
 	 * <code>darVarianceCoefficients</code> double array of Variance Coefficients.
 	 */
 	private Double[] darVarianceCoefficients = null;
-
-	/**
-	 * <code>sPlatform</code> name of current OS platform ('Linux', 'Mac', or 'Windows').
-	 */
-	private final String sPlatform;
 
 	/**
 	 * <code>logger</code> pointer to org.gs_users.gs_lv.GS_Application logger.
@@ -251,7 +219,7 @@ public class Nest {
 	/**
 	 * Builds sDictionary and sHDictionary strings;
 	 */
-	private StringBuilder sbDictionary = null;
+	private StringBuilder sbDictionary;
 	/**
 	 * Placeholder for subject facet.
 	 */
@@ -275,19 +243,10 @@ public class Nest {
 		 * <code>prefs</code> pointer to <code>Preferences</code> API.
 		 */
 		salVarianceComponents = new ArrayList<>();
-		sPlatform = _prefs.get("OS", null);
+		/*
+		 * <code>sPlatform</code> name of current OS platform ('Linux', 'Mac', or 'Windows').
+		 */
 		myTree = new SampleSizeTree(this, logger, _prefs);
-	}	
-
-	/**
-	 * facet name from char designation
-	 *
-	 * @param c - char designation
-	 * @return - full facet name
-	 */
-	public String getName(char c) {
-		// return facet name according to cDesignation
-		return this.getFacet(c).getName();
 	}
 
 	/**
@@ -356,19 +315,6 @@ public class Nest {
 	public void setAsterisk(char _cAsterisk){
 		cAsterisk = _cAsterisk;
 		myTree.setAsterisk(cAsterisk);
-	}
-	
-	/**
-	 * Setter for starred facet after change of asterisk position
-	 * 
-	 * @param _iAsterisk  new position of starred facet in sHDictionary
-	 */
-	public void setAsterisk(int _iAsterisk) {
-		char[] cFacets = sDictionary.toCharArray();
-		cAsterisk = cFacets[_iAsterisk];
-		myTree.setAsterisk(cAsterisk);
-		for (char c : cFacets)
-			getFacet(c).setAsterisk(c == cAsterisk);
 	}
 
 	/**
@@ -644,7 +590,7 @@ public class Nest {
 		sbHFO.append(cTarget);
 		sHDictionary = sbHFO.toString();
 		sss = new String[words.length - iFirst];
-		System.arraycopy(words, 0 + iFirst, sss, 0, words.length - iFirst);
+		System.arraycopy(words, iFirst, sss, 0, words.length - iFirst);
 		if (cTarget != cReplicate)
 			myTree.addSampleSize(cTarget, sss);
 		myTree.setDictionary(sDictionary);
@@ -656,20 +602,22 @@ public class Nest {
 	/**
 	 * setter for <code>sFormat</code>.
 	 *
-	 * @param _sFormat  to be included in script
 	 */
-	public void addFormat(String _sFormat) {
-		sFormat = _sFormat;
+	public void addFormat() {
+		/*
+		 * <code>sFormat</code> official format specifications  for urGenova (see urGenova manual).
+		 */
 		sHDictionary = sbDictionary.toString();
 	}
 
 	/**
 	 * setter for <code>sProcess</code>
 	 *
-	 * @param _sProcess to be included in script
 	 */
-	public void addProcess(String _sProcess) {
-		sProcess = _sProcess;
+	public void addProcess() {
+		/*
+		 * <code>sFormat</code> official process specifications for urGenova (see urGenova manual).
+		 */
 	}
 
 	/**
@@ -680,7 +628,7 @@ public class Nest {
 	 */
 	public ObservableList<String> getNests() {
 		if (sarNestedNames == null || sarNestedNames.length == 0) {
-			if ((salNestedNames== null) || (salNestedNames.isEmpty()))
+			if (salNestedNames.isEmpty())
 				return null;
 			iNestCount = salNestedNames.size();
 			sarNestedNames = new String[iNestCount];
@@ -742,19 +690,19 @@ public class Nest {
 	/**
 	 * setter of primary <code>Stage</code>.
 	 *
-	 * @param _stage  display stage
 	 */
-	public void setStage(Stage _stage) {
-		primaryStage = _stage;
+	public void setStage() {
+		/*
+		 * <code>primaryStage</code> display stage of GUI.
+		 */
 	}
 
 	/**
 	 * setter of <code>sFileName</code>.
 	 *
-	 * @param _fName  file name
 	 */
-	public void setFileName(String _fName) {
-		/**
+	public void setFileName() {
+		/*
 		 * <code>sFileName</code> path of control file.
 		 */
 	}
@@ -796,45 +744,6 @@ public class Nest {
 	}
 
 	/**
-	 * returns primary nesting configuration by hierarchical facet index.
-	 *
-	 * @param i flag index
-	 * @return <code>sarNestedNames[i]</code>
-	 */
-	public String getHNest(Integer i) {
-		char c = sDictionary.toCharArray()[i];
-		int iReg = sHDictionary.indexOf(c);  //translation from hierarchical to basic order
-		return sarNestedNames[iReg];
-	}
-
-	/**
-	 * getter of <code>sOptions</code> for urGENOVA script.
-	 *
-	 * @return <code>sOptions</code>
-	 */
-	public String getOptions() {
-		return sOptions;
-	}
-
-	/**
-	 * getter of <code>sFormat</code> for urGENOVA script.
-	 *
-	 * @return sFormat
-	 */
-	public String getFormat() {
-		return sFormat;
-	}
-
-	/**
-	 * getter of <code>sProcess</code> for urGENOVA script.
-	 *
-	 * @return <code>sProcess</code>
-	 */
-	public String getProcess() {
-		return sProcess;
-	}
-
-	/**
 	 * passes <code>_group</code> via <code>myMain</code> to <code>controller</code>, i.e. GUI.
 	 *
 	 * @param _group display group
@@ -859,17 +768,6 @@ public class Nest {
 	 */
 	public String getDataFileName() {
 		return "~data.txt";
-	}
-
-	/**
-	 * formatting method.
-	 *
-	 * @param s <code>string s</code>
-	 * @param n <code>int n</code>
-	 * @return formatted n
-	 */
-	public static String padLeft(String s, int n) {
-		return String.format("%1$" + n + "s", s);
 	}
 
 	/**
@@ -926,16 +824,6 @@ public class Nest {
 	 */
 	public Facet[] getFacets() {
 		return farFacets;
-	}
-
-	/**
-	 * getter of specific facet by hierarchical order
-	 *
-	 * @param iFacet Integer hierarchical order of facet
-	 * @return Facet target
-	 */
-	public Facet getHFacet(Integer iFacet) {
-		return farFacets[iFacet];
 	}
 
 	/**
@@ -1012,8 +900,8 @@ public class Nest {
 			for (Facet f : farFacets)
 				sb.append(f.getDesignation());
 			sDictionary = sb.toString();
-			sHDictionary = sDictionary;
 		}
+		sHDictionary = sDictionary;
 	}
 
 	/**
@@ -1082,9 +970,8 @@ public class Nest {
 	 * It redacts and formats the prose for G- and D-Studies into the StringBuilder 'sbResult'.
 	 *
 	 * @param sbResult  StringBuilder, to which the prose has to be added
-	 * @throws UnsupportedEncodingException  this is a heuristic for unspecified Exceptions
 	 */
-	public void formatResults(StringBuilder sbResult) throws UnsupportedEncodingException {
+	public void formatResults(StringBuilder sbResult) {
 
 		StringBuilder sb = new StringBuilder();
 		//double dAbsolute = 0.0; // total sum of absolute values of weighted
@@ -1127,15 +1014,15 @@ public class Nest {
 		}
 		sbResult.append("\n");
 
-		sbResult.append("σ²(τ) = " + String.format("%.4f", dS2_t) + "\n");
-		sbResult.append("σ²(δ) = " + String.format("%.4f", dS2_d) + "\n");
-		sbResult.append("σ²(Δ) = " + String.format("%.4f", dS2_D) + "\n");
+		sbResult.append("σ²(τ) = ").append(String.format("%.4f", dS2_t)).append("\n");
+		sbResult.append("σ²(δ) = ").append(String.format("%.4f", dS2_d)).append("\n");
+		sbResult.append("σ²(Δ) = ").append(String.format("%.4f", dS2_D)).append("\n");
 		dRel = dS2_t / (dS2_t + dS2_d);
 		dAbs = dS2_t / (dS2_t + dS2_D);
 		try {
 			sbResult.append("\nGENERALIZABILITY COEFFICIENTS:\n\n");
-			sbResult.append("Eρ²      	= " + String.format("%.2f", dRel) + "\n");
-			sbResult.append("Φ           = " + String.format("%.2f", dAbs) + "\n");
+			sbResult.append("Eρ²      	= ").append(String.format("%.2f", dRel)).append("\n");
+			sbResult.append("Φ           = ").append(String.format("%.2f", dAbs)).append("\n");
 		} catch (Exception e) {
 			logger.warning(e.getMessage());
 		}
@@ -1193,48 +1080,6 @@ public class Nest {
 	}
 
 	/**
-	 * setter of primary Effect name.
-	 *
-	 * @param sComp  name
-	 * @param iComp  index
-	 */
-	public void setComponent(String sComp, Integer iComp) {
-		sarNestedNames[iComp] = sComp;
-	}
-
-	/**
-	 * setter for variance component.
-	 *
-	 * @param iPos  index to position in array
-	 * @param _dValue of variance component
-	 */
-	public void set_dVC(Integer iPos, Double _dValue) {
-		dVC[iPos] = _dValue;
-		bReplicate = true;
-	}
-
-	/**
-	 * getter of variance component.
-	 *
-	 * @param iPos   index to position in array
-	 * @return value of variance component
-	 */
-	public Double get_dVC(Integer iPos) {
-		return dVC[iPos];
-	}
-
-	/**
-	 * setter to complete the two-dimensional array <code>dVectors</code> by
-	 * placing <code>dVector</code> into position <code>iPos</code> of <code>dVectors</code>.
-	 *
-	 * @param iPos  position in <code>dVectors</code> of <code>dVector</code>
-	 * @param dVector  one-dimensional array to be placed
-	 */
-	/*public void setVector(Integer iPos, Double[] dVector) {
-		dVectors[iPos] = dVector;
-	}*/
-
-	/**
 	 * getter of a facet's 'Nestor' facet.
 	 *
 	 * @param cF  char designation of facet
@@ -1242,14 +1087,6 @@ public class Nest {
 	 */
 	public Character getNestor(char cF) {
 		return getFacet(cF).getNestor();
-	}
-
-	/**
-	 * getter of variance coefficient array's length.
-	 * @return array length
-	 */
-	public Integer vCCount() {
-		return darVarianceCoefficients.length;
 	}
 
 	/**
@@ -1308,30 +1145,6 @@ public class Nest {
 	}
 
 	/**
-	 * converts String array list to String array.
-	 *
-	 * @param _salNestedNames Array of Strings  names of nested combinations
-	 */
-	public void setSarNestedNames(ArrayList<String> _salNestedNames) {
-		int i = 0;
-		sarNestedNames = new String[_salNestedNames.size()];
-		for (String s : _salNestedNames) {
-			if ((s == null) | (s.trim().equals("")))
-				break;
-			sarNestedNames[i++] = s;
-		}
-	}
-
-	/**
-	 * getter of <code>sarNestedNames</code>.
-	 *
-	 * @return sarNestedNames
-	 */
-	public String[]  getSarNestedNames(){
-		return sarNestedNames;
-	}
-
-	/**
 	 * parser for reading score anchors from script (SynthGroups).
 	 *
 	 * @param sValue  text line from script
@@ -1362,15 +1175,6 @@ public class Nest {
 	}
 
 	/**
-	 * creates Double array for variance coefficients.
-	 *
-	 * @param ivCount  dimension of array
-	 */
-	public void createVarianceCoefficients(Integer ivCount) {
-		darVarianceCoefficients = new Double[ivCount];
-	}
-
-	/**
 	 * getter of variance coefficient array size.
 	 *
 	 * @return array size
@@ -1389,35 +1193,6 @@ public class Nest {
 	}
 
 	/**
-	 * Returns dictionary ordered for purpose of synthesis:
-	 * first from crossed to most nested, then according
-	 * to data order.
-	 *
-	 * @return specially ordered sDictionary
-	 */
-	public String getSynthDictionary() {
-		StringBuilder sb = new StringBuilder();
-		String dict = sHDictionary;
-		int L= dict.length();
-		int iDepth = 1;
-		int iCount = 1;
-		String ss;
-		while (iCount <= L) {
-			for (String s : sarNestedNames) {
-				if((s == null) || s.equals(" "))
-						break;
-				ss = s.replace(":", "");
-				if (ss.length() == iDepth) {
-					sb.append(ss.charAt(0));
-					iCount++;
-				}
-			}
-			iDepth++;
-		}
-		return sb.toString();
-	}
-
-	/**
 	 * Generates facet combinations responsible for variance
 	 * components, including their appropriate syntax.
 	 * The object is somewhat occult. It gets only called once in
@@ -1429,39 +1204,6 @@ public class Nest {
 		myTree.setFacetCount(sDictionary.length());
 	}
 
-	/**
-	 * tests if String 'sTest' occurs among primary Effects
-	 *
-	 * @param sTest  String to be tested
-	 * @return Boolean test result
-	 */
-	public Boolean isComponent(String sTest) {
-		boolean bContained = false;
-			for (String s : sarNestedNames)
-				if (s.equals(sTest)) {
-					bContained = true;
-					break;
-				}
-		return bContained;
-	}
-
-	/**
-	 * reorders array of primary nested names (primary Effects).
-	 *
-	 * @param _sOrder required facet order
-	 * @return reordered array
-	 */
-	public String[] getOrderedNestedNames(String _sOrder) {
-		int iSize = getNestCount();
-		String s;
-		String[] sarOrderedNames = new String[iSize];
-		for (int i = 0; i < iSize; i++) {
-			s = sarNestedNames[i];
-			sarOrderedNames[_sOrder.indexOf(s.toCharArray()[0])] = s;
-		}
-		return sarOrderedNames;
-	}
-	
 	/**
 	 * Setter for replication flag.
 	 * @param _bReplicate replication flag
@@ -1478,18 +1220,7 @@ public class Nest {
 	public Boolean getReplicate() {
 		return bReplicate;
 	}
-	
-	/**
-	 * processes raw Facets to include nesting logic.
-	 */
-	public void doNesting() {
-		for (String s : sarNestedNames) {
-			char cFacet = s.toCharArray()[0];
-			Facet f = getFacet(cFacet);
-			f.doNesting(s);
-		}
-	}
-	
+
 	/**
 	 * Getter for cReplicate
 	 * 
@@ -1517,16 +1248,7 @@ public class Nest {
 	public int getProblem() {
 		return iProblem;
 	}
-	
-	/**
-	 * method adding a facet nest to the list
-	 * 
-	 * @param _sNest  name of facet nest to be added
-	 */
-	public void addNestedName(String _sNest) {
-		salNestedNames.add(_sNest);
-	}
-	
+
 	/**
 	 * Setter for cReplicate
 	 * 
@@ -1586,15 +1308,6 @@ public class Nest {
 	}
 
 	/**
-	 * Getter for iResume after Problem.
-	 * 
-	 * @return iResume  Step, at which SynthGroups is to return to after problem explanation
-	 */
-	public int getResume() {
-		return iResume;
-	}
-	
-	/**
 	 * Setter for bReNest (whether nesting info is reused)
 	 * 
 	 * @param _bReNest  boolean flag
@@ -1605,18 +1318,6 @@ public class Nest {
 			sarNestedNames = null;
 
 		}
-	}
-	
-	/**
-	 * Debug utility, prints out an int[] array.
-	 *
-	 * @param iArray  any integer array to be printed
-	 */
-	public void printIntArray(int[] iArray) {
-		StringBuilder sb = new StringBuilder(iArray[0]);
-		for (int i =1; i < iArray.length; i++)
-			sb.append(", ").append(iArray[i]);
-		System.out.println(sb);
 	}
 
 	/**

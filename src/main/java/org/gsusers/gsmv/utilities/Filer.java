@@ -145,7 +145,7 @@ public class Filer {
 			 * file path
 			 */
 			String sFileName = file.getCanonicalPath();
-			myNest.setFileName(sFileName);
+			myNest.setFileName();
 		} catch (IOException e) {
 			logger.warning(e.getMessage());
 		}
@@ -185,8 +185,8 @@ public class Filer {
 				case "COMMENT" -> myNest.addComment(value);
 				case "OPTIONS" -> prefs.put("OPTIONS", value);
 				case "EFFECT" -> myNest.addEffect(value);
-				case "FORMAT" -> myNest.addFormat(value);
-				case "PROCESS" -> myNest.addProcess(value);
+				case "FORMAT" -> myNest.addFormat();
+				case "PROCESS" -> myNest.addProcess();
 				case "REPLICATE" -> myNest.set_cRep(value.toCharArray()[0]);
 				case "ANCHORS" -> {
 					if (myNest.getSimulate())        // if in 'Simulate', value gets to variances

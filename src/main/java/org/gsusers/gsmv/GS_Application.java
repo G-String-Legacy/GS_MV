@@ -396,7 +396,7 @@ public class GS_Application extends Application {
         mySteps = null;
         myNest = new Nest(logger, this, prefs);
         flr = new Filer(myNest, prefs, logger, primaryStage);
-        myNest.setStage(primaryStage);
+        myNest.setStage();
         group = null;
         mySteps = new AnaGroups(this, myNest, logger, controller, prefs, flr);
         controller.callForAction(true);

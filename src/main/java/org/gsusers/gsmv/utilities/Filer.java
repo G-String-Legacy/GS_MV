@@ -426,6 +426,7 @@ public class Filer {
 					DataCount++;
 				} else {
 					sRow1[j] = "x";
+					myNest.incrementMissing();
 				}
 			}
 		}

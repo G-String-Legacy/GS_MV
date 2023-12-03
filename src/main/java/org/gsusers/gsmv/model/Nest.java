@@ -220,10 +220,16 @@ public class Nest {
 	 * Builds sDictionary and sHDictionary strings;
 	 */
 	private StringBuilder sbDictionary;
+
 	/**
 	 * Placeholder for subject facet.
 	 */
 	private Facet fSubject = null;
+
+	/**
+	 * Counter for missing data
+	 */
+	private int iMissing = 0;
 
 	/**
 	 * Constructor for class <code>Nest</code>
@@ -1339,6 +1345,22 @@ public class Nest {
 	 */
 	public Boolean complete(){
 		return (sarNestedNames.length != 0);
+	}
+
+	/**
+	 * increments missing data count
+	 */
+	public void incrementMissing(){
+		iMissing++;
+	}
+
+	/**
+	 * Returns missing data count
+	 *
+	 * @return int missing data count
+	 */
+	public int getMissingDataCount(){
+		return iMissing;
 	}
 }
 

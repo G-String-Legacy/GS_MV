@@ -15,9 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +140,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_MV [build]">
+  <component name="RunManager" selected="Gradle.GS_LV [run]">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GS_MV" />
       <method v="2">
@@ -266,8 +266,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [run]" />
+        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Shell Script.GS_MV" />
         <item itemvalue="Gradle.GS_MV [jlink]" />
@@ -298,6 +298,12 @@
       <workItem from="1694945627303" duration="216000" />
       <workItem from="1694945937333" duration="216000" />
       <workItem from="1694946252485" duration="214000" />
+      <workItem from="1697737129857" duration="627000" />
+      <workItem from="1698055799742" duration="8825000" />
+      <workItem from="1698142310788" duration="461000" />
+      <workItem from="1698242433201" duration="1895000" />
+      <workItem from="1698352774576" duration="235000" />
+      <workItem from="1701609246130" duration="952000" />
     </task>
     <servers />
   </component>

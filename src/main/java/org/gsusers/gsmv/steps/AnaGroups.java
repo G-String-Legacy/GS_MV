@@ -1240,7 +1240,8 @@ public class AnaGroups {
 			}
 			tLine = "\n";
 			sbResult.append(tLine).append("\n");
-			Integer iMissed = flr.missingItems();
+			//Integer iMissed = flr.missingItems();
+			Integer iMissed = myNest.getMissingDataCount();
 			String sMissed;
 			if (iMissed == 0)
 				sMissed = "There were no missing items.\n";

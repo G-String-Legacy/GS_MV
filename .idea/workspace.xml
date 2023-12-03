@@ -14,7 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -301,7 +300,7 @@
       <workItem from="1698242433201" duration="1895000" />
       <workItem from="1698352774576" duration="235000" />
       <workItem from="1701609246130" duration="1168000" />
-      <workItem from="1701614534404" duration="1225000" />
+      <workItem from="1701614534404" duration="2918000" />
     </task>
     <servers />
   </component>

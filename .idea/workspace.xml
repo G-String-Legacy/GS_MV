@@ -122,10 +122,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Support" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gs_users/gs_mv" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -300,7 +300,7 @@
       <workItem from="1698242433201" duration="1895000" />
       <workItem from="1698352774576" duration="235000" />
       <workItem from="1701609246130" duration="1168000" />
-      <workItem from="1701614534404" duration="2918000" />
+      <workItem from="1701614534404" duration="3720000" />
     </task>
     <servers />
   </component>

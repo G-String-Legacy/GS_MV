@@ -14,8 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/R/Brennan_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/R/Brennan_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/Brennan_2.nb.html" beforeDir="false" afterPath="$PROJECT_DIR$/R/Brennan_2.nb.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +303,7 @@
       <workItem from="1701609246130" duration="1168000" />
       <workItem from="1701614534404" duration="5258000" />
       <workItem from="1701640931337" duration="542000" />
-      <workItem from="1701688326869" duration="1799000" />
+      <workItem from="1701688326869" duration="3990000" />
     </task>
     <servers />
   </component>

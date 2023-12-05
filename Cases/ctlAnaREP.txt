@@ -1,4 +1,4 @@
-GSTUDY    NOC
+GSTUDY    Northern Ontario Medical School
 COMMENT   The Northern Ontario Medical School sends its Clinical Clerks to peripheral rural clinics
 COMMENT   all over the area. Students rotate through different compulsory and elective placements.
 COMMENT   The rotations are generally oriented more towards primary care. At each rotation

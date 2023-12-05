@@ -104,7 +104,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "papaMaster",
-    "last_opened_file_path": "/home/ralph/IdeaProjects/GS_MV/R",
+    "last_opened_file_path": "/home/ralph/IdeaProjects/GS_MV/Cases",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -120,11 +120,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Cases" />
       <recent name="$PROJECT_DIR$/R" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Support" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv" />
-      <recent name="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/R" />
@@ -301,6 +301,7 @@
       <workItem from="1701614534404" duration="5258000" />
       <workItem from="1701640931337" duration="542000" />
       <workItem from="1701688326869" duration="4199000" />
+      <workItem from="1701774827696" duration="915000" />
     </task>
     <servers />
   </component>

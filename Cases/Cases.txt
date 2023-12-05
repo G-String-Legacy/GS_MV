@@ -1,0 +1,13 @@
+
+Professor Hansen has his "Tort" class of 58 students write a 30 question true/false test at the end of the first semester.
+The test is based on Witt: Torts: Cases, Principles, and Institutions. Each question is case based, and the correct answer is cross-checked against the corresponding text section.
+
+The Salerno Medical School runs an 'Objective Structured Clinical Exam' at the end of the first clinical year. The OSCE is organized in 10 station circuits run over three days, one circuit each on morning, afternoon and evening. A total of 85 students will take the exam. The stations have been carefully designed and reviewed by a panel of 18 professors. At each station students are rated for competence in 5 areas by 2 independent raters on a 4 point scale.
+
+The Northern Ontario Medical School sends its Clinical Clerks to peripheral rural clinics all over the area. Students rotate through different compulsory and elective placements. The rotations are generally oriented more towards primary care. At each rotation they are rated by two physicians and a nurse independently in the same four areas of competence on a six point scale. Over the year they rotate typically through six to eight rotations.
+
+## The Data File
+## What you can do:
+* Assuming that you have also downloaded the data file, you can start GS_M and enter the appropriate data step-by-step from the story, until step 11, where you get the results.
+* You can download the script, and feed it step-by-step until you get the results.
+

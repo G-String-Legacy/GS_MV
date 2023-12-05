@@ -1,0 +1,13 @@
+GSTUDY    MCQ
+COMMENT   Professor Hansen has his "Tort" class of 58 students write
+COMMENT   a 30 question true/false test at the end of the first semester.
+COMMENT   The test is based on Witt: Torts: Cases, Principles, and Institutions.
+COMMENT   Each question is case based, and the correct answer
+COMMENT   is cross-checked against the corresponding text section.
+COMMENT*  Student    (s)
+COMMENT*  Question    (q)
+OPTIONS   NREC 5 "*.lis" TIME NOBANNER
+EFFECT       * s           	58
+EFFECT       q           	30
+FORMAT       8  8
+PROCESS      "~data.txt"

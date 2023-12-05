@@ -1,0 +1,118 @@
+Successful execution
+
+
+                             CONTROL CARDS FOR RUN 1
+                     Control Cards File Name:  ~control.txt
+                                       MCQ
+
+GSTUDY    MCQ
+COMMENT   Professor Hansen has his "Tort" class of 58 students write
+COMMENT   a 30 question true/false test at the end of the first semester.
+COMMENT   The test is based on Witt: Torts: Cases, Principles, and Institutions.
+COMMENT   Each question is case based, and the correct answer
+COMMENT   is cross-checked against the corresponding text section.
+COMMENT*  Student    (s)
+COMMENT*  Question    (q)
+OPTIONS   NREC 5 "*.lis" TIME NOBANNER
+EFFECT       * s           	58
+EFFECT       q           	30
+FORMAT       8  8
+PROCESS      "~data.txt"
+
+
+
+                             INPUT RECORDS FOR RUN 1
+                                       MCQ
+
+RECORD NUMBER 1:
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+RECORD NUMBER 2:
+  0.407   0.407   0.407   0.407   0.407  -0.593  -0.593   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407  -0.593   0.407   0.407   0.407   0.407   0.407
+RECORD NUMBER 3:
+  0.407   0.407   0.407   0.407   0.407  -0.593  -0.593   0.407   0.407  -0.593
+ -0.593  -0.593   0.407   0.407   0.407  -0.593   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407  -0.593   0.407   0.407  -0.593   0.407   0.407
+RECORD NUMBER 4:
+  0.407   0.407   0.407   0.407   0.407   0.407  -0.593   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407  -0.593   0.407   0.407   0.407   0.407   0.407
+RECORD NUMBER 5:
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+  0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407   0.407
+
+
+
+                        MEANS FOR MAIN EFFECTS FOR RUN 1
+                                       MCQ
+
+Means for s
+
+  0.407   0.307   0.140   0.340   0.407  -0.526   0.240  -0.493   0.407  -0.326
+  0.240  -0.026  -0.193   0.007   0.174   0.007  -0.326   0.007   0.407   0.407
+  0.107  -0.326  -0.326  -0.226   0.407  -0.560   0.307  -0.026  -0.393   0.240
+  0.240   0.240   0.040   0.040   0.040   0.407  -0.593   0.307  -0.326   0.040
+ -0.260  -0.593   0.174   0.040  -0.260  -0.160   0.107  -0.393  -0.326   0.307
+  0.340   0.107  -0.326   0.374   0.407  -0.293  -0.593   0.107 
+
+Means for q
+
+  0.269  -0.127   0.045   0.338   0.321  -0.403  -0.438   0.062   0.148  -0.248
+ -0.334  -0.214   0.131   0.045   0.304  -0.248  -0.196   0.079   0.304   0.355
+  0.010   0.045   0.097  -0.127  -0.455   0.304   0.045  -0.334   0.269  -0.041
+
+
+
+
+                            ANOVA TABLE FOR RUN 1
+                                     MCQ
+-----------------------------------------------------------------------------
+Effect             df             T            SS            MS            VC
+-----------------------------------------------------------------------------
+s                  57     173.25059     173.25057       3.03948       0.09852
+q                  29     107.77933     107.77931       3.71653       0.06263
+sq               1653     419.91725     138.88734       0.08402       0.08402
+-----------------------------------------------------------------------------
+Mean                        0.00002
+-----------------------------------------------------------------------------
+Total            1739                   419.91723
+-----------------------------------------------------------------------------
+        Grand Mean:         0.00010
+
+
+Date and time at beginning of Run 1:  Tue Dec  5 08:11:20 2023
+Processor time for run: 0 seconds
+
+
+There were no missing items.
+
+
+The calculated grand mean = 0.59310
+This value has been subtracted from the actual scores for the calculations.
+While this improves the accuracy, it does not affect the calculated variances.
+
+
+
+-----------------------------------
+Results  G Study.
+
+Facet q, random; level = 30.0.
+
+Variance component 's' (d) is 0.09852; denominator is 1.00;  τ only
+Variance component 'q' (g) is 0.06263; denominator is 30.00;  Δ only
+Variance component 'sq' (dg) is 0.08402; denominator is 1.00 x 30.00;  both δ and Δ
+
+σ²(τ) = 0.0985
+σ²(δ) = 0.0028
+σ²(Δ) = 0.0049
+
+GENERALIZABILITY COEFFICIENTS:
+
+Eρ²      	= 0.97
+Φ           = 0.95
+
+Sig: 0

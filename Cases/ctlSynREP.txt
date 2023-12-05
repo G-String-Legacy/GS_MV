@@ -1,0 +1,16 @@
+GSTUDY    Northern Ontario Clerkship
+COMMENT   The Northern Ontario Medical School sends its 63 Clinical Clerks to peripheral rural clinics
+COMMENT   all over the area. Students rotate through different compulsory and elective placements.
+COMMENT   The rotations are generally oriented more towards primary care. At each rotation they
+COMMENT   are rated by two physicians and a nurse independently in the same four areas of competence
+COMMENT   on a six point scale. Over the year they rotate typically through six to eight rotations.
+COMMENT* Clerk    (c)
+COMMENT* Rotation    (r)
+COMMENT* Assessor    (a)
+COMMENT* Performance    (p)
+EFFECT       * c           	63
+EFFECT       r:c         	5	6	8	8	5	6	5	7	6	6	6	6	5	5	6	6	6	5	6	6	5	7	5	7	7	5	7	6	6	8	7	5	6	8	6	5	7	5	6	5	7	5	7	6	6	6	6	7	6	5	7	8	6	5	5	6	6	7	5	6	6	7	6
+EFFECT       a           	3
+EFFECT       p           	5
+ANCHORS    0    2.5    4
+VARIANCES    0.5    0.2    0.3    0.3    0.1    0.1    0.1    0.1    0.1    0.1    0.1

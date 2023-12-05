@@ -1,0 +1,17 @@
+GSTUDY    Salerno OSCE
+COMMENT   The Salerno Medical School runs an 'Objective Structured Clinical Exam'
+COMMENT   at the end of the first clinical year. The OSCE is organized in 10 station circuits
+COMMENT   run over three days, one circuit each on morning, afternoon and evening.
+COMMENT   A total of 85 students will take the exam. The stations have been carefully designed
+COMMENT   and reviewed by a panel of 18 professors. At each station students are rated
+COMMENT   for competence in 5 areas by 2 independent raters on a 4 point scale.
+COMMENT* Candidate    (c)
+COMMENT* Station    (s)
+COMMENT* Rater    (r)
+COMMENT* Item    (i)
+EFFECT       * c           	85
+EFFECT       s           	10
+EFFECT       r:s         	2
+EFFECT       i:s         	5
+ANCHORS    0    2.0    3
+VARIANCES    1.5    0.5    0.3    0.3    0.2

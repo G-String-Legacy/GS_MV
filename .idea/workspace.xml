@@ -14,9 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
-      <change afterPath="$PROJECT_DIR$/Cases/Results.REP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cases/ResultsREP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,6 +309,7 @@
       <workItem from="1701801928429" duration="5574000" />
       <workItem from="1701860323272" duration="1377000" />
       <workItem from="1701861970691" duration="820000" />
+      <workItem from="1702564257756" duration="653000" />
     </task>
     <servers />
   </component>

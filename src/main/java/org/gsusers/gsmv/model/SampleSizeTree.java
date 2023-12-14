@@ -77,11 +77,6 @@ public class SampleSizeTree {
 	 * when stepping through them.
 	 */
 	private char cPrevious = '-';
-	
-	/**
-	 * Carrie current cumulative parent index
-	 */
-	//private int[] iParentIndices = null;
 
 	/**
 	 * Flag if parameters are entered from script, rather than manually
@@ -112,11 +107,6 @@ public class SampleSizeTree {
 	 * ragged matrix - rows by Effect, cols by Facet within Effect in hierarchical order
 	 */
 	//private char[][] conKeySet = null;
-
-	/**
-	 * ragged matrix - rows by Effect, cols: Facet index in order corresponding to <code>conKeySet</code>
-	 */
-	//private int[][] iarCurrentIndexSet = null;
 
 	/**
 	 * array containing the current state for each Effect

@@ -250,7 +250,7 @@ public class SynthGroups {
 		myNest.setReplicate(true);
 	 	switch (iStep) {
 		// step 1  initialize SynGroups
-			case 1:
+			case 1:		// Title
 				myController.buttonsEnabled(true);
 				myController.enableStepUp(true);
 				if (myNest.getDoOver())
@@ -262,39 +262,39 @@ public class SynthGroups {
 				} catch (Exception e) {
 					myLogger(1, e);
 				}
-			case 2:
+			case 2:		// Comments
 				try {
 					return addComments();
 				} catch (Exception e) {
 					myLogger(2, e);
 				}
-			case 3:
+			case 3:		// Main Subject
 				try {
 					cReplicate = myNest.getRepChar();
 					return mainSubjectGroup();
 				} catch (Exception e) {
 					myLogger(3, e);
 				}
-			case 4:
+			case 4:		// Facets
 				try {
 					return subjectsGroup();
 				} catch (Exception e) {
 					myLogger(4, e);
 				}
-			case 5:
+			case 5:		// Order Facets
 				try {
 					myNest.createDictionary();
 					return orderFacets();
 				} catch (Exception e) {
 					myLogger(5, e);
 				}
-			case 6:
+			case 6:		// Nest Facets
 				try {
 					return setNestingGroup();
 				} catch (Exception e) {
 					myLogger(6, e);
 				}
-			case 7:
+			case 7:		// Set Sample Sizes
 				try {
 					myNest.setOrder();
 					myNest.G_setFacets();
@@ -303,7 +303,7 @@ public class SynthGroups {
 				} catch (Exception e) {
 					myLogger(7, e);
 				}
-			case 8:
+			case 8:		// Set Scales
 				try {
 					iTFonPage = 0;
 					myTree.setHDictionary(myNest.getHDictionary());
@@ -311,7 +311,7 @@ public class SynthGroups {
 				} catch (Exception e) {
 					myLogger(8, e);
 				}
-			case 9:
+			case 9:		// Set Variance Components
 				try {
 					if (cReplicate != '-')
 						doReplications();
@@ -321,7 +321,7 @@ public class SynthGroups {
 				} catch (Exception e) {
 					myLogger(9, e);
 				}
-			case 10:
+			case 10:		// Create Simulation
 				try {
 					flr.saveParametersDialog("Synthesis", "ready for saving synthetic parameters");
 					/*

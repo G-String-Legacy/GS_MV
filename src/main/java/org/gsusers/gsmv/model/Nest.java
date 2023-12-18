@@ -8,6 +8,7 @@ import org.gsusers.gsmv.GS_Application;
 import org.gsusers.gsmv.utilities.VarianceComponent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
@@ -120,12 +121,14 @@ public class Nest {
 	private Scene scene = null;
 
 	/**
-	 * <code>bDawdle</code> boolean <code>false</code> (default): proceed to normal next step; <code>true</code>: instead steps through sample size collection.
+	 * <code>bDawdle</code> boolean <code>false</code> (default): proceed to normal next step;
+	 * <code>true</code>: instead steps through sample size collection.
 	 */
 	private Boolean bDawdle = false;
 
 	/**
 	 * <code>bVarianceDawdle</code> boolean <code>false</code> (default): proceed to normal next step; <code>true</code>: instead steps through variance collection.
+	 * if <code>true</code>, steps through variance components
 	 */
 	private Boolean bVarianceDawdle = false;
 
@@ -595,13 +598,11 @@ public class Nest {
 		salNestedNames.add(sNest);
 		sbHFO.append(cTarget);
 		sHDictionary = sbHFO.toString();
-		sss = new String[words.length - iFirst];
-		System.arraycopy(words, iFirst, sss, 0, words.length - iFirst);
-		if (cTarget != cReplicate)
-			myTree.addSampleSize(cTarget, sss);
+		sss = Arrays.copyOfRange(words,iFirst, words.length);
 		myTree.setDictionary(sDictionary);
 		sHDictionary = sDictionary;
 		myTree.setHDictionary(sHDictionary);
+		myTree.addSampleSize(cTarget, sss);
 		iNestCount++;
 	}
 
@@ -821,6 +822,11 @@ public class Nest {
 		myTree.setFacets(farFacets);
 		myTree.setFacetCount(iFacetCount);
 		myTree.setNests(sarNestedNames);
+	}
+
+	public void fillEffects(){
+		for (String s : sarNestedNames)
+			this.addEffect(s);
 	}
 
 	/**

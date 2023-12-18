@@ -185,7 +185,7 @@ public class SampleSizeTree {
 	 * ragged matrix <code>Factor</code> per <code>sConfig</code> (Effect)
 	 */
 	private String[][] sarFactors = null;
-	
+
 	/**
 	 * Constructor for <code>SampleSizeTree</code>
 	 *
@@ -312,7 +312,7 @@ public class SampleSizeTree {
 		iarASums[iFacet][iCount] = iLast;
 		iLengths[iFacet]= L;
 
-		
+		int[] da = iarDepths;
 	}
 
 	/**
@@ -542,8 +542,6 @@ public class SampleSizeTree {
 		Integer iLevel = _iLevel;
 		iarSizes[iLevel][_iPointer] = _value;	// for both analysis and synthesis
 		updateSampleSizes(iLevel);
-/*		if(!myNest.getSimulate() || !bDoOver)				// for analysis only
-			iarASums[iLevel][_iPointer + 1] = iarASums[iLevel][_iPointer] + _value;*/
 	}
 
 	/**
@@ -1228,7 +1226,7 @@ public class SampleSizeTree {
 	}
 	
 	/**
-	 * For each indices-incrementation-step, this method calculates
+	 * For each index-incrementation-step, this method calculates
 	 * the current count for every permitted facet configuration
 	 */
 	private void updateCounts() {
@@ -1307,6 +1305,14 @@ public class SampleSizeTree {
 			_e.printStackTrace();
 		else {
 			logger.warning(_e.getMessage());
+		}
+	}
+
+	public void completeSSS(){
+		if (!myNest.getDoOver()){
+			for (int i = 0; i < iFacetCount; i++){
+
+			}
 		}
 	}
 }

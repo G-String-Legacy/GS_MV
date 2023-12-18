@@ -305,6 +305,7 @@ public class SynthGroups {
 				}
 			case 8:		// Set Scales
 				try {
+					//myTree.completeSSS();
 					iTFonPage = 0;
 					myTree.setHDictionary(myNest.getHDictionary());
 					return baseScaleGroup();
@@ -316,6 +317,7 @@ public class SynthGroups {
 					if (cReplicate != '-')
 						doReplications();
 					if (!myNest.getDoOver())
+						myNest.fillEffects();
 						myNest.setVarianceDawdle(true);
 					return VarianceComponentsGroup();
 				} catch (Exception e) {
@@ -1016,49 +1018,55 @@ public class SynthGroups {
 	private Group VarianceComponentsGroup() {
 		myNest.doComponents();
 		Group group = new Group();
-		VBox vb = new VBox();
-		Label lbHeader = new Label("Now specify variance component values for each component!");
-		lbHeader.setStyle(sStyle_18);
-		lbHeader.setAlignment(Pos.TOP_CENTER);
-		lbHeader.setPrefWidth(800);
-		vb.getChildren().add(lbHeader);
-		HBox hTitles = new HBox(3);
-		Label lbDesig = new Label("Configuration");
-		lbDesig.setAlignment(Pos.BASELINE_CENTER);
-		lbDesig.setPrefWidth(200);
-		lbDesig.setStyle(null);
-		lbDesig.setTranslateX(110.0);
-		Label lbLevel = new Label("Levels");
-		lbLevel.setPrefWidth(100);
-		lbLevel.setStyle(null);
-		lbLevel.setTranslateX(80.0);
-		Label lbVar = new Label("Variance");
-		lbVar.setPrefWidth(110);
-		lbVar.setStyle(null);
-		lbVar.setTranslateX(140.0);
-		hTitles.getChildren().addAll(lbDesig, lbLevel, lbVar);
-		vb.getChildren().add(hTitles);
-		/*
-		 * Next we have to construct all allowed configurations
-		 * ('Effects' in Brennan's terminology). The total number
-		 * of these configurations ('iComps') provides the number
-		 * of variance components to be entered.
-		 */
-		CombConstrct cc = new CombConstrct(myNest);
-		//cc.process();
-		int iVC = cc.getConfigurationCount();
-		iTFonPage = 0;
-		//iVC = myTree.getConfigurationCount();
-		VarianceDadleCheck = new Boolean[iVC];
-		for (int i = 0; i < iVC; i++) {
-			vb.getChildren().add(vcGroup(i));
-			VarianceDadleCheck[i] = false;
+		try {
+			VBox vb = new VBox();
+			Label lbHeader = new Label("Now specify variance component values for each component!");
+			lbHeader.setStyle(sStyle_18);
+			lbHeader.setAlignment(Pos.TOP_CENTER);
+			lbHeader.setPrefWidth(800);
+			vb.getChildren().add(lbHeader);
+			HBox hTitles = new HBox(3);
+			Label lbDesig = new Label("Configuration");
+			lbDesig.setAlignment(Pos.BASELINE_CENTER);
+			lbDesig.setPrefWidth(200);
+			lbDesig.setStyle(null);
+			lbDesig.setTranslateX(110.0);
+			Label lbLevel = new Label("Levels");
+			lbLevel.setPrefWidth(100);
+			lbLevel.setStyle(null);
+			lbLevel.setTranslateX(80.0);
+			Label lbVar = new Label("Variance");
+			lbVar.setPrefWidth(110);
+			lbVar.setStyle(null);
+			lbVar.setTranslateX(140.0);
+			hTitles.getChildren().addAll(lbDesig, lbLevel, lbVar);
+			vb.getChildren().add(hTitles);
+			/*
+			 * Next we have to construct all allowed configurations
+			 * ('Effects' in Brennan's terminology). The total number
+			 * of these configurations ('iComps') provides the number
+			 * of variance components to be entered.
+			 */
+			CombConstrct cc = new CombConstrct(myNest);
+			//cc.process();
+			int iVC = cc.getConfigurationCount();
+			iTFonPage = 0;
+			//iVC = myTree.getConfigurationCount();
+			VarianceDadleCheck = new Boolean[iVC];
+			for (int i = 0; i < iVC; i++) {
+				VarianceDadleCheck[i] = true;
+				vb.getChildren().add(vcGroup(i));
+			}
+			vb.getChildren().get(0).requestFocus();
+			ScrollPane sP = new ScrollPane();
+			sP.setContent(vb);
+			sP.setFitToWidth(true);
+			group.getChildren().add(sP);
+		} catch(Exception e) {
+			e.printStackTrace();
+			String s = e.getMessage();
 		}
-		vb.getChildren().get(0).requestFocus();
-		ScrollPane sP = new ScrollPane();
-		sP.setContent(vb);
-		sP.setFitToWidth(true);
-		group.getChildren().add(sP);
+		checkVarianceDawdle();
 		return group;
 	}
 
@@ -1071,43 +1079,62 @@ public class SynthGroups {
 	 */
 	private Group vcGroup(Integer iPos) {
 		Group group = new Group();
-		String sVC = "";
-		if (myNest.getDoOver())
-			sVC = myNest.getVarianceCoefficient(iPos).toString();
-		HBox hb = new HBox(3);
-		// hb.setMaxHeight(0.5);
-		String sConfDesig = myTree.getConfiguration(iPos);
-		Label lbDesig = new Label(sConfDesig);
-		lbDesig.setAlignment(Pos.BASELINE_CENTER);
-		lbDesig.setPrefWidth(200);
-		lbDesig.setStyle(null);
-		lbDesig.setTranslateX(100.0);
-		String sLevel = ((Integer)myTree.getDepth(iPos)).toString();
-		Label lbLevel = new Label(sLevel);
-		lbLevel.setPrefWidth(100);
-		lbLevel.setStyle(null);
-		lbLevel.setTranslateX(100.0);
-		TextField tfVC = new TextField(sVC);
-		repeatFocus(tfVC);
-		tfVC.setPromptText("   decimal value");
-		tfVC.setTranslateX(150.0);
-		tfVC.setPrefWidth(80.0);
-		sText = null;
-		tfVC.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (!Objects.equals(newValue, oldValue))
-				sText = newValue;
-		});
-		tfVC.focusedProperty().addListener((obs, oldVal, newVal) -> {
-			if (!newVal) {
-				myNest.setVariancecoefficient(iPos, Double.parseDouble(sText));
-				VarianceDadleCheck[iPos] = true;
-				checkVarianceDawdle();
+		try {
+			String sVC = "";
+			if (myNest.getDoOver()) {
+				sVC = myNest.getVarianceCoefficient(iPos).toString();
+				VarianceDadleCheck[iPos] = false;
 			}
-		});
-		hb.getChildren().addAll(lbDesig, lbLevel, tfVC);
-		group.getChildren().add(hb);
-		iTFonPage++;
+			HBox hb = new HBox(3);
+			// hb.setMaxHeight(0.5);
+			String sConfDesig = myTree.getConfiguration(iPos);
+			Label lbDesig = new Label(sConfDesig);
+			lbDesig.setAlignment(Pos.BASELINE_CENTER);
+			lbDesig.setPrefWidth(200);
+			lbDesig.setStyle(null);
+			lbDesig.setTranslateX(100.0);
+			String sLevel = ((Integer) myTree.getDepth(iPos)).toString();
+			Label lbLevel = new Label(sLevel);
+			lbLevel.setPrefWidth(100);
+			lbLevel.setStyle(null);
+			lbLevel.setTranslateX(100.0);
+			TextField tfVC = new TextField(sVC);
+			repeatFocus(tfVC);
+			tfVC.setPromptText("   decimal value");
+			tfVC.setTranslateX(150.0);
+			tfVC.setPrefWidth(80.0);
+			sText = null;
+			tfVC.textProperty().addListener((observable, oldValue, newValue) -> {
+				if (!Objects.equals(newValue, oldValue))
+					processVC_entries(iPos, newValue);		// see subroutine
+			});
+
+/*			tfVC.focusedProperty().addListener((obs, oldVal, newVal) -> {
+				if (!newVal) {
+					processVC_entries(iPos, sText);		// see subroutine
+				}
+			}); */
+
+			hb.getChildren().addAll(lbDesig, lbLevel, tfVC);
+			group.getChildren().add(hb);
+			iTFonPage++;
+		} catch (Exception e){
+			e.printStackTrace();
+			String s = e.getMessage();
+		}
 		return group;
+	}
+
+	/**
+	 * subroutine to make innards of Lambda transparent
+	 *
+	 * @param iPos
+	 * @param sText
+	 */
+	private void processVC_entries(int iPos, String sText){
+		myNest.setVariancecoefficient(iPos, Double.parseDouble(sText));
+		VarianceDadleCheck[iPos] = false;
+		checkVarianceDawdle();
 	}
 
 	/**

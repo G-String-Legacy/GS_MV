@@ -91,13 +91,11 @@ jlink {
 
         //un-comment appropriate installerType
 
-        /*
-            installerType = "deb"
+                installerType = "deb"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
             installerOptions += [
                 '--linux-deb-maintainer', 'ralph@papaworx.com'
             ]
-        */
 
         /*
             installerType = "msi"

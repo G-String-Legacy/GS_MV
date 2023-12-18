@@ -121,11 +121,13 @@ public class GS_Application extends Application {
     public void start(Stage stage) throws IOException {
          /*
           String containing current location of log file output.
-         */
+        */
         logger = Logger.getLogger("org.gsusers.gsmv");
         FileHandler fh = new FileHandler();							// just for initialization
         logger.addHandler(fh);
+        logger.setLevel(Level.CONFIG);
         myNest = new Nest(logger, this, prefs);
+
 
         /*
             Check for presence of Brennan working directory.

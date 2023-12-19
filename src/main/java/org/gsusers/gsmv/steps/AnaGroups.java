@@ -746,7 +746,7 @@ public class AnaGroups {
 		myNest.createDictionary();
 		sDictionary = myNest.getDictionary();
 		sHDictionary = myNest.getHDictionary();
-		cAsterisk = sDictionary.toCharArray()[0];
+		cAsterisk = myNest.getAsterisk();
 		for (int i = 0; i < sHDictionary.length(); i++)
 			orderedData.add(sHDictionary.substring(i, i + 1));
 		lvFacets.setItems(orderedData);

@@ -14,10 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +316,7 @@
       <workItem from="1702907373348" duration="9555000" />
       <workItem from="1702917551823" duration="341000" />
       <workItem from="1702924457779" duration="2823000" />
-      <workItem from="1702984142432" duration="495000" />
+      <workItem from="1702984142432" duration="971000" />
     </task>
     <servers />
   </component>

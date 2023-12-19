@@ -10,8 +10,8 @@ COMMENT*  Rotation    (r)
 COMMENT*  Assessor    (a)
 COMMENT*  Performance    (p)
 OPTIONS   NREC 5 "*.lis" TIME NOBANNER
-EFFECT       * c           	63
-EFFECT      r:c
+EFFECT       c           	63
+EFFECT     * r:c
 EFFECT       a           	3
 EFFECT       p           	5
 FORMAT       8  8

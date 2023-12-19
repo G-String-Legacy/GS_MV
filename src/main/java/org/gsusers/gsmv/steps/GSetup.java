@@ -1,11 +1,14 @@
 package org.gsusers.gsmv.steps;
 
-import java.io.*;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 /**
  * Provides the screen for program setup
@@ -16,23 +19,14 @@ import javafx.stage.Stage;
  */
 public class GSetup
 {
-	/**
-	 * JavaFX stage for GUI
-	 */
-	private Stage myStage = null;
-
-	/**
-	 * pointer to <code>logger</code>
-	 */
-	private Logger logger;
 
 	/**
 	 * pointer to Preferences API
 	 */
-	private Preferences prefs;
+	private final Preferences prefs;
 	//private Long iBytes;
 
-	private String sWorking ;
+	private final String sWorking ;
 	private String sTargetName = null;
 	private String sResourceName = null;
 
@@ -53,12 +47,11 @@ public class GSetup
 		String sHome = System.getProperty("user.home");
 		String fileSeparator = File.separator;
 		sWorking = sHome + fileSeparator + "G_String_Working_Directory";
-		logger = _logger;
 		prefs = _prefs;
 		try {
 			this.ask();
 		} catch(Exception e) {
-			logger.warning (e.getMessage());
+			_logger.warning (e.getMessage());
 		}
 		File fTemp = new File(sWorking);
 		if (!fTemp.exists())
@@ -68,25 +61,23 @@ public class GSetup
 	/**
 	 * Initializes preferences
 	 *
-	 * @throws IOException input errors
 	 */
-	public void ask() throws IOException
-	{
+	public void ask() {
 		String sOS_Full = System.getProperty("os.name");
 		String sOS = null;
-		if (sOS_Full.indexOf("Windows") >=0)
+		if (sOS_Full.contains("Windows"))
 		{
 			sOS = "Windows";
 			sResourceName = "urGenova_W.exe";
 			sTargetName = "urGenova.exe";
 		}
-		else if (sOS_Full.indexOf("Linux") >= 0)
+		else if (sOS_Full.contains("Linux"))
 		{
 			sOS = "Linux";
 			sResourceName = "urGenova_L";
 			sTargetName = "urGenova";
 		}
-		else if (sOS_Full.indexOf("Mac") >= 0)
+		else if (sOS_Full.contains("Mac"))
 		{
 			sOS = "Mac";
 			sResourceName = "urGenova_M";
@@ -108,10 +99,9 @@ public class GSetup
 		byte[] b = new byte[1024];
 		String sTarget;
 		File fTarget;
-		String sBrennan = sWorking;
-		File fWorking = new File(sBrennan);
+		File fWorking = new File(sWorking);
 		if (fWorking.mkdir()){
-			sTarget = sBrennan + File.separator + sTargetName;
+			sTarget = sWorking + File.separator + sTargetName;
 			fTarget = new File(sTarget);
 			FileOutputStream out = new FileOutputStream(sTarget);
 			InputStream is = this.getClass().getResourceAsStream(sResourceName);

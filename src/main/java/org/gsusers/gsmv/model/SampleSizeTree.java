@@ -20,7 +20,7 @@ import org.gsusers.gsmv.utilities.SampleSizeView;
  * Class SampleSizeTree
  * The SampleSizeTree object contains the whole structure of the sample
  * sizes for both crossed and nested facets, as well management of indices,
- * incrementing indices (stepping), and calculation of of range for each
+ * incrementing indices (stepping), and calculation of range for each
  * configuration ('Effect').
  *
  * @see <a href="https://github.com/G-String-Legacy/G_String/blob/main/workbench/GS_L/src/model/SampleSizeTree.java">model.SampleSizeTree</a>
@@ -28,8 +28,7 @@ import org.gsusers.gsmv.utilities.SampleSizeView;
  * @version %v..%
  */
 public class SampleSizeTree {
-	
-	Boolean bFirst = true;
+
 	/**
 	 * <code>Nest</code>  the various design parameters of the assessment.
 	 */

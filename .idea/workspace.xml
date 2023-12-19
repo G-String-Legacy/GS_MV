@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="8" />
     <option name="CUSTOM_SCOPE_NAME" value="~/Documents/GS_L/Gradle/GS_MV/src/java" />
   </component>
   <component name="ArtifactsWorkspaceSettings">
@@ -16,11 +15,9 @@
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="solved resource loads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/GS_Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/SampleSizeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/SynthGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/CombConstrct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/CombConstrct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/GSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/utilities/About.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,8 +266,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.GS_MV [build]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
+        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [clean]" />
         <item itemvalue="Shell Script.GS_MV" />
       </list>
@@ -322,6 +319,8 @@
       <workItem from="1702896914595" duration="5498000" />
       <workItem from="1702907373348" duration="9555000" />
       <workItem from="1702917551823" duration="341000" />
+      <workItem from="1702924457779" duration="2823000" />
+      <workItem from="1702984142432" duration="495000" />
     </task>
     <servers />
   </component>

@@ -26,8 +26,13 @@ plugins {
 
 }
 
+java {
+    toolchain{
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 group 'org.gsusers'
-version '2.0.12'
+version '2.0.13'
 
 repositories {
     mavenCentral()
@@ -37,8 +42,8 @@ ext {
     junitVersion = '5.9.1'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '21.0.1'
+targetCompatibility = '21.0.1'
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
@@ -50,7 +55,7 @@ application {
 }
 
 javafx {
-    version = '17.0.2'
+    version = '21.0.1'
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
 

@@ -6,29 +6,28 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.gsusers.gsmv.model.Nest;
-import org.gsusers.gsmv.steps.GSetup;
 import org.gsusers.gsmv.steps.AnaGroups;
+import org.gsusers.gsmv.steps.GSetup;
 import org.gsusers.gsmv.steps.SynthGroups;
 import org.gsusers.gsmv.utilities.Filer;
 import org.gsusers.gsmv.utilities.TextStack;
+import org.gsusers.gsmv.utilities.gsLogger;
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
 /**
@@ -65,7 +64,7 @@ public class GS_Application extends Application {
     /**
      * String containing current location of log file output.
      */
-    private Logger logger;
+    private gsLogger logger;
 
     /**
      * controller - Object that controls the GUI.
@@ -108,7 +107,7 @@ public class GS_Application extends Application {
      */
     private Scene storedScene = null;
 
-    /**
+       /**
      * 'start' method of javafx application
      *
      * @param stage the primary stage for this application, onto which
@@ -122,20 +121,15 @@ public class GS_Application extends Application {
          /*
           String containing current location of log file output.
         */
-        logger = Logger.getLogger("org.gsusers.gsmv");
-        FileHandler fh = new FileHandler();							// just for initialization
-        logger.addHandler(fh);
-        logger.setLevel(Level.CONFIG);
-        myNest = new Nest(logger, this, prefs);
-
+       logger = new gsLogger("org.gsusers.gsmv", prefs, Level.WARNING);
+       myNest = new Nest(logger, this, prefs);
 
         /*
             Check for presence of Brennan working directory.
             if not present, create it.
          */
 
-        GSetup gs = new GSetup(logger, prefs);
-        gs = null;
+        new GSetup(logger, prefs);
 
         FXMLLoader  fxmlLoader = new FXMLLoader(GS_Application.class.getResource("GS_view.fxml"));
         /*
@@ -161,7 +155,8 @@ public class GS_Application extends Application {
         try {
             stepUp();	// now ready for work
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 162, "", (Exception) e);
         }
     }
 
@@ -224,7 +219,7 @@ public class GS_Application extends Application {
             }
             out.close();
         } catch (IOException e) {
-            logger.warning(e.getMessage());
+            logger.log("Application", 225, "", e);
         }
         return docFile;
     }
@@ -266,10 +261,8 @@ public class GS_Application extends Application {
                 show(group);
             }
         } catch (Throwable e) {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            e.printStackTrace(pw);
-            logger.warning(e.toString());
+            assert e instanceof Exception;
+            logger.log("Application", 270, "", (Exception) e);
         }
     }
 
@@ -284,7 +277,8 @@ public class GS_Application extends Application {
         try {
             stepUp();					// and then tries going to 'stepUp'
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 285, "", (Exception) e);
         }
     }
 
@@ -352,7 +346,8 @@ public class GS_Application extends Application {
         try {
             stepUp();
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 353, "", (Exception) e);
         }
     }
 
@@ -367,7 +362,8 @@ public class GS_Application extends Application {
         try {
             stepUp();
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 368, "", (Exception) e);
         }
     }
 
@@ -405,7 +401,8 @@ public class GS_Application extends Application {
         try {
             stepUp();
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 406, "", (Exception) e);
         }
     }
 
@@ -417,7 +414,7 @@ public class GS_Application extends Application {
         try {
             mySteps.saveAll();
         } catch (IOException e) {
-            logger.warning(e.getMessage());
+            logger.log("Application", 418, "", e);
         }
     }
 
@@ -432,7 +429,8 @@ public class GS_Application extends Application {
         try {
             stepUp();					// and then tries going to 'stepUp'
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 433, "", (Exception) e);
         }
     }
 
@@ -447,7 +445,8 @@ public class GS_Application extends Application {
         try {
             stepUp();					// and then tries going to 'stepUp'
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 448, "", (Exception) e);
         }
     }
 
@@ -462,7 +461,8 @@ public class GS_Application extends Application {
         try {
             stepUp();
         } catch (Throwable e) {
-            logger.warning(e.getMessage());
+            assert e instanceof Exception;
+            logger.log("Application", 463, "", (Exception) e);
         }
     }
 
@@ -535,7 +535,7 @@ public class GS_Application extends Application {
         try {
             sarKeys = Arrays.asList(prefs.keys());
         } catch (Exception e) {
-            logger.warning(e.getMessage());
+            logger.log("Application", 536, "", e);
         }
         assert sarKeys != null;
         Collections.sort(sarKeys);

@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 import org.gsusers.gsmv.utilities.Factor;
 import org.gsusers.gsmv.utilities.SampleSizeView;
 
+import org.gsusers.gsmv.utilities.gsLogger;
+
 /**
  * Class SampleSizeTree
  * The SampleSizeTree object contains the whole structure of the sample
@@ -136,7 +138,7 @@ public class SampleSizeTree {
 	/**
 	 * pointer to org.gs_users.gs_lv.GS_Application logger
 	 */
-	private Logger logger;
+	private gsLogger logger;
 
 	/**
 	 * array of <code>Facets</code> in basic order
@@ -192,7 +194,7 @@ public class SampleSizeTree {
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _prefs pointer to <code>Preferences</code>
 	 */
-	public SampleSizeTree(Nest _nest, Logger _logger, Preferences _prefs) {
+	public SampleSizeTree(Nest _nest, gsLogger _logger, Preferences _prefs) {
 		myNest = _nest;
 		logger = _logger;
 		prefs = _prefs;
@@ -664,7 +666,7 @@ public class SampleSizeTree {
 			try {
 				iResult[i] = Integer.parseUnsignedInt(sTemp);
 			} catch (Exception e) {
-				logger.warning(e.getMessage());
+				logger.log("SampleSizeTree", 669, "", e);
 			}
 		}
 		return iResult;
@@ -809,7 +811,7 @@ public class SampleSizeTree {
 			}
 			cAsterisk = myNest.getAsterisk();
 		} catch(Exception e) {
-			myLogger(logger, e);
+			logger.log("SampleSizeTree", 814, "", e);
 		}
 	}
 
@@ -1303,7 +1305,7 @@ public class SampleSizeTree {
 		if (myNest.getStackTraceMode())
 			_e.printStackTrace();
 		else {
-			logger.warning(_e.getMessage());
+			logger.log("SampleSizeTree", 1308, "", _e);
 		}
 	}
 

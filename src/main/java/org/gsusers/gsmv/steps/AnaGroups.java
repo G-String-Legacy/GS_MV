@@ -26,12 +26,12 @@ import org.gsusers.gsmv.model.Nest;
 import org.gsusers.gsmv.model.SampleSizeTree;
 import org.gsusers.gsmv.utilities.FacetModView;
 import org.gsusers.gsmv.utilities.Filer;
+import org.gsusers.gsmv.utilities.gsLogger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
 /**
@@ -178,7 +178,7 @@ public class AnaGroups {
 	/**
 	 * pointer to Logger
 	 */
-	private final Logger logger;
+	private final gsLogger logger;
 
 	private final GS_Application myMain;
 
@@ -194,7 +194,7 @@ public class AnaGroups {
 	 * @param _prefs  <code>Preferences</code>
 	 * @param _flr  <code>Filer</code>
 	 */
-	public AnaGroups(GS_Application _main, Nest _nest, Logger _logger, GS_Controller _controller, Preferences _prefs, Filer _flr) {
+	public AnaGroups(GS_Application _main, Nest _nest, gsLogger _logger, GS_Controller _controller, Preferences _prefs, Filer _flr) {
 
 		myMain = _main;
 		myNest = _nest;
@@ -249,7 +249,7 @@ public class AnaGroups {
 				myNest.setDoOver(false);
 				return startUp();
 			} catch (Exception e) {
-				myLogger(0, logger, e);
+				logger.log("AnaGroups", 252, "", e);
 			}
 		// step 1  enter script title
 		case 1:
@@ -263,28 +263,28 @@ public class AnaGroups {
 					
 				return setTitle();
 			} catch (Exception e) {
-				myLogger(1, logger, e);
+				logger.log("AnaGroups", 266, "", e);
 			}
 		// step 2  add comments
 		case 2:
 			try {
 				return addComments();
 			} catch (Exception e) {
-				myLogger(2, logger, e);
+				logger.log("AnaGroups", 273, "", e);
 			}
 		// step 3  specify Facet of differentiation  and number of additional Facets
 		case 3:
 			try {
 				return mainSubjectGroup();
 			} catch (Exception e) {
-				myLogger(2, logger, e);
+				logger.log("AnaGroups", 280, "", e);
 			}
 		// step 4  add additional Facets
 		case 4:
 			try {
 				return subjectsGroup();
 			} catch (Exception e) {
-				myLogger(4, logger, e);
+				logger.log("AnaGroups", 287, "", e);
 			}
 		// step 5  set the desired order of Facets
 		case 5:
@@ -292,21 +292,21 @@ public class AnaGroups {
 				myTree = myNest.getTree();
 				return orderFacets();
 			} catch (Exception e) {
-				myLogger(5, logger, e);
+				logger.log("AnaGroups", 295, "", e);
 			}
 		// step 6  arrange nesting of Facets
 		case 6:
 			try {
 				return setNestingGroup();
 			} catch (Exception e) {
-				myLogger(6, logger, e);
+				logger.log("AnaGroups", 302, "", e);
 			}
 		// step 7  select data file
 		case 7:
 			try {
 				return selectDataFile();
 			} catch (Exception e) {
-				myLogger(7, logger, e);
+				logger.log("AnaGroups", 309, "", e);
 			}
 		// step 8  enter sample sizes (repeat until done)
 		case 8:
@@ -315,7 +315,7 @@ public class AnaGroups {
 				myNest.G_setFacets();
 				return setSampleSize();
 			} catch (Exception e) {
-				myLogger(8, logger, e);
+				logger.log("AnaGroups", 318, "", e);
 			}
 		// step 9  program prepares files for, and runs urGENOVA
 		case 9:
@@ -329,7 +329,7 @@ public class AnaGroups {
 				myController.disableSave(false);
 				return runBrennan();
 			} catch (Exception e) {
-				myLogger(9, logger, e);
+				logger.log("AnaGroups", 332, "", e);
 			}
 		// step 10  calculates coefficients for G-Study and D_Studies (repeat)
 		case 10:
@@ -340,7 +340,7 @@ public class AnaGroups {
 				myNest.setDawdle(true);
 				return Analysis();
 			} catch (Exception e) {
-				myLogger(10, logger, e);
+				logger.log("AnaGroups", 343, "", e);
 			}
 		case 100:
 			return Explain();
@@ -1193,7 +1193,7 @@ public class AnaGroups {
 		try {
 			process = builder.start();
 		} catch (Exception e) {
-			logger.warning( e.getMessage());
+			logger.log("AnaGroups", 1196, "", e);
 		}
 		String line;
 		sbResult = new StringBuilder();
@@ -1204,7 +1204,7 @@ public class AnaGroups {
 				sbResult.append(line);
 			}
 		} catch (IOException e1) {
-			logger.warning(e1.getMessage());
+			logger.log("AnaGroups", 1207, "", e1);
 		}
 		line = sbResult.toString();
 		Label lbGenova = new Label("urGenova said: " + line);
@@ -1213,7 +1213,7 @@ public class AnaGroups {
 		try {
 			process.waitFor();
 		} catch (InterruptedException e) {
-			logger.warning(e.getMessage());
+			logger.log("AnaGroups", 1216, "", e);
 		}
 		TextArea taOutput = new TextArea();
 
@@ -1221,7 +1221,7 @@ public class AnaGroups {
 		try {
 			is = new FileInputStream(prefs.get("Working Directory", null) + "/~control.txt.lis");
 		} catch (FileNotFoundException e) {
-			logger.warning(e.getMessage());
+			logger.log("AnaGroups", 1224, "", e);
 		}
 
 		/*
@@ -1241,7 +1241,7 @@ public class AnaGroups {
 			tLine = "\n";
 			sbResult.append(tLine).append("\n");
 			//Integer iMissed = flr.missingItems();
-			Integer iMissed = myNest.getMissingDataCount();
+			int iMissed = myNest.getMissingDataCount();
 			String sMissed;
 			if (iMissed == 0)
 				sMissed = "There were no missing items.\n";
@@ -1258,7 +1258,7 @@ public class AnaGroups {
 			tLine = "While this improves the accuracy, it does not affect the calculated variances.\n\n";
 			sbResult.append(tLine);
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("AnaGroups", 1261, "", e);
 		}
 		VBox vbOuter = new VBox();
 		vbOuter.setPrefWidth(800);
@@ -1353,7 +1353,7 @@ public class AnaGroups {
 		try {
 			myNest.formatResults(sbResult);
 		} catch (Exception ioe) {
-			myLogger(11, logger, ioe);
+			logger.log("AnaGroups", 1556, "", ioe);
 		}
 		Group group = new Group();
 		/*
@@ -1532,19 +1532,11 @@ public class AnaGroups {
 		myNest.setDawdle(iSample++ < myNest.getNestCount() - 1);
 	}
 	
-	/**
-	 * auxiliary method in logger handling
-	 * 
-	 * @param _iStep  current step in AnaGroups
+	/*
+	  auxiliary method in logger handling
+
+	  @param _iStep  current step in AnaGroups
 	 * @param _logger  pointer to logger API
 	 * @param _e  error to be logged
 	 */
-	private void myLogger(int _iStep, Logger _logger, Exception _e) {
-		if (myNest.getStackTraceMode())
-			_e.printStackTrace();
-		else {
-			String sMessage = "\n Step: " + _iStep + "\n " + _e.getLocalizedMessage();
-			_logger.warning(sMessage);
-		}
-	}
 }

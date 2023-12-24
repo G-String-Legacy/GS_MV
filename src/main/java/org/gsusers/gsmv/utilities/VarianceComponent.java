@@ -1,8 +1,5 @@
 package org.gsusers.gsmv.utilities;
 
-import java.io.UnsupportedEncodingException;
-import java.util.logging.Logger;
-
 import org.gsusers.gsmv.model.Facet;
 import org.gsusers.gsmv.model.Nest;
 
@@ -15,7 +12,7 @@ import org.gsusers.gsmv.model.Nest;
  * VC also handles Brennan's rules for calculating sigma2(tau), sigma2(delta),
  * and sigma2(Delta) [Brennan, Generalizability Theory, pp 144/5]
  * For each variance component it thus determines three booleans (b_tau, b_delta,
- * and b_Delta to signify that this variance component gets added to the corresponding
+ * and b_Delta) to signify that this variance component gets added to the corresponding
  * sigma square. This step then occurs in Nest.formatResults.
  * During D-Studies it changes the signature item of fixed facets to 'f', thus
  * excluding them from contributing to the error terms delta and Delta.
@@ -30,12 +27,12 @@ public class VarianceComponent {
 	/**
 	 * nesting pattern
 	 */
-	private String sPattern;
+	private final String sPattern;
 	
 	/**
 	 * char array of pattern
 	 */
-	private char[] cPattern = null;
+	private final char[] cPattern;
 	
 	/**
 	 * contributes to tau
@@ -65,32 +62,27 @@ public class VarianceComponent {
 	/**
 	 * pointer to Nest
 	 */
-	private Nest myNest;
+	private final Nest myNest;
 	
 	/**
 	 * Facet dictionary, original order
 	 */
-	private String sDictionary = null;
+	private final String sDictionary;
 	
 	/**
 	 * array of facets
 	 */
-	private Facet[] farFacets = null;
+	private final Facet[] farFacets;
 	
 	/**
 	 * double variable for the value of the coefficient denominator
 	 */
 	private Double dDenominator = 1.0;
-	
-	/**
-	 * string for denominar
-	 */
-	private String sDenominator = null;
 
 	/**
 	 * pointer to logger
 	 */
-	private Logger logger;
+	private final gsLogger logger;
 	
 	/**
 	 * Class constructor
@@ -99,7 +91,7 @@ public class VarianceComponent {
 	 * @param _line  String argument formally characterizing the configuration of the variance component
 	 * @param _logger pointer to org.gs_users.gs_lv.GS_Application logger
 	 */
-	public VarianceComponent(Nest _nest, String _line, Logger _logger) {
+	public VarianceComponent(Nest _nest, String _line, gsLogger _logger) {
 		/*
 		 * constructor for G-Analysis
 		 */
@@ -122,7 +114,7 @@ public class VarianceComponent {
 	 */
 	public void doCoefficient(StringBuilder sbOut) {
 			StringBuilder sb = new StringBuilder();
-			Double dFactor = 0.0;
+			Double dFactor;
 			boolean bFirst = true;
 			dDenominator = 1.0;
 			sSignature = sign(sPattern);
@@ -139,12 +131,12 @@ public class VarianceComponent {
 					if (bFirst)
 						sb.append(String.format("%.2f", dFactor));
 					else
-						sb.append(" x " + String.format("%.2f", dFactor));
+						sb.append(" x ").append(String.format("%.2f", dFactor));
 					bFirst = false;
 				}
 		}
 	
-		/**
+		/*
 		 * now analyze contribution to tau, delta and Delta.
 		 * in words:
 		 *   tau: always has to contain d-type,  but no random facets;
@@ -161,15 +153,17 @@ public class VarianceComponent {
 			sTarget = "δ only";
 		else if (!b_delta && b_Delta)
 			sTarget = "Δ only";
-		else if (b_delta && b_Delta)
+		else if (b_delta)
 			sTarget = "both δ and Δ";
-		sDenominator = sb.toString();
+		/*
+		 * string for denominator
+		 */
+		String sDenominator = sb.toString();
 		if (sbOut != null) {
 			try {
-				sbOut.append("Variance component '" + sPattern + "' (" + sSignature + ") is " + dVC
-						+ "; denominator is " + sDenominator + ";  " + sTarget + "\n");
+				sbOut.append("Variance component '").append(sPattern).append("' (").append(sSignature).append(") is ").append(dVC).append("; denominator is ").append(sDenominator).append(";  ").append(sTarget).append("\n");
 			} catch (Exception e) {
-				logger.warning(e.getMessage());
+				logger.log("VarianceComponent", 178, "", e);
 			}
 		}
 	}
@@ -181,7 +175,7 @@ public class VarianceComponent {
 	 * @return Boolean of confirmation
 	 */
 	private Boolean has(char _c) {
-		/**
+		/*
 		 * simplified 'Signature contains' function
 		 */
 		return (sSignature.indexOf(_c) >= 0);
@@ -190,19 +184,10 @@ public class VarianceComponent {
 	/**
 	 * getter of vc denominator
 	 *
-	 * @return Doublr denominator
+	 * @return Double denominator
 	 */
 	public Double getDenominator() {
 		return dDenominator;
-	}
-
-	/**
-	 * getter of vc pattern
-	 *
-	 * @return String lexical description of vc
-	 */
-	public String getPattern() {
-		return sPattern;
 	}
 
 	/**
@@ -215,19 +200,10 @@ public class VarianceComponent {
 	}
 
 	/**
-	 * getter of signature of vc in terms of facet types ('d', 'g', or 's' for G-Studies)
-	 *
-	 * @return String of signature
-	 */
-	public String getSignature() {
-		return sSignature;
-	}
-
-	/**
 	 * getter of signature of vc in D-Studies ('d', 's' and 'r' or 'f' for facets of generalization
 	 *
 	 * @param _pattern String, lexical description in terms of 'd', 'g', 's' and ':'
-	 * @return
+	 * @return signature of vc pattern
 	 */
 	private String sign(String _pattern) {
 		char[] cPattern = _pattern.toCharArray();
@@ -237,7 +213,7 @@ public class VarianceComponent {
 			if (c == ':')
 				sb.append(c);
 			else {
-				Integer iFacet = myNest.getDictionary().indexOf(c);
+				int iFacet = myNest.getDictionary().indexOf(c);
 				Facet f = farFacets[iFacet];
 				cTemp = f.getFacetType();
 				if (f.getFixed())		// that excludes them from error terms

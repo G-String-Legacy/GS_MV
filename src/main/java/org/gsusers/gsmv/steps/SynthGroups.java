@@ -26,7 +26,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
 
@@ -186,7 +185,7 @@ public class SynthGroups {
 	/**
 	 * pointer to org.gs_users.gs_lv.GS_Application logger
 	 */
-	private final Logger logger;
+	private final gsLogger logger;
 
 	/**
 	 * Constructor
@@ -197,7 +196,7 @@ public class SynthGroups {
 	 * @param _prefs pointer to Preferences
 	 * @param _flr pointer to Filer
 	 */
-	public SynthGroups(Nest _nest, Logger _logger, GS_Controller _controller, Preferences _prefs, Filer _flr) {
+	public SynthGroups(Nest _nest, gsLogger _logger, GS_Controller _controller, Preferences _prefs, Filer _flr) {
 		myNest = _nest;
 		myController = _controller;
 		logger = _logger;
@@ -257,42 +256,41 @@ public class SynthGroups {
 					readOld();
 				try {
 					bReplicate = true;
-						
 					return setTitle();
 				} catch (Exception e) {
-					myLogger(1, e);
+					logger.log("SynthGroup", 263, "", e);
 				}
 			case 2:		// Comments
 				try {
 					return addComments();
 				} catch (Exception e) {
-					myLogger(2, e);
+					logger.log("SynthGroup", 269, "", e);
 				}
 			case 3:		// Main Subject
 				try {
 					cReplicate = myNest.getRepChar();
 					return mainSubjectGroup();
 				} catch (Exception e) {
-					myLogger(3, e);
+					logger.log("SynthGroup", 276, "", e);
 				}
 			case 4:		// Facets
 				try {
 					return subjectsGroup();
 				} catch (Exception e) {
-					myLogger(4, e);
+					logger.log("SynthGroup", 282, "", e);
 				}
 			case 5:		// Order Facets
 				try {
 					myNest.createDictionary();
 					return orderFacets();
 				} catch (Exception e) {
-					myLogger(5, e);
+					logger.log("SynthGroup", 289, "", e);
 				}
 			case 6:		// Nest Facets
 				try {
 					return setNestingGroup();
 				} catch (Exception e) {
-					myLogger(6, e);
+					logger.log("SynthGroup", 295, "", e);
 				}
 			case 7:		// Set Sample Sizes
 				try {
@@ -301,7 +299,7 @@ public class SynthGroups {
 					myNest.setDawdle(true);
 					return setSampleSize();
 				} catch (Exception e) {
-					myLogger(7, e);
+					logger.log("SynthGroup", 304, "", e);
 				}
 			case 8:		// Set Scales
 				try {
@@ -310,7 +308,7 @@ public class SynthGroups {
 					myTree.setHDictionary(myNest.getHDictionary());
 					return baseScaleGroup();
 				} catch (Exception e) {
-					myLogger(8, e);
+					logger.log("SynthGroup", 313, "", e);
 				}
 			case 9:		// Set Variance Components
 				try {
@@ -318,10 +316,10 @@ public class SynthGroups {
 						doReplications();
 					if (!myNest.getDoOver())
 						myNest.fillEffects();
-						myNest.setVarianceDawdle(true);
+					myNest.setVarianceDawdle(true);
 					return VarianceComponentsGroup();
 				} catch (Exception e) {
-					myLogger(9, e);
+					logger.log("SynthGroup", 324, "", e);
 				}
 			case 10:		// Create Simulation
 				try {
@@ -332,7 +330,7 @@ public class SynthGroups {
 					ConstructSimulation CS = new ConstructSimulation(myNest);
 					return saveSynthetics(CS.getlineCount(), CS.getData(), CS.getCarriageReturn());
 				} catch (Exception e) {
-					myLogger(10, e);
+					logger.log("SynthGroup", 335, "", e);
 				}
 			default:
 				System.exit(99);
@@ -1063,8 +1061,7 @@ public class SynthGroups {
 			sP.setFitToWidth(true);
 			group.getChildren().add(sP);
 		} catch(Exception e) {
-			e.printStackTrace();
-			String s = e.getMessage();
+			logger.log("SynthGroup", 1064, "", e);
 		}
 		checkVarianceDawdle();
 		return group;
@@ -1120,7 +1117,6 @@ public class SynthGroups {
 			iTFonPage++;
 		} catch (Exception e){
 			e.printStackTrace();
-			String s = e.getMessage();
 		}
 		return group;
 	}
@@ -1128,8 +1124,8 @@ public class SynthGroups {
 	/**
 	 * subroutine to make innards of Lambda transparent
 	 *
-	 * @param iPos
-	 * @param sText
+	 * @param iPos int position of variance coefficient
+	 * @param sText String of variance coefficient
 	 */
 	private void processVC_entries(int iPos, String sText){
 		myNest.setVariancecoefficient(iPos, Double.parseDouble(sText));
@@ -1355,7 +1351,7 @@ public class SynthGroups {
 		try {
 			writer = new PrintStream(fout);
 		} catch (FileNotFoundException e) {
-			logger.warning(e.getMessage());
+			logger.log("SynthGroup", 1358, "", e);
 		}
 		int iCeiling = myNest.getCeiling();
 		int iFloor = myNest.getFloor();
@@ -1575,20 +1571,5 @@ public class SynthGroups {
 		vb.getChildren().add(ta);
 		group.getChildren().add(vb);
 		return group;
-	}
-	
-	/**
-	 * Logging utility
-	 * 
-	 * @param _iStep	SynthGroups step
-	 * @param _e  Exception
-	 */
-	private void myLogger(int _iStep, Exception _e) {
-		if (myNest.getStackTraceMode())
-			_e.printStackTrace();
-		else {
-			String sMessage = "\n Step: " + _iStep + "\n " + _e.getLocalizedMessage();
-			logger.warning(sMessage);
-		}
 	}
 }

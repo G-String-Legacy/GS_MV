@@ -7,8 +7,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
+
+import org.gsusers.gsmv.utilities.gsLogger;
 
 /**
  * Provides the screen for program setup
@@ -43,15 +46,17 @@ public class GSetup
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
 	 * @param _prefs  Preferences
 	 */
-	public GSetup(Logger _logger, Preferences _prefs) throws IOException {
+	public GSetup(gsLogger _logger, Preferences _prefs) throws IOException {
+
 		String sHome = System.getProperty("user.home");
 		String fileSeparator = File.separator;
 		sWorking = sHome + fileSeparator + "G_String_Working_Directory";
 		prefs = _prefs;
+		gsLogger gsL = _logger;
 		try {
 			this.ask();
 		} catch(Exception e) {
-			_logger.warning (e.getMessage());
+			gsL.log(Level.WARNING, "GSetup", 58,"", e);
 		}
 		File fTemp = new File(sWorking);
 		if (!fTemp.exists())
@@ -62,7 +67,7 @@ public class GSetup
 	 * Initializes preferences
 	 *
 	 */
-	public void ask() {
+	private void ask() {
 		String sOS_Full = System.getProperty("os.name");
 		String sOS = null;
 		if (sOS_Full.contains("Windows"))
@@ -94,7 +99,7 @@ public class GSetup
 		prefs.put("OS", sOS);
 	}
 
-	public void getBrennan(String sWorking) throws IOException {
+	private void getBrennan(String sWorking) throws IOException {
 		int len;
 		byte[] b = new byte[1024];
 		String sTarget;

@@ -46,7 +46,7 @@ public class About {
 	 * @param _sFileName  path to 'About file)
 	 * @param _sTitle  dialog title
 	 */
-	public About(Stage _myStage, Logger _logger, String _sFileName, String _sTitle)
+	public About(Stage _myStage, gsLogger _logger, String _sFileName, String _sTitle)
 	{
 		//constructor
 		sTitle = _sTitle;
@@ -65,12 +65,12 @@ public class About {
 				salItems.add(line);
 			}
 		} catch (IOException e) {
-			_logger.warning(e.getMessage());
+			_logger.log("About", 68, "", e);
 		}
         try {
 			reader.close();
 		} catch (IOException e) {
-			_logger.warning(e.getMessage());
+			_logger.log("About", 73, "", e);
 		}
 	}
 

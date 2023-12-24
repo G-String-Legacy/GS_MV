@@ -13,6 +13,7 @@ import org.gsusers.gsmv.utilities.About;
 import java.io.File;
 import java.util.logging.Logger;
 
+import org.gsusers.gsmv.utilities.gsLogger;
 /**
  * LayoutController for JavaFX GUI
  * manage the communication between <code>Main</code> and the GUI.
@@ -31,7 +32,7 @@ public class GS_Controller {
     /**
      * org.gs_users.gs_lv.GS_Application logger
      */
-    private Logger logger;
+    private gsLogger logger;
 
     /**
      * primary container of FXML object (GS_view)
@@ -107,7 +108,7 @@ public class GS_Controller {
      * @param _main pointer to GS_Application
      * @param _logger pointer to system logger
      */
-    void setMainApp(GS_Application _main, Logger _logger){
+    void setMainApp(GS_Application _main, gsLogger _logger){
         myMain = _main;
         logger = _logger;
     }

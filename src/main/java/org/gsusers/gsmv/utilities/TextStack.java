@@ -1,15 +1,7 @@
 package org.gsusers.gsmv.utilities;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
-
+import javafx.geometry.*;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -17,11 +9,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextFlow;
+import javafx.scene.text.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 /**
  * Utility for G_String Help
@@ -47,7 +42,7 @@ public class TextStack
 	/**
 	 * pointer to org.gs_users.gs_lv.GS_Application Logger
 	 */
-	private Logger logger;
+	private gsLogger logger;
 
 	/**
 	 * constructor
@@ -56,14 +51,14 @@ public class TextStack
 	 * @param _prefs  pointer to Preferences API
 	 * @param _logger  org.gs_users.gs_lv.GS_Application logger
 	 */
-	public TextStack(String sLocation, Preferences _prefs, Logger _logger)
+	public TextStack(String sLocation, Preferences _prefs, gsLogger _logger)
 	{
 		prefs = _prefs;
 		logger = _logger;
 		try {
 			readFile( sLocation );
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("TextStack", 48, "", e);
 		}
 	}
 
@@ -100,7 +95,6 @@ public class TextStack
 		InputStream stIn = this.getClass().getResourceAsStream("Pointer.png");
 		hand = new Image(stIn, 30.0, 30.0, true, true);
 		ImageView ivHand = new ImageView(hand);
-		ivHand.autosize();
 		VBox vTemp = new VBox(10);
 		vTemp.setMinWidth(600.0);
 		vTemp.setPadding(new Insets(40.0, 40.0, 40.0, 40.0));

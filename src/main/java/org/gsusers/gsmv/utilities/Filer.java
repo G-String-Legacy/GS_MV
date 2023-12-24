@@ -9,7 +9,6 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
 import javafx.geometry.Insets;
@@ -32,6 +31,8 @@ import javafx.stage.Stage;
 import org.gsusers.gsmv.model.Facet;
 import org.gsusers.gsmv.model.Nest;
 import org.gsusers.gsmv.model.SampleSizeTree;
+
+import org.gsusers.gsmv.utilities.gsLogger;
 
 /**
  * Process reading and writing of control and data files the 'read' command
@@ -102,9 +103,9 @@ public class Filer {
 	private Double dMax = -100.0;
 
 	/**
-	 * pointer to <code>logger</code>
+	 * pointer to <code>gsLogger</code>
 	 */
-	private final Logger logger;
+	private final gsLogger logger;
 
 	/**
 	 * pointer to GUI window
@@ -116,10 +117,10 @@ public class Filer {
 	 *
 	 * @param _nest  <code>Nest</code>
 	 * @param _prefs  <code>Preferences</code>
-	 * @param _logger  pointer to application logger
+	 * @param _logger  pointer to application gsLogger
 	 * @param _stage  <code>Stage</code>
 	 */
-	public Filer(Nest _nest, Preferences _prefs, Logger _logger, Stage _stage) {
+	public Filer(Nest _nest, Preferences _prefs, gsLogger _logger, Stage _stage) {
 		/*
 		 * tentative limit for number of data-in columns
 		 */
@@ -147,7 +148,7 @@ public class Filer {
 			String sFileName = file.getCanonicalPath();
 			myNest.setFileName();
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 158, "", e);
 		}
 
 		try (Scanner scanner = new Scanner(file)) {
@@ -156,7 +157,7 @@ public class Filer {
 				processControlLine(sLine); // process control file
 			}
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 168, "", e);
 		}
 	}
 
@@ -268,7 +269,7 @@ public class Filer {
 			try {
 				sb.append(HTML_join(sRow));
 			} catch (Exception e) {
-				logger.warning(e.getMessage());
+				logger.log("Filer", 272, "", e);
 			}
 		}
 		sb.append("</table></body></html>");
@@ -369,7 +370,7 @@ public class Filer {
 					iLineCount++;
 			}
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 373, "", e);
 			System.exit(0);
 		}
 		// Pass 2:
@@ -396,7 +397,7 @@ public class Filer {
 				}
 			}
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 400, "", e);
 			System.exit(0);
 		}
 	}
@@ -442,7 +443,7 @@ public class Filer {
 		try {
 			ps = new PrintStream(fData);
 		} catch (IOException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 446, "", e);
 		}
 	    new DecimalFormat("####.##");
 	    DecimalFormat df = (DecimalFormat) NumberFormat.getInstance(Locale.US);
@@ -517,7 +518,7 @@ public class Filer {
 				processResultlLine(sLine); // process control file
 			}
 		} catch (IOException e) {
-			//logger.warning(e.getMessage());
+			logger.log("Filer", 521, "", e);
 			e.printStackTrace();
 		}
 	}
@@ -647,7 +648,7 @@ public class Filer {
 		try {
 			writer = new PrintStream(file);
 		} catch (FileNotFoundException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 651, "", e);
 		}
 		// Title
 		assert writer != null;
@@ -695,7 +696,7 @@ public class Filer {
 		try {
 			writer = new PrintStream(fOutput);
 		} catch (FileNotFoundException e) {
-			logger.warning(e.getMessage());
+			logger.log("Filer", 699, "", e);
 		}
 
 		// Title

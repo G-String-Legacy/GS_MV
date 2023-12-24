@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+import org.gsusers.gsmv.utilities.gsLogger;
+
 /**
  * class Nest
  * Encapsulates the major parameters of the assessment design, and the central variables required for analysis.
@@ -196,7 +198,7 @@ public class Nest {
 	/**
 	 * <code>logger</code> pointer to org.gs_users.gs_lv.GS_Application logger.
 	 */
-	private final Logger logger;
+	private gsLogger logger;
 
 	/**
 	 * <code>salNestedNames</code> array list of nested configurations from AnaGroups step 6.
@@ -241,7 +243,8 @@ public class Nest {
 	 * @param _myMain - pointer to Main class
 	 * @param _prefs - pointer to Preferences API
 	 */
-	public Nest(Logger _logger, GS_Application _myMain, Preferences _prefs) {
+	public Nest(gsLogger _logger, GS_Application _myMain, Preferences _prefs) {
+
 
 		cAsterisk = '-';
 		sbHFO = new StringBuilder();
@@ -1007,7 +1010,7 @@ public class Nest {
 			sbResult.append("Results ").append(sTitle).append("\n\n");
 			sbResult.append(sb);
 		} catch (Exception e1) {
-			logger.warning(e1.getMessage());
+			logger.log("Nest", 1013, "", e1);
 		}
 		sTitle = " D-Study.";
 		for (VarianceComponent vc : salVarianceComponents) {
@@ -1036,7 +1039,7 @@ public class Nest {
 			sbResult.append("Eρ²      	= ").append(String.format("%.2f", dRel)).append("\n");
 			sbResult.append("Φ           = ").append(String.format("%.2f", dAbs)).append("\n");
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			logger.log("Nest", 1042, "", e);
 		}
 	}
 

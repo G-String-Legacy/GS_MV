@@ -1,11 +1,9 @@
 package org.gsusers.gsmv.utilities;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+import java.util.Objects;
+import java.util.prefs.Preferences;
 
 
 import javafx.scene.control.Alert;
@@ -16,7 +14,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.gsusers.gsmv.GS_Application;
 
 /**
  * Class 'About': formats the two auxiliary Help screens.
@@ -26,7 +26,7 @@ public class About {
 	/**
 	 * array list of text lines
 	 */
-	private final ArrayList<String> salItems = new ArrayList<>();
+	private ArrayList<String> salItems = new ArrayList<>();
 
 	/**
 	 * GUI window
@@ -38,21 +38,58 @@ public class About {
 	 */
 	private final String sTitle;
 
+	private String sLogFileName = null;
+
+	private final Boolean bLOGS;
+
+	private final GS_Application myMain;
+
+	private final gsLogger logger;
 	/**
 	 * Constructor
 	 *
-	 * @param _myStage  pointer to MainStage
+	 * @param _main  pointer to GS_Application
 	 * @param _logger  pointer to org.gs_users.gs_lv.GS_Application logger
-	 * @param _sFileName  path to 'About file)
+	 * @param _bLogs  boolean switch between log-, and resource-file display
+	 * @param _sFileName  path to 'About file
 	 * @param _sTitle  dialog title
 	 */
-	public About(Stage _myStage, gsLogger _logger, String _sFileName, String _sTitle)
-	{
+	public About(GS_Application _main, gsLogger _logger, Boolean _bLogs, String _sFileName, String _sTitle) {
 		//constructor
+		bLOGS = _bLogs;
 		sTitle = _sTitle;
-		myStage = _myStage;
+		myStage = _main.getPrimaryStage();
+		InputStream stIn = null;
+		Preferences prefs = _main.getPrefs();
+		myMain = _main;
+		logger = _logger;
 
-		InputStream stIn = this.getClass().getResourceAsStream(_sFileName);
+		if (bLOGS){
+			String sWorking = prefs.get("Working Directory", System.getProperty("user.home"));
+			File fInitial = new File(sWorking);
+			File f;
+			FileChooser fc = new FileChooser();
+			fc.setInitialDirectory(fInitial);
+			// Set extension filter
+			// Set extension filter
+			FileChooser.ExtensionFilter extFilter =
+					new FileChooser.ExtensionFilter("log files (*.log)", "*.log*");
+			fc.getExtensionFilters().add(extFilter);
+			fc.setTitle("GS WORKING Directory");
+			f = fc.showOpenDialog(myStage);
+			sLogFileName = f.getName();
+			if (f.length() == 0){
+				salItems = null;
+				return;
+			}
+			try {
+				stIn = new FileInputStream(f);
+			} catch (Exception e) {
+				_logger.log("About", 72, "", e);
+			}
+		} else
+			stIn = this.getClass().getResourceAsStream(_sFileName);
+
 		BufferedReader reader = null;
 		if (stIn != null) {
 			reader = new BufferedReader(new InputStreamReader(stIn));
@@ -86,7 +123,9 @@ public class About {
 		alert.setX(dX);
 		alert.setY(dY);
 		alert.setWidth(250.0);
-		alert.setTitle(sTitle);
+		if (bLOGS)
+			alert.setTitle(sLogFileName);
+		else alert.setTitle(sTitle);
 		alert.setHeaderText(null);
 		alert.setGraphic(null);
 		GridPane Content = new GridPane();
@@ -96,11 +135,14 @@ public class About {
 		int iCount = 0;
 		String[] sItems;
 		Text t1, t2;
-		for (String s:salItems)
-		{
+		if (salItems == null){
+			alert.show();
+			return;
+		}
+
+		for (String s:salItems) {
 			sItems = s.split("=");
-			if (sItems.length == 2)
-			{
+			if (sItems.length == 2) {
 				t1 = new Text(sItems[0] + ":");
 				t1.setFont(Font.font("Serif", 16));
 				t1.setFill(Color.rgb(80, 40, 13));
@@ -119,7 +161,11 @@ public class About {
 		}
 		alert.setResizable(true);
 		DialogPane dp = alert.getDialogPane();
-		dp.getStylesheets().add("../resources/myDialog.css");
+		try {
+			dp.getStylesheets().add(Objects.requireNonNull(myMain.getClass().getResource("myDialog.css")).toExternalForm());
+		} catch (Exception e) {
+			logger.log("About", 166, "", e);
+		}
 		dp.getStyleClass().add("myDialog");
 		dp.setContent(Content);
 		ButtonBar buttonBar = (ButtonBar)dp.lookup(".button-bar");

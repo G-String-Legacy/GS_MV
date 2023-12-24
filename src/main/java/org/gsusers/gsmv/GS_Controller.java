@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import org.gsusers.gsmv.utilities.About;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 import org.gsusers.gsmv.utilities.gsLogger;
 /**
@@ -69,6 +68,8 @@ public class GS_Controller {
     @FXML
     private MenuItem mnuReReplicate;
     @FXML
+    private MenuItem mnuLogs;
+    @FXML
     private Button btnStepUp;
     @FXML
     private Label lblStep;
@@ -86,6 +87,7 @@ public class GS_Controller {
         mnuActionStartOver.setOnAction((event) -> myMain.startOver());
         mnuCHelp.setOnAction((event) -> myMain.helpSwitch("help"));
         mnuIntro.setOnAction((event) -> myMain.helpSwitch("intro"));
+        mnuLogs.setOnAction((event) -> showLogs());
         mnuUHelp.setOnAction((event) -> displayResource());
         mnuSimulate.setOnAction((event) -> myMain.Simulate());
         mnuResimulate.setOnAction((event) -> myMain.Resimulate());
@@ -99,6 +101,7 @@ public class GS_Controller {
         lblStep.setAlignment(Pos.CENTER);
         lblStep.setText("Step 0");
         mnuActionFresh.setOnAction((event) -> myMain.startFresh());
+
 
         callForAction(true);
     }
@@ -142,18 +145,25 @@ public class GS_Controller {
     }
 
     /**
-     * displaye 'About G_String' info
+     * display 'About G_String' info
      */
     private void about() {
-        About myAbout = new About(myMain.getPrimaryStage(), logger, "About.txt", "About G_String_M");
+        About myAbout = new About(myMain, logger,  false, "About.txt", "About G_String_M");
         myAbout.show();
     }
 
     /**
+     * display log files
+     */
+    private void showLogs(){
+        About myAbout = new About(myMain, logger,  true, "", "Log Files");
+        myAbout.show();
+    }
+    /**
      * display 'About Brennan' info
      */
     private void aboutB() {
-        About myAbout = new About(myMain.getPrimaryStage(), logger, "AboutB.txt", "About urGenova");
+        About myAbout = new About(myMain, logger,  false, "AboutB.txt", "About urGenova");
         myAbout.show();
     }
 

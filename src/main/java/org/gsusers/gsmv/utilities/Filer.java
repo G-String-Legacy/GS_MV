@@ -32,8 +32,6 @@ import org.gsusers.gsmv.model.Facet;
 import org.gsusers.gsmv.model.Nest;
 import org.gsusers.gsmv.model.SampleSizeTree;
 
-import org.gsusers.gsmv.utilities.gsLogger;
-
 /**
  * Process reading and writing of control and data files the 'read' command
  * takes the following arguments: - file: name of the file to be read -
@@ -76,11 +74,6 @@ public class Filer {
 	 * pointer to Preferences API
 	 */
 	private final Preferences prefs;
-
-	/**
-	 * array of String column headers
-	 */
-	private final String[] sHeaders = null;
 
 	/**
 	 * integer counter to count three horizontal bars, when parsing urGENOVA output
@@ -141,15 +134,7 @@ public class Filer {
 	public void readFile(File file) {
 		// reads already existing control file
 		String sLine;
-		try {
-			/*
-			 * file path
-			 */
-			String sFileName = file.getCanonicalPath();
 			myNest.setFileName();
-		} catch (IOException e) {
-			logger.log("Filer", 158, "", e);
-		}
 
 		try (Scanner scanner = new Scanner(file)) {
 			while (scanner.hasNextLine()) {
@@ -256,13 +241,6 @@ public class Filer {
 		StringBuilder sb = new StringBuilder("<html><body contentEditable=\"true\"><table border = \"1\">\n");
 		int iCounter = 0;
 		sb.append("<col width=\"50\">\n".repeat(Math.max(0, iMaxColumns)));
-		if (sHeaders != null) {
-			sb.append("<tr>");
-			for (String s : sHeaders)
-				if ((s != null) && !s.equals(""))
-					sb.append("<th>").append(s).append("</th>");
-			sb.append("</tr>");
-		}
 		for (String[] sRow : sRawData) {
 			if (iCounter++ > 50)
 				break;
@@ -552,27 +530,6 @@ public class Filer {
 	}
 
 	/**
-	 * getter of <code>iHilight</code>
-	 *
-	 * @return iHilight
-	 */
-	public Integer getHighlight() {
-		return iHilight;
-	}
-
-	/**
-	 * Getter of missing scores in data file
-	 *
-	 * @return  Integer number of missing scores
-	 */
-	public Integer missingItems() {
-		/*
-		 * number of missing items
-		 */
-		return 0;
-	}
-
-	/**
 	 * getter of <code>File</code>
 	 *
 	 * @param bRead  boolean flag read/write - true/false
@@ -752,4 +709,5 @@ public class Filer {
 	public String[][] getRawData(){
 		return sRawData;
 	}
+
 }

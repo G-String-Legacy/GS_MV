@@ -17,6 +17,7 @@ The versioning convention is as follows:
     b - changes in java, and javafx jdks.
     c - minor bug fixes and cosmetics.
     Initial alpha version: 0.0.0
+The current version of GS_M - 2.1.1 uses updated Gradle 8.5 and Adoptium openjava 21.0.1
  */
 plugins {
     id 'java'
@@ -32,7 +33,7 @@ java {
     }
 }
 group 'org.gsusers'
-version '2.0.13'
+version '2.1.1'
 
 repositories {
     mavenCentral()

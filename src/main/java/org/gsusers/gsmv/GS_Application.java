@@ -574,5 +574,9 @@ public class GS_Application extends Application {
         hbReturn.getChildren().addAll(lbKey, tfValue);
         return hbReturn;
     }
+
+    public Preferences getPrefs(){
+        return prefs;
+    }
 }
 

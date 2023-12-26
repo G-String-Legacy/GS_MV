@@ -3,7 +3,7 @@
 This repository serves the distribution, maintenance, support, and further development of G_String_M, an upgraded version of G_String_L, a software tool allowing generalists to perform [Generalizability-Analysis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6699529/#:~:text=Generalizability%20studies%20provide%20a%20better,within%20the%20universe%20of%20scores.) of performance evaluations.
 In contrast to more general statistical tools, G_String does not require a great deal of mathematical sophistication. It guides the user step-by-step through the accepted mathematical algorithms.
 Until the present, G_String was programmed in traditional Oracle Java 8. But over the past 15 years the software industry has made great progress.
-**GS_M** is an upgrade that runs on any Windows, Mac, or Linux (Debian) without specific library requirements. While it currently uses Java and JavaFX version-17 automatically, it is easily upgradable to future versions, thus keeping step with further development.
+**GS_M** is an upgrade that runs on any Windows, Mac, or Linux (Debian) without specific library requirements. While it currently uses Java and JavaFX version-21 automatically, it is easily upgradable to future versions, thus keeping step with further development.
 The key to this development was to incorporate G_String with its own build tool - Gradle.
 
 So what does the **M** in **GS_M** stand for?

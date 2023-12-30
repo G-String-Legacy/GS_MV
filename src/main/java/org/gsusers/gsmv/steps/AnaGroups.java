@@ -1162,7 +1162,7 @@ public class AnaGroups {
 
 	/**
 	 * this is the crucial step 9 where urGENOVA is tasked with calculating the estimates
-	 * of variance coefficients for all facets and their appropriate calculations.
+	 * of variance coefficients for all facets and their appropriate combinations.
 	 *
 	 * @return <code>Group</code> essentially the 'Scene' for returning urGENOVA results to be sent to the GUI
 	 */

@@ -41,6 +41,11 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="GS_LV" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GS_LV" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -118,7 +123,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [jpackage]">
+  <component name="RunManager" selected="Gradle.GS_MV [build]">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GS_MV" />
       <method v="2">
@@ -244,9 +249,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_LV [run]" />
-        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_MV [clean]" />
         <item itemvalue="Shell Script.GS_MV" />
       </list>
@@ -312,6 +317,8 @@
       <workItem from="1703615122200" duration="2569000" />
       <workItem from="1703626990855" duration="219000" />
       <workItem from="1703627220241" duration="4000" />
+      <workItem from="1703714380598" duration="136000" />
+      <workItem from="1703792467893" duration="2119000" />
     </task>
     <servers />
   </component>

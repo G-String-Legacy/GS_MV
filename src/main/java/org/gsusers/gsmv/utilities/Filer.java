@@ -544,10 +544,19 @@ public class Filer {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(fInitial);
 		fc.setTitle(sTitle);
-		if (bRead)
-			f = fc.showOpenDialog(myStage);
-		else
-			f = fc.showSaveDialog(myStage);
+		try {
+			/*
+			Tests if fInitial points to an actual directory.
+			if not, it sets the current home directory to thr user's home directory.
+			 */
+			if (bRead)
+				f = fc.showOpenDialog(myStage);
+			else
+				f = fc.showSaveDialog(myStage);
+		} catch (Exception e) {
+			String sDir = System.getProperty("user.home");
+			f = new File(sDir);
+		}
 		sHome = f.getParent();
 
 		if (!sHome.equals(sInitial))

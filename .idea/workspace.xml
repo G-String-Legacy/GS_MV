@@ -12,19 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cases/ResultsMCQ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsMCQ.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cases/ResultsOSCE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsOSCE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cases/ResultsREP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsREP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Support/results_Intro.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Support/results_Intro.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vault/AnaBird.md" beforeDir="false" afterPath="$PROJECT_DIR$/vault/AnaBird.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vault/Directories.md" beforeDir="false" afterPath="$PROJECT_DIR$/vault/Directories.md" afterDir="false" />
-    </list>
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -345,7 +333,7 @@
       <workItem from="1703950523241" duration="615000" />
       <workItem from="1704115597022" duration="2964000" />
       <workItem from="1704539703737" duration="2096000" />
-      <workItem from="1704798800393" duration="264000" />
+      <workItem from="1704798800393" duration="403000" />
     </task>
     <servers />
   </component>

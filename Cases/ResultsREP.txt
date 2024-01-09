@@ -2,7 +2,7 @@ Successful execution
 
 
                              CONTROL CARDS FOR RUN 1
-                     Control Cards File Name:  ~control.txt
+                     Control Cards File Name:  control.txt
                          Northern Ontario Medical School
 
 GSTUDY    Northern Ontario Medical School

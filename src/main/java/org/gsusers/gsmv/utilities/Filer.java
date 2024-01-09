@@ -487,7 +487,7 @@ public class Filer {
 		 * 'VarianceComponent array (in Nest)
 		 */
 		String sLine;
-		String sUrOutput = prefs.get("Working Directory", null) + "/~control.txt.lis";
+		String sUrOutput = prefs.get("Working Directory", null) + "/control.txt.lis";
 		File file = new File(sUrOutput);
 		iOutputPointer = 0;
 		try (Scanner scanner = new Scanner(file)) {

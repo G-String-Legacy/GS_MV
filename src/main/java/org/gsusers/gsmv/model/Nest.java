@@ -768,7 +768,7 @@ public class Nest {
 	 * @return sControlFileName
 	 */
 	public String getControlFileName() {
-		return "~control.txt";
+		return "control.txt";
 	}
 
 	/**

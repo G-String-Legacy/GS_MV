@@ -1181,10 +1181,10 @@ public class AnaGroups {
 		String homeDirectory = prefs.get("Working Directory", null);
 		ProcessBuilder builder = new ProcessBuilder();
 		switch (prefs.get("OS", null)) {
-			case "Linux", "Mac" -> builder.command("sh", "-c", "./urGenova ~control.txt");
+			case "Linux", "Mac" -> builder.command("sh", "-c", "./urGenova control.txt");
 			case "Windows" ->
 				// here DoUrGenova has to be built in
-					builder.command("cmd.exe", "/c", "urGenova.exe", "~control.txt");
+					builder.command("cmd.exe", "/c", "urGenova.exe", "control.txt");
 			default -> {
 			}
 		}
@@ -1219,7 +1219,7 @@ public class AnaGroups {
 
 		InputStream is = null;
 		try {
-			is = new FileInputStream(prefs.get("Working Directory", null) + "/~control.txt.lis");
+			is = new FileInputStream(prefs.get("Working Directory", null) + "/control.txt.lis");
 		} catch (FileNotFoundException e) {
 			logger.log("AnaGroups", 1224, "", e);
 		}

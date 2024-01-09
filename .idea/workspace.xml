@@ -14,6 +14,16 @@
   <component name="ChangeListManager">
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cases/ResultsMCQ.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsMCQ.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cases/ResultsOSCE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsOSCE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cases/ResultsREP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Cases/ResultsREP.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Support/results_Intro.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Support/results_Intro.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/model/Nest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/utilities/Filer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vault/AnaBird.md" beforeDir="false" afterPath="$PROJECT_DIR$/vault/AnaBird.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vault/Directories.md" beforeDir="false" afterPath="$PROJECT_DIR$/vault/Directories.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +54,19 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="GS_LV" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GS_LV" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GS_LV" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -123,7 +145,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_MV [build]">
+  <component name="RunManager" selected="Gradle.GS_LV [run]">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GS_MV" />
       <method v="2">
@@ -249,9 +271,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [jpackage]" />
-        <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [clean]" />
         <item itemvalue="Shell Script.GS_MV" />
       </list>
@@ -319,6 +341,11 @@
       <workItem from="1703627220241" duration="4000" />
       <workItem from="1703714380598" duration="136000" />
       <workItem from="1703792467893" duration="2119000" />
+      <workItem from="1703948932540" duration="480000" />
+      <workItem from="1703950523241" duration="615000" />
+      <workItem from="1704115597022" duration="2964000" />
+      <workItem from="1704539703737" duration="2096000" />
+      <workItem from="1704798800393" duration="264000" />
     </task>
     <servers />
   </component>
@@ -351,6 +378,17 @@
     <MESSAGE value="solved resource loads" />
     <MESSAGE value="Added log functions and updated to Gradle 8.5 and java 21" />
     <option name="LAST_COMMIT_MESSAGE" value="Added log functions and updated to Gradle 8.5 and java 21" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/gsusers/gsmv/steps/AnaGroups.java</url>
+          <line>259</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

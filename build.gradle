@@ -89,21 +89,21 @@ jlink {
     }
     jpackage {
         installerOptions = [
-            '--description', 'Generalizability  Analysis',
-            '--copyright', 'Copyright 2007-2023 papaworx.com'
+                '--description', 'Generalizability  Analysis',
+                '--copyright', 'Copyright 2007-2023 papaworx.com'
         ]
         skipInstaller = false
         vendor = "Open Source"
 
         //un-comment appropriate installerType
 
-        /*
-            installerType = "deb"
-            imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
-            installerOptions += [
+
+        installerType = "deb"
+        imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
+        installerOptions += [
                 '--linux-deb-maintainer', 'ralph@papaworx.com'
-            ]
-        */
+        ]
+
 
 
         /*

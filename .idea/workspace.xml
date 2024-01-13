@@ -264,8 +264,8 @@
       <list>
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [build]" />
-        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Gradle.GS_MV [clean]" />
+        <item itemvalue="Gradle.GS_LV [jpackage]" />
         <item itemvalue="Shell Script.GS_MV" />
       </list>
     </recent_temporary>
@@ -338,7 +338,7 @@
       <workItem from="1704539703737" duration="2096000" />
       <workItem from="1704798800393" duration="403000" />
       <workItem from="1704989169841" duration="512000" />
-      <workItem from="1705151498692" duration="336000" />
+      <workItem from="1705151498692" duration="4513000" />
     </task>
     <servers />
   </component>

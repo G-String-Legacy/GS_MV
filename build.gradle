@@ -27,24 +27,11 @@ plugins {
 
 }
 
-java {
-    toolchain{
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
 group 'org.gsusers'
-version '2.1.1'
 
 repositories {
     mavenCentral()
 }
-
-ext {
-    junitVersion = '5.9.1'
-}
-
-sourceCompatibility = '21.0.1'
-targetCompatibility = '21.0.1'
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
@@ -56,19 +43,12 @@ application {
 }
 
 javafx {
-    version = '21.0.1'
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
 
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-// https://mvnrepository.com/artifact/org.openjfx/javafx-web
-    implementation group: 'org.openjfx', name: 'javafx-web', version: '20-ea+11'
-
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
@@ -97,13 +77,13 @@ jlink {
 
         //un-comment appropriate installerType
 
-
+        /*
         installerType = "deb"
         imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
         installerOptions += [
                 '--linux-deb-maintainer', 'ralph@papaworx.com'
         ]
-
+        */
 
 
         /*

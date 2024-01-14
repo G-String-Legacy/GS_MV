@@ -12,12 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.png" afterDir="false" />
-    </list>
+    <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -343,6 +338,7 @@
       <workItem from="1705151498692" duration="4513000" />
       <workItem from="1705156459739" duration="218000" />
       <workItem from="1705178652088" duration="1495000" />
+      <workItem from="1705180992126" duration="146000" />
     </task>
     <servers />
   </component>

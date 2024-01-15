@@ -15,7 +15,7 @@
     <list default="true" id="90f26b61-ffb6-4719-899a-f2a1bbe8e8ec" name="Changes" comment="Added log functions and updated to Gradle 8.5 and java 21">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.icns" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/gsusers/gsmv/GS_MV.icns" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +153,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/papaworx/gs_lv/help" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GS_LV [run]">
+  <component name="RunManager" selected="Gradle.GS_MV [build]">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GS_MV" />
       <method v="2">
@@ -286,9 +286,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_LV [run]" />
         <item itemvalue="Gradle.GS_MV [clean]" />
-        <item itemvalue="Gradle.GS_MV [build]" />
         <item itemvalue="Gradle.GS_MV [classes]" />
         <item itemvalue="Gradle.GS_MV [assemble]" />
       </list>
@@ -369,7 +369,10 @@
       <workItem from="1705231382981" duration="1439000" />
       <workItem from="1705257752053" duration="2021000" />
       <workItem from="1705276335565" duration="600000" />
-      <workItem from="1705276984876" duration="7000" />
+      <workItem from="1705276984876" duration="211000" />
+      <workItem from="1705277426332" duration="28000" />
+      <workItem from="1705326154215" duration="726000" />
+      <workItem from="1705328653583" duration="9000" />
     </task>
     <servers />
   </component>

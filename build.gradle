@@ -44,6 +44,12 @@ application {
 
 version = "2.1.1"
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 javafx {
     version = 21
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']

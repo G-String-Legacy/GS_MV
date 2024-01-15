@@ -14,7 +14,7 @@ import org.gsusers.gsmv.utilities.*;
 module org.gsusers.gsmv {
     requires javafx.controls;
     requires javafx.fxml;
-    requires org.controlsfx.controls;
+    //requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.logging;
     requires java.prefs;

@@ -45,11 +45,11 @@ application {
 version = "2.1.1"
 
 javafx {
+    version = 21
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
 
 dependencies {
-    implementation('org.controlsfx:controlsfx:11.1.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
 }
 
@@ -60,7 +60,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'org.gsusers.gsmv.GS_Application'
+             'Main-Class': 'org.gsusers.gsmv.GS_Application'
         )
     }
 }

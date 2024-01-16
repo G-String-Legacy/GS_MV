@@ -71,7 +71,7 @@ public class About {
 			FileChooser fc = new FileChooser();
 			fc.setInitialDirectory(fInitial);
 			// Set extension filter
-			// Set extension filter
+
 			FileChooser.ExtensionFilter extFilter =
 					new FileChooser.ExtensionFilter("log files (*.log)", "*.log*");
 			fc.getExtensionFilters().add(extFilter);
@@ -79,7 +79,7 @@ public class About {
 			f = fc.showOpenDialog(myStage);
 			sLogFileName = f.getName();
 			if (f.length() == 0){
-				salItems = null;
+				salItems.add(sLogFileName + " is empty!");
 				return;
 			}
 			try {
@@ -172,6 +172,4 @@ public class About {
 		buttonBar.getButtons().forEach(b->b.setStyle("-fx-font-size: 16;-fx-background-color: #551200;-fx-text-fill: #ffffff;-fx-font-weight: bold;"));
 		alert.showAndWait();
 	}
-
-
 }

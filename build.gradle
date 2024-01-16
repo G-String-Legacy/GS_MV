@@ -42,7 +42,7 @@ application {
     mainClass = 'org.gsusers.gsmv.GS_Application'
 }
 
-version = "2.1.1"
+version = "2.2.0"
 
 java {
     toolchain {
@@ -85,13 +85,13 @@ jlink {
 
         //un-comment appropriate installerType
 
-    /*
+        /*
         installerType = "deb"
         imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
         installerOptions += [
                 '--linux-deb-maintainer', 'ralph@papaworx.com'
         ]
-    */
+        */
 
 
         /*

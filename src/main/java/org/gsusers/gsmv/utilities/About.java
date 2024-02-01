@@ -70,11 +70,13 @@ public class About {
 			File f;
 			FileChooser fc = new FileChooser();
 			fc.setInitialDirectory(fInitial);
-			// Set extension filter
-
-			FileChooser.ExtensionFilter extFilter =
-					new FileChooser.ExtensionFilter("log files (*.log)", "*.log*");
-			fc.getExtensionFilters().add(extFilter);
+			Boolean bMac = (prefs.get("OS", "Linux").equals("Mac"));
+			// Set extension filter if not in MacOS
+			if (!bMac) {
+				FileChooser.ExtensionFilter extFilter =
+						new FileChooser.ExtensionFilter("log files (*.log)", "*.log*");
+				fc.getExtensionFilters().add(extFilter);
+			}
 			fc.setTitle("GS WORKING Directory");
 			f = fc.showOpenDialog(myStage);
 			sLogFileName = f.getName();

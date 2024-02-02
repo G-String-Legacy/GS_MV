@@ -42,7 +42,7 @@ application {
     mainClass = 'org.gsusers.gsmv.GS_Application'
 }
 
-version = "2.2.0"
+version = "2.2.1"
 
 java {
     toolchain {
@@ -86,6 +86,7 @@ jlink {
         //un-comment appropriate installerType
 
         /*
+        // Linux Installer
         installerType = "deb"
         imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.png']
         installerOptions += [
@@ -93,8 +94,8 @@ jlink {
         ]
         */
 
-
         /*
+        // Windows Installer
             installerType = "msi"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.ico']
             installerOptions += [
@@ -104,6 +105,7 @@ jlink {
         */
 
         /*
+        // MacOS Installer (version macos >= 11)
             installerType = "dmg"
             imageOptions += ['--icon', 'src/main/resources/org/gsusers/gsmv/GS_MV.icns']
         */

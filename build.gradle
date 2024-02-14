@@ -4,7 +4,7 @@ This is the core control file of GS_M, the latest incarnation of G_String.
 G_String is a java program enabling non-specialist users to perform Generalization Analysis of performance assessments.
 GS_M is Open Source.
 GS_M is the property of the G_String User Group (gs_users.org).
-GS_M is a formal gradle (7.6) project. It runs well on Intellij IDEA.
+GS_M is a formal gradle (8.5) project. It runs well on Intellij IDEA.
 It is based on modular design, and java versions can be specified in this document.
 GS_M builds install packages for the three major OS platforms: Linux, Windows, and IOS.
 Consequently GS_M has three versions, one for each of the three platforms.
